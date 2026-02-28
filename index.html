@@ -1,139 +1,159 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suvashish Chakraborty | Product Manager</title>
-    <meta name="description" content="Product Manager specializing in Fintech, SaaS, and automation solutions. Based in Bangladesh." />
-    <!-- Security: Basic CSP - adjust based on your hosting -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';" />
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suvashish Chakraborty | Product Manager</title>
+  <meta name="description" content="Product Manager specializing in Fintech, SaaS, and automation solutions. Based in Bangladesh."/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-    <header class="hero">
-        <div class="container">
-            <h1>Suvashish Chakraborty</h1>
-            <p class="title">Product Manager | Fintech & SaaS Innovation</p>
-            <p class="tagline">Driving automation, compliance, and user-centric solutions in Fintech</p>
-            <div class="cta">
-                <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Contact</a>
-            </div>
+  <header class="hero">
+    <div class="container">
+      <h1>Suvashish Chakraborty</h1>
+      <p class="title">Product Manager II | Fintech & SaaS Innovation</p>
+      <p class="tagline">Driving automation, compliance, and user-centric solutions in Fintech</p>
+      <div class="cta">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>Detail-oriented and proactive professional with proven experience in product innovation, business analysis, and stakeholder engagement across global projects. Skilled in leading cross-functional teams, optimizing operations, and driving high-impact results through Agile and OKR methodologies. Adept at translating complex data into actionable insights, ensuring compliance, and delivering end-to-end solutions on time and within budget.</p>
+      <p><strong>Location:</strong> Bangladesh | <strong>Email:</strong> <span id="email"></span></p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <article class="role">
+        <h3>Product Manager II</h3>
+        <p class="company">Next Ventures | April 2025 – Present</p>
+        <ul>
+          <li>Leading 20-person cross-functional teams to drive automation, insights, and SaaS product innovation across FundedNext and FundedNext Futures.</li>
+          <li>Developed an end-to-end automation agent using n8n that creates tasks and auto-syncs with project tools, improving workflow efficiency by 40%+.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <h3>Business Analyst</h3>
+        <p class="company">Save the Children International (TecHHub) | July 2022 – March 2025</p>
+        <ul>
+          <li>Led 15-person cross-functional teams to deliver global IT solutions including Learning Tree, ECW LMS, and enterprise platforms.</li>
+          <li>Streamlined workflows using Agile practices (Kanban, JIRA), ensuring timely delivery and adaptability.</li>
+          <li>Championed SaaS enhancements that improved operational efficiency and reduced delivery time.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <h3>Business Operations Analyst</h3>
+        <p class="company">Loosely Coupled Technologies | Nov 2019 – Nov 2021</p>
+        <ul>
+          <li>Managed data integrations and software design processes, optimizing infrastructure and reducing costs by 15%.</li>
+          <li>Queried and analyzed data using Microsoft SQL Server on Azure, delivering actionable business insights.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      
+      <article class="project">
+        <h3>Education Cannot Wait LMS</h3>
+        <p class="meta">Save the Children | 2022–2025</p>
+        <p><strong>Challenge:</strong> Improve educational access for students in crisis-affected regions.</p>
+        <p><strong>Role:</strong> Led cross-functional team; aligned features with stakeholder goals; managed vendor integration.</p>
+        <p><strong>Result:</strong> Increased user engagement by 35%; enabled 2,000+ students to access learning modules.</p>
+      </article>
+
+      <article class="project">
+        <h3>n8n Automation Agent</h3>
+        <p class="meta">Next Ventures | 2025</p>
+        <p><strong>Challenge:</strong> Reduce manual task creation and synchronization across project management tools.</p>
+        <p><strong>Role:</strong> Designed and implemented end-to-end automation workflow using n8n.</p>
+        <p><strong>Result:</strong> Improved workflow efficiency by 40%+; reduced operational overhead for 20+ team members.</p>
+      </article>
+
+      <article class="project">
+        <h3>OnDesk Mobile</h3>
+        <p class="meta">Save the Children | 2024–2025</p>
+        <p><strong>Challenge:</strong> Enhance accessibility for employee services across mobile platforms.</p>
+        <p><strong>Role:</strong> Led mobile version development; integrated IT Support, Asset Management, and AI Voice Chat.</p>
+        <p><strong>Result:</strong> Streamlined leave requests, travel bookings, and ticketing for enterprise users.</p>
+      </article>
+
+      <article class="project">
+        <h3>Learning Tree LMS</h3>
+        <p class="meta">Save the Children | 2022–2023</p>
+        <p><strong>Challenge:</strong> Support teachers and caregivers across Guatemala, Colombia, Ukraine, Poland, Pakistan.</p>
+        <p><strong>Role:</strong> Led development; adapted platform to regional needs.</p>
+        <p><strong>Result:</strong> Reached 1,200+ children, increasing engagement by 30% in early adoption.</p>
+      </article>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills & Certifications</h2>
+      <div class="skills-grid">
+        <div>
+          <h3>Technical</h3>
+          <ul>
+            <li>SQL, Azure, Data Querying</li>
+            <li>Java, Python, Software QA</li>
+            <li>JIRA, ClickUp, Kanban, Sprint Planning</li>
+            <li>n8n, Product Analytics (Pendo)</li>
+            <li>MS Excel, PowerPoint, Google Workspace</li>
+          </ul>
         </div>
-    </header>
+        <div>
+          <h3>Product Management</h3>
+          <ul>
+            <li>PRDs, User Stories, OKRs</li>
+            <li>Agile/Scrum Methodologies</li>
+            <li>Stakeholder Engagement</li>
+            <li>Risk Assessment & Mitigation</li>
+            <li>Project Budgeting & Resource Planning</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Certifications</h3>
+          <ul>
+            <li>Product Analytics Certification (Pendo & Mind the Product, Jan 2025)</li>
+            <li>Product-Led Certification (Pendo & Mind the Product, Feb 2025)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <ul>
+            <li>B.Sc. Computer Science (Data Science)</li>
+            <li>Monash University Malaysia (2015-2019)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <main class="container">
-        <!-- About -->
-        <section id="about">
-            <h2>About</h2>
-            <p>Detail-oriented Product Manager with experience in product innovation, business analysis, and stakeholder engagement across global projects. Skilled in leading cross-functional teams, optimizing operations, and delivering high-impact results
-                through Agile and OKR methodologies. Adept at translating complex data into actionable insights while ensuring compliance.</p>
-            <p><strong>Location:</strong> Bangladesh | <strong>Open to:</strong> Global collaborations</p>
-        </section>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Open to collaborations, speaking opportunities, and product leadership roles.</p>
+      <ul class="contact-list">
+        <li>Email: <span id="email-contact"></span> <button id="copyEmail" class="btn-sm">Copy</button></li>
+        <li>Phone: +880 1623-791171</li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/suvashish" target="_blank" rel="noopener noreferrer">linkedin.com/in/suvashish</a></li>
+      </ul>
+      <p class="privacy-note"><small>This site does not use cookies or third-party trackers. All content is static and served securely via HTTPS.</small></p>
+    </section>
+  </main>
 
-        <!-- Experience -->
-        <section id="experience">
-            <h2>Experience</h2>
-            <article class="role">
-                <h3>Product Manager II</h3>
-                <p class="company">Next Ventures | Apr 2025 – Present</p>
-                <ul>
-                    <li>Leading 20-person cross-functional teams to drive automation, insights, and SaaS product innovation across FundedNext and FundedNext Futures.</li>
-                    <li>Developed an end-to-end automation agent using n8n that creates tasks and auto-syncs with project tools, improving workflow efficiency by 40%+.</li>
-                </ul>
-            </article>
-            <article class="role">
-                <h3>Business Analyst</h3>
-                <p class="company">Save the Children International (TecHHub) | Jul 2022 – Mar 2025</p>
-                <ul>
-                    <li>Led 15-person cross-functional teams to deliver global IT solutions including Learning Tree, ECW LMS, and enterprise platforms.</li>
-                    <li>Streamlined workflows using Agile practices (Kanban, JIRA), ensuring timely delivery and adaptability.</li>
-                    <li>Championed SaaS enhancements that improved operational efficiency and reduced delivery time.</li>
-                </ul>
-            </article>
-        </section>
+  <footer>
+    <p>&copy; <span id="year"></span> Suvashish Chakraborty. All rights reserved.</p>
+  </footer>
 
-        <!-- Projects / Case Studies -->
-        <section id="projects">
-            <h2>Featured Projects</h2>
-
-            <article class="project">
-                <h3>Education Cannot Wait LMS</h3>
-                <p class="meta">Save the Children | 2022–2025</p>
-                <p><strong>Challenge:</strong> Improve educational access for students in crisis-affected regions.</p>
-                <p><strong>Role:</strong> Led cross-functional team; aligned features with stakeholder goals; managed vendor integration.</p>
-                <p><strong>Result:</strong> Increased user engagement by 35%; enabled 2,000+ students to access learning modules.</p>
-            </article>
-
-            <article class="project">
-                <h3>n8n Automation Agent</h3>
-                <p class="meta">Next Ventures | 2025</p>
-                <p><strong>Challenge:</strong> Reduce manual task creation and synchronization across project management tools.</p>
-                <p><strong>Role:</strong> Designed and implemented end-to-end automation workflow using n8n.</p>
-                <p><strong>Result:</strong> Improved workflow efficiency by 40%+; reduced operational overhead for 20+ team members.</p>
-                <p><em>Note: Implementation details sanitized for confidentiality.</em></p>
-            </article>
-
-            <article class="project">
-                <h3>OnDesk Mobile</h3>
-                <p class="meta">Save the Children | 2024–2025</p>
-                <p><strong>Challenge:</strong> Enhance accessibility for employee services across mobile platforms.</p>
-                <p><strong>Role:</strong> Led mobile version development; integrated IT Support, Asset Management, and AI Voice Chat.</p>
-                <p><strong>Result:</strong> Streamlined leave requests, travel bookings, and ticketing for enterprise users.</p>
-            </article>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills">
-            <h2>Skills & Certifications</h2>
-            <div class="skills-grid">
-                <div>
-                    <h3>Technical</h3>
-                    <ul>
-                        <li>SQL, Azure, Python, Java</li>
-                        <li>JIRA, ClickUp, Kanban, Sprint Planning</li>
-                        <li>n8n, Product Analytics (Pendo)</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Product</h3>
-                    <ul>
-                        <li>PRDs, User Stories, OKRs</li>
-                        <li>Agile/Scrum, Stakeholder Management</li>
-                        <li>Risk Assessment, Compliance Planning</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Certifications</h3>
-                    <ul>
-                        <li>Product Analytics Certification (Pendo, Jan 2025)</li>
-                        <li>Product-Led Certification (Pendo, Feb 2025)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Open to collaborations, speaking opportunities, and product leadership roles.</p>
-            <ul class="contact-list">
-                <li>Email: <span id="email"></span> <button id="copyEmail" class="btn-sm">Copy</button></li>
-                <li>LinkedIn: <a href="https://linkedin.com/in/suvashish" target="_blank" rel="noopener noreferrer">linkedin.com/in/suvashish</a></li>
-                <li>Phone: +8801623791171</li>
-            </ul>
-            <p class="privacy-note"><small>This site does not use cookies or third-party trackers. Contact form submissions (if enabled) are processed via secure serverless functions and not stored publicly.</small></p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; <span id="year"></span> Suvashish Chakraborty. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
