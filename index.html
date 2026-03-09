@@ -2,159 +2,709 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suvashish Chakraborty | Product Manager</title>
-  <meta name="description" content="Product Manager specializing in Fintech, SaaS, and automation solutions. Based in Bangladesh."/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"/>
+
+  <!-- SEO -->
+  <meta name="description" content="Product Manager driving automation, SaaS innovation, and global impact. Building products that reach thousands across education, fintech, and enterprise." />
+  <meta name="keywords" content="Product Manager, SaaS, Agile, FundedNext, LMS, Automation, Portfolio" />
+  <meta name="author" content="Suvashish Chakraborty" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Suvashish Chakraborty | Product Manager" />
+  <meta property="og:description" content="Product Manager driving automation, SaaS innovation, and global impact." />
+  <meta property="og:url" content="https://suvashishchky.pro" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Suvashish Chakraborty | Product Manager" />
+  <meta name="twitter:description" content="Product Manager driving automation, SaaS innovation, and global impact." />
+
+  <!-- Security Headers (meta-level) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Suvashish Chakraborty</h1>
-      <p class="title">Product Manager II | Fintech & SaaS Innovation</p>
-      <p class="tagline">Driving automation, compliance, and user-centric solutions in Fintech</p>
-      <div class="cta">
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Contact</a>
-      </div>
+  <!-- ═══ Ambient Background ═══ -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <header id="navbar" class="navbar">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="gradient-text">SC</span><span class="logo-dot">.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#case-studies" class="nav-link">Work</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="nav-btn-resume">Let's Talk</a></li>
+      </ul>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#case-studies" class="mobile-link">Work</a></li>
+        <li><a href="#experience" class="mobile-link">Experience</a></li>
+        <li><a href="#skills" class="mobile-link">Skills</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
     </div>
   </header>
 
-  <main class="container">
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <p>Detail-oriented and proactive professional with proven experience in product innovation, business analysis, and stakeholder engagement across global projects. Skilled in leading cross-functional teams, optimizing operations, and driving high-impact results through Agile and OKR methodologies. Adept at translating complex data into actionable insights, ensuring compliance, and delivering end-to-end solutions on time and within budget.</p>
-      <p><strong>Location:</strong> Bangladesh | <strong>Email:</strong> <span id="email"></span></p>
-    </section>
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" class="hero">
+    <div class="hero-orb" aria-hidden="true"></div>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <article class="role">
-        <h3>Product Manager II</h3>
-        <p class="company">Next Ventures | April 2025 – Present</p>
-        <ul>
-          <li>Leading 20-person cross-functional teams to drive automation, insights, and SaaS product innovation across FundedNext and FundedNext Futures.</li>
-          <li>Developed an end-to-end automation agent using n8n that creates tasks and auto-syncs with project tools, improving workflow efficiency by 40%+.</li>
-        </ul>
-      </article>
-      <article class="role">
-        <h3>Business Analyst</h3>
-        <p class="company">Save the Children International (TecHHub) | July 2022 – March 2025</p>
-        <ul>
-          <li>Led 15-person cross-functional teams to deliver global IT solutions including Learning Tree, ECW LMS, and enterprise platforms.</li>
-          <li>Streamlined workflows using Agile practices (Kanban, JIRA), ensuring timely delivery and adaptability.</li>
-          <li>Championed SaaS enhancements that improved operational efficiency and reduced delivery time.</li>
-        </ul>
-      </article>
-      <article class="role">
-        <h3>Business Operations Analyst</h3>
-        <p class="company">Loosely Coupled Technologies | Nov 2019 – Nov 2021</p>
-        <ul>
-          <li>Managed data integrations and software design processes, optimizing infrastructure and reducing costs by 15%.</li>
-          <li>Queried and analyzed data using Microsoft SQL Server on Azure, delivering actionable business insights.</li>
-        </ul>
-      </article>
-    </section>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Featured Projects</h2>
-      
-      <article class="project">
-        <h3>Education Cannot Wait LMS</h3>
-        <p class="meta">Save the Children | 2022–2025</p>
-        <p><strong>Challenge:</strong> Improve educational access for students in crisis-affected regions.</p>
-        <p><strong>Role:</strong> Led cross-functional team; aligned features with stakeholder goals; managed vendor integration.</p>
-        <p><strong>Result:</strong> Increased user engagement by 35%; enabled 2,000+ students to access learning modules.</p>
-      </article>
+    <div class="hero-content">
+      <!-- Status badge -->
+      <div class="status-badge reveal" data-delay="0">
+        <span class="status-dot">
+          <span class="status-ping"></span>
+          <span class="status-solid"></span>
+        </span>
+        <span class="status-text">Currently building at <strong class="text-amber">Next Ventures</strong></span>
+      </div>
 
-      <article class="project">
-        <h3>n8n Automation Agent</h3>
-        <p class="meta">Next Ventures | 2025</p>
-        <p><strong>Challenge:</strong> Reduce manual task creation and synchronization across project management tools.</p>
-        <p><strong>Role:</strong> Designed and implemented end-to-end automation workflow using n8n.</p>
-        <p><strong>Result:</strong> Improved workflow efficiency by 40%+; reduced operational overhead for 20+ team members.</p>
-      </article>
+      <!-- Name -->
+      <h2 class="hero-name reveal" data-delay="100">Suvashish Chakraborty</h2>
 
-      <article class="project">
-        <h3>OnDesk Mobile</h3>
-        <p class="meta">Save the Children | 2024–2025</p>
-        <p><strong>Challenge:</strong> Enhance accessibility for employee services across mobile platforms.</p>
-        <p><strong>Role:</strong> Led mobile version development; integrated IT Support, Asset Management, and AI Voice Chat.</p>
-        <p><strong>Result:</strong> Streamlined leave requests, travel bookings, and ticketing for enterprise users.</p>
-      </article>
+      <!-- Title -->
+      <h1 class="hero-title">
+        <span class="title-word reveal" data-delay="200">Product</span>
+        <span class="title-word reveal" data-delay="280">Manager</span>
+        <span class="title-word gradient-text reveal" data-delay="360">&amp;</span>
+        <span class="title-word reveal" data-delay="440">Builder</span>
+      </h1>
 
-      <article class="project">
-        <h3>Learning Tree LMS</h3>
-        <p class="meta">Save the Children | 2022–2023</p>
-        <p><strong>Challenge:</strong> Support teachers and caregivers across Guatemala, Colombia, Ukraine, Poland, Pakistan.</p>
-        <p><strong>Role:</strong> Led development; adapted platform to regional needs.</p>
-        <p><strong>Result:</strong> Reached 1,200+ children, increasing engagement by 30% in early adoption.</p>
-      </article>
-    </section>
+      <!-- Subtitle -->
+      <p class="hero-subtitle reveal" data-delay="600">
+        Driving automation, SaaS innovation, and global impact through product thinking.
+        From <span class="text-amber">fintech platforms</span> to
+        <span class="text-amber">education systems</span> reaching thousands worldwide.
+      </p>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills & Certifications</h2>
-      <div class="skills-grid">
-        <div>
-          <h3>Technical</h3>
-          <ul>
-            <li>SQL, Azure, Data Querying</li>
-            <li>Java, Python, Software QA</li>
-            <li>JIRA, ClickUp, Kanban, Sprint Planning</li>
-            <li>n8n, Product Analytics (Pendo)</li>
-            <li>MS Excel, PowerPoint, Google Workspace</li>
-          </ul>
+      <!-- CTAs -->
+      <div class="hero-ctas reveal" data-delay="750">
+        <a href="#case-studies" class="btn-primary">
+          View My Work
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+
+      <!-- Social row -->
+      <div class="hero-socials reveal" data-delay="900">
+        <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:suvashish991@gmail.com" class="social-icon" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+        <a href="https://github.com/Shuvo991" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator reveal" data-delay="1200">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label-number">01</span>
+        <div class="label-line"></div>
+        <span class="label-text">About Me</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2 class="section-heading">
+            I turn complex problems into
+            <span class="gradient-text">products people love</span>
+          </h2>
+          <p class="body-text">
+            I'm a product manager who lives at the intersection of technology, data, and human impact. My journey started in software development, evolved through business analysis at one of the world's largest humanitarian organizations, and now I lead product innovation in fintech.
+          </p>
+          <p class="body-text">
+            At <span class="text-amber">Next Ventures</span>, I lead a 20-person cross-functional team building FundedNext — a global prop-trading platform. Before that, I spent nearly three years at <span class="text-amber">Save the Children International</span>, shipping learning management systems that reached thousands of children across crisis-affected regions in Guatemala, Colombia, Ukraine, Pakistan, and beyond.
+          </p>
+          <p class="body-text">
+            I believe in impact-first product thinking: start with the outcome you want to create, then work backwards through data, design, and engineering to make it happen.
+          </p>
         </div>
-        <div>
-          <h3>Product Management</h3>
-          <ul>
-            <li>PRDs, User Stories, OKRs</li>
-            <li>Agile/Scrum Methodologies</li>
-            <li>Stakeholder Engagement</li>
-            <li>Risk Assessment & Mitigation</li>
-            <li>Project Budgeting & Resource Planning</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Certifications</h3>
-          <ul>
-            <li>Product Analytics Certification (Pendo & Mind the Product, Jan 2025)</li>
-            <li>Product-Led Certification (Pendo & Mind the Product, Feb 2025)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Education</h3>
-          <ul>
-            <li>B.Sc. Computer Science (Data Science)</li>
-            <li>Monash University Malaysia (2015-2019)</li>
-          </ul>
+
+        <div class="about-cards">
+          <div class="highlight-card reveal" data-delay="0">
+            <div class="hc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+            </div>
+            <div class="hc-content">
+              <span class="hc-label">Current Role</span>
+              <span class="hc-value">Product Manager II, Next Ventures</span>
+            </div>
+          </div>
+          <div class="highlight-card reveal" data-delay="100">
+            <div class="hc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div class="hc-content">
+              <span class="hc-label">Impact Reach</span>
+              <span class="hc-value">3,200+ users across 7+ countries</span>
+            </div>
+          </div>
+          <div class="highlight-card reveal" data-delay="200">
+            <div class="hc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            </div>
+            <div class="hc-content">
+              <span class="hc-label">Education</span>
+              <span class="hc-value">B.Sc. Computer Science, Monash University</span>
+            </div>
+          </div>
+          <div class="highlight-card reveal" data-delay="300">
+            <div class="hc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="hc-content">
+              <span class="hc-label">Based In</span>
+              <span class="hc-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Open to collaborations, speaking opportunities, and product leadership roles.</p>
-      <ul class="contact-list">
-        <li>Email: <span id="email-contact"></span> <button id="copyEmail" class="btn-sm">Copy</button></li>
-        <li>Phone: +880 1623-791171</li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/suvashishc/" target="_blank" rel="noopener noreferrer">linkedin.com/in/suvashishc</a></li>
-      </ul>
-      <p class="privacy-note"><small>This site does not use cookies or third-party trackers. All content is static and served securely via HTTPS.</small></p>
-    </section>
-  </main>
+  <div class="section-divider"></div>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Suvashish Chakraborty. All rights reserved.</p>
+  <!-- ═══ CASE STUDIES ═══ -->
+  <section id="case-studies" class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label-number">02</span>
+        <div class="label-line"></div>
+        <span class="label-text">Selected Work</span>
+      </div>
+
+      <h2 class="section-heading reveal">Case Studies</h2>
+      <p class="section-subtitle reveal">Products I've led from zero to impact — each one measured by the real-world change it delivered.</p>
+
+      <div class="case-grid">
+
+        <!-- Case Study 1: FundedNext -->
+        <article class="case-card reveal" data-color="amber">
+          <div class="case-accent"></div>
+          <div class="case-header">
+            <span class="case-company">Next Ventures</span>
+            <span class="case-period">April 2025 — Present</span>
+          </div>
+          <h3 class="case-title">FundedNext Automation & Notifications</h3>
+          <p class="case-subtitle">Building an AI-powered automation agent and notification system for a global fintech platform</p>
+
+          <div class="case-metric">
+            <span class="metric-value color-amber">40%+</span>
+            <span class="metric-label">Workflow Efficiency Gain</span>
+          </div>
+
+          <div class="case-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Automation</span>
+            <span class="tag">SaaS</span>
+            <span class="tag">Fintech</span>
+            <span class="tag">Notifications</span>
+          </div>
+
+          <button class="case-toggle" data-target="case1-details">
+            <span class="toggle-text">Read Case Study</span>
+            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div class="case-details" id="case1-details">
+            <div class="detail-block">
+              <h4 class="detail-label">The Challenge</h4>
+              <p>FundedNext's cross-functional teams were losing hours to manual task creation, syncing across project tools, and scattered notifications. With a 20-person team spanning CFD and Futures products, communication gaps were slowing product velocity.</p>
+            </div>
+            <div class="detail-block">
+              <h4 class="detail-label">My Approach</h4>
+              <ol class="approach-list">
+                <li>Led a 20-person cross-functional team across engineering, design, and QA to identify automation opportunities</li>
+                <li>Architected an end-to-end automation agent using n8n that auto-creates tasks and syncs with project management tools</li>
+                <li>Designed and shipped a notification system for both CFD and Futures platforms, increasing real-time user engagement</li>
+                <li>Applied OKR methodology to measure and iterate on automation ROI</li>
+              </ol>
+            </div>
+            <div class="detail-block outcome-block">
+              <h4 class="detail-label">The Outcome</h4>
+              <p>The automation agent improved workflow efficiency by 40%+. The notification feature drove a 35% increase in user engagement across both platforms, setting a new benchmark for FundedNext's product-led growth strategy.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case Study 2: ECW LMS -->
+        <article class="case-card reveal" data-color="emerald">
+          <div class="case-accent"></div>
+          <div class="case-header">
+            <span class="case-company">Save the Children International</span>
+            <span class="case-period">2022 — 2025</span>
+          </div>
+          <h3 class="case-title">Education Cannot Wait LMS</h3>
+          <p class="case-subtitle">A learning management system bringing education to 2,000+ crisis-affected students worldwide</p>
+
+          <div class="case-metric">
+            <span class="metric-value color-emerald">2,000+</span>
+            <span class="metric-label">Students Reached</span>
+          </div>
+
+          <div class="case-tags">
+            <span class="tag">LMS</span>
+            <span class="tag">EdTech</span>
+            <span class="tag">Global Impact</span>
+            <span class="tag">Agile</span>
+            <span class="tag">Cross-functional</span>
+          </div>
+
+          <button class="case-toggle" data-target="case2-details">
+            <span class="toggle-text">Read Case Study</span>
+            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div class="case-details" id="case2-details">
+            <div class="detail-block">
+              <h4 class="detail-label">The Challenge</h4>
+              <p>Students in crisis-affected regions lacked access to structured education. Existing tools were fragmented, and stakeholders across multiple countries had competing priorities and technical constraints.</p>
+            </div>
+            <div class="detail-block">
+              <h4 class="detail-label">My Approach</h4>
+              <ol class="approach-list">
+                <li>Led a 15-person cross-functional team through requirements gathering with international stakeholders</li>
+                <li>Aligned system features with diverse stakeholder goals across education, IT, and humanitarian teams</li>
+                <li>Ensured seamless vendor integration while maintaining quality standards through Agile practices</li>
+                <li>Built feedback loops with end users to continuously improve the learning experience</li>
+              </ol>
+            </div>
+            <div class="detail-block outcome-block">
+              <h4 class="detail-label">The Outcome</h4>
+              <p>Delivered a platform enabling 2,000+ students to access structured learning modules. User engagement increased by 35%, and the system became a reference implementation for future Save the Children education initiatives.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case Study 3: Learning Tree -->
+        <article class="case-card reveal" data-color="blue">
+          <div class="case-accent"></div>
+          <div class="case-header">
+            <span class="case-company">Save the Children International</span>
+            <span class="case-period">2022 — 2023</span>
+          </div>
+          <h3 class="case-title">Learning Tree Global LMS</h3>
+          <p class="case-subtitle">A multi-country learning platform reaching 1,200+ children across 5 nations</p>
+
+          <div class="case-metric">
+            <span class="metric-value color-blue">1,200+</span>
+            <span class="metric-label">Children Reached Across 5 Countries</span>
+          </div>
+
+          <div class="case-tags">
+            <span class="tag">Multi-country</span>
+            <span class="tag">Localization</span>
+            <span class="tag">EdTech</span>
+            <span class="tag">Usability</span>
+            <span class="tag">Impact</span>
+          </div>
+
+          <button class="case-toggle" data-target="case3-details">
+            <span class="toggle-text">Read Case Study</span>
+            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div class="case-details" id="case3-details">
+            <div class="detail-block">
+              <h4 class="detail-label">The Challenge</h4>
+              <p>Teachers and caregivers in Guatemala, Colombia, Ukraine, Poland, and Pakistan needed a unified yet locally adaptable learning platform. Language barriers, infrastructure differences, and varying educational standards made this a complex product challenge.</p>
+            </div>
+            <div class="detail-block">
+              <h4 class="detail-label">My Approach</h4>
+              <ol class="approach-list">
+                <li>Led product development coordinating across 5 country teams with different languages and curricula</li>
+                <li>Adapted the platform to regional needs — localized content, offline-capable modules, and culturally relevant UX</li>
+                <li>Implemented Agile ceremonies adapted for async, cross-timezone collaboration</li>
+                <li>Built analytics to measure engagement and iterate on content effectiveness per region</li>
+              </ol>
+            </div>
+            <div class="detail-block outcome-block">
+              <h4 class="detail-label">The Outcome</h4>
+              <p>Reached 1,200+ children with a 30% increase in engagement during early adoption. The platform's modular architecture became the blueprint for subsequent Save the Children LMS projects worldwide.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case Study 4: OnDesk -->
+        <article class="case-card reveal" data-color="violet">
+          <div class="case-accent"></div>
+          <div class="case-header">
+            <span class="case-company">Save the Children International</span>
+            <span class="case-period">2024 — 2025</span>
+          </div>
+          <h3 class="case-title">OnDesk Mobile Enterprise App</h3>
+          <p class="case-subtitle">Transforming enterprise services with AI voice chat, asset tracking, and mobile-first design</p>
+
+          <div class="case-metric">
+            <span class="metric-value color-violet">AI-Powered</span>
+            <span class="metric-label">Enterprise Innovation</span>
+          </div>
+
+          <div class="case-tags">
+            <span class="tag">Mobile</span>
+            <span class="tag">AI Voice</span>
+            <span class="tag">Enterprise</span>
+            <span class="tag">IT Management</span>
+            <span class="tag">UX</span>
+          </div>
+
+          <button class="case-toggle" data-target="case4-details">
+            <span class="toggle-text">Read Case Study</span>
+            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div class="case-details" id="case4-details">
+            <div class="detail-block">
+              <h4 class="detail-label">The Challenge</h4>
+              <p>Employees relied on fragmented desktop tools for leave requests, travel bookings, IT support, and asset management. The lack of a unified mobile experience was hurting productivity and creating IT bottlenecks.</p>
+            </div>
+            <div class="detail-block">
+              <h4 class="detail-label">My Approach</h4>
+              <ol class="approach-list">
+                <li>Led a cross-functional team to design and develop the mobile version of OnDesk, an enterprise service platform</li>
+                <li>Introduced AI Voice Chat for automated support and real-time assistance — a first for the organization</li>
+                <li>Integrated IT Support & Management System for ticketing, troubleshooting, and service requests</li>
+                <li>Implemented ICT Asset Management for tracking and maintaining organizational IT resources</li>
+              </ol>
+            </div>
+            <div class="detail-block outcome-block">
+              <h4 class="detail-label">The Outcome</h4>
+              <p>Delivered a mobile-first enterprise platform with AI-powered support, consolidating 4 separate systems into one seamless experience. The AI Voice Chat feature reduced IT ticket resolution time and set a new standard for internal tooling.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label-number">03</span>
+        <div class="label-line"></div>
+        <span class="label-text">Experience</span>
+      </div>
+
+      <h2 class="section-heading reveal">Where I've Built</h2>
+
+      <div class="timeline">
+        <div class="timeline-line" aria-hidden="true"></div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-role">Product Manager II</h3>
+                <p class="tc-company">Next Ventures</p>
+              </div>
+              <span class="tc-period">April 2025 — Present</span>
+            </div>
+            <p class="tc-desc">Leading 20-person cross-functional teams driving automation, insights, and SaaS product innovation across FundedNext and FundedNext Futures.</p>
+            <ul class="tc-highlights">
+              <li>Built an end-to-end automation agent using n8n — 40%+ workflow efficiency gain</li>
+              <li>Shipped notification system increasing user engagement by 35%</li>
+              <li>Driving product-led growth across CFD and Futures platforms</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-role">Business Analyst</h3>
+                <p class="tc-company">Save the Children International (TecHHub)</p>
+              </div>
+              <span class="tc-period">July 2022 — March 2025</span>
+            </div>
+            <p class="tc-desc">Led 15-person cross-functional teams to deliver global IT solutions including LMS platforms, enterprise apps, and compliance systems.</p>
+            <ul class="tc-highlights">
+              <li>Shipped Learning Tree LMS across 5 countries reaching 1,200+ children</li>
+              <li>Built Education Cannot Wait LMS for 2,000+ crisis-affected students</li>
+              <li>Led OnDesk mobile enterprise platform with AI Voice Chat</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-role">Business Operations Analyst</h3>
+                <p class="tc-company">Loosely Coupled Technologies</p>
+              </div>
+              <span class="tc-period">Nov 2019 — Nov 2021</span>
+            </div>
+            <p class="tc-desc">Managed data integrations and software design processes, optimizing infrastructure and delivering actionable business insights.</p>
+            <ul class="tc-highlights">
+              <li>Reduced infrastructure costs by 15% through process optimization</li>
+              <li>Queried and analyzed data using SQL Server on Azure</li>
+              <li>Authored technical documentation improving usability and onboarding</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-role">Software Developer</h3>
+                <p class="tc-company">Loosely Coupled Technologies</p>
+              </div>
+              <span class="tc-period">Aug 2019 — Nov 2019</span>
+            </div>
+            <p class="tc-desc">Built and deployed software solutions for telecom clients and the Bangladesh Meteorological Department.</p>
+            <ul class="tc-highlights">
+              <li>Developed weather prediction app for street-level traffic forecasting</li>
+              <li>Built solutions for Robi and Grameenphone</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label-number">04</span>
+        <div class="label-line"></div>
+        <span class="label-text">Skills & Tools</span>
+      </div>
+
+      <h2 class="section-heading reveal">What I Work With</h2>
+
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <h3 class="sg-title">Product & Strategy</h3>
+          <div class="sg-tags">
+            <span class="skill-tag">Product Roadmapping</span>
+            <span class="skill-tag">OKRs & KPIs</span>
+            <span class="skill-tag">PRDs & User Stories</span>
+            <span class="skill-tag">A/B Testing</span>
+            <span class="skill-tag">Product Analytics</span>
+            <span class="skill-tag">Product-Led Growth</span>
+            <span class="skill-tag">Stakeholder Management</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="sg-title">Technical</h3>
+          <div class="sg-tags">
+            <span class="skill-tag">SQL & Data Querying</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">n8n Automation</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="sg-title">Delivery & Process</h3>
+          <div class="sg-tags">
+            <span class="skill-tag">Agile / Scrum</span>
+            <span class="skill-tag">Kanban</span>
+            <span class="skill-tag">JIRA</span>
+            <span class="skill-tag">ClickUp</span>
+            <span class="skill-tag">Sprint Planning</span>
+            <span class="skill-tag">Risk Assessment</span>
+            <span class="skill-tag">Budgeting & Cost Tracking</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="sg-title">Analytics & Tools</h3>
+          <div class="sg-tags">
+            <span class="skill-tag">Pendo</span>
+            <span class="skill-tag">MS Excel (Advanced)</span>
+            <span class="skill-tag">Google Workspace</span>
+            <span class="skill-tag">PowerPoint</span>
+            <span class="skill-tag">Data Visualization</span>
+            <span class="skill-tag">QA & Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="cert-section reveal">
+        <h3 class="sg-title">Certifications</h3>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <p class="cert-name">Product Analytics Certification</p>
+            <p class="cert-issuer">Pendo & Mind the Product — Jan 2025</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-name">Product-Led Certification</p>
+            <p class="cert-issuer">Pendo & Mind the Product — Feb 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label-number">05</span>
+        <div class="label-line"></div>
+        <span class="label-text">Contact</span>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-text reveal">
+          <h2 class="section-heading">
+            Let's Build
+            <span class="gradient-text">Something Great</span>
+          </h2>
+          <p class="body-text">
+            Whether you're looking for a product leader, want to discuss an idea, or just want to connect — I'd love to hear from you.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:suvashish991@gmail.com" class="contact-link-item">
+              <div class="cl-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="cl-text">
+                <span class="cl-label">Email</span>
+                <span class="cl-value">suvashish991@gmail.com</span>
+              </div>
+              <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+
+            <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+              <div class="cl-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div class="cl-text">
+                <span class="cl-label">LinkedIn</span>
+                <span class="cl-value">linkedin.com/in/suvashishc</span>
+              </div>
+              <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+
+            <a href="tel:+8801623791171" class="contact-link-item">
+              <div class="cl-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="cl-text">
+                <span class="cl-label">Phone</span>
+                <span class="cl-value">+880 1623 791 171</span>
+              </div>
+              <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal" data-delay="200">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" required maxlength="100" class="form-input" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" required maxlength="200" class="form-input" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" required maxlength="2000" rows="5" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="submitBtn">
+            <span>Send Message</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span>&copy; 2026 Suvashish Chakraborty</span>
+        <span class="footer-sep">|</span>
+        <span>Built with care and Next-level ambition</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:suvashish991@gmail.com" aria-label="Email" class="footer-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+        <a href="https://github.com/Shuvo991" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
