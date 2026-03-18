@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suvashish Chakraborty | Product Manager</title>
+  <title>Suvashish Chakraborty | Product Manager & Builder</title>
 
   <!-- SEO -->
   <meta name="description" content="Product Manager driving automation, SaaS innovation, and global impact. Building products that reach thousands across education, fintech, and enterprise." />
@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Suvashish Chakraborty | Product Manager" />
   <meta name="twitter:description" content="Product Manager driving automation, SaaS innovation, and global impact." />
 
-  <!-- Security Headers (meta-level) -->
+  <!-- Security -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -29,47 +29,68 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Lucide Icons (CDN) -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-  <!-- Styles -->
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ═══ Ambient Background ═══ -->
-  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- PRELOADER -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">SC<span class="preloader-dot">.</span></div>
+      <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
+      <div class="preloader-text" id="preloaderText">Loading</div>
+    </div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NOISE -->
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- ═══ NAVBAR ═══ -->
+  <!-- NAVBAR -->
   <header id="navbar" class="navbar">
     <nav class="nav-inner">
       <a href="#" class="nav-logo">
         <span class="gradient-text">SC</span><span class="logo-dot">.</span>
       </a>
-
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#case-studies" class="nav-link">Work</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li><a href="#contact" class="nav-btn-resume">Let's Talk</a></li>
+        <li><a href="#contact" class="nav-btn-cta">Let's Talk</a></li>
       </ul>
-
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
     </nav>
-
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <ul class="mobile-links">
         <li><a href="#about" class="mobile-link">About</a></li>
-        <li><a href="#case-studies" class="mobile-link">Work</a></li>
+        <li><a href="#work" class="mobile-link">Work</a></li>
         <li><a href="#experience" class="mobile-link">Experience</a></li>
         <li><a href="#skills" class="mobile-link">Skills</a></li>
         <li><a href="#contact" class="mobile-link">Contact</a></li>
@@ -77,51 +98,42 @@
     </div>
   </header>
 
-  <!-- ═══ HERO ═══ -->
+  <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="hero-orb" aria-hidden="true"></div>
-
+    <div class="hero-mesh" aria-hidden="true">
+      <div class="mesh-blob mesh-blob-1"></div>
+      <div class="mesh-blob mesh-blob-2"></div>
+      <div class="mesh-blob mesh-blob-3"></div>
+    </div>
     <div class="hero-grid-bg" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <!-- Status badge -->
-      <div class="status-badge reveal" data-delay="0">
-        <span class="status-dot">
-          <span class="status-ping"></span>
-          <span class="status-solid"></span>
-        </span>
+      <div class="status-badge hero-anim">
+        <span class="status-dot"><span class="status-ping"></span><span class="status-solid"></span></span>
         <span class="status-text">Currently building at <strong class="text-amber">Next Ventures</strong></span>
       </div>
 
-      <!-- Name -->
-      <h2 class="hero-name reveal" data-delay="100">Suvashish Chakraborty</h2>
+      <h2 class="hero-name hero-anim">Suvashish Chakraborty</h2>
 
-      <!-- Title -->
       <h1 class="hero-title">
-        <span class="title-word reveal" data-delay="200">Product</span>
-        <span class="title-word reveal" data-delay="280">Manager</span>
-        <span class="title-word gradient-text reveal" data-delay="360">&amp;</span>
-        <span class="title-word reveal" data-delay="440">Builder</span>
+        <span class="title-line"><span class="title-word hero-word">Product</span><span class="title-word hero-word">Manager</span></span>
+        <span class="title-line"><span class="title-word gradient-text hero-word">&amp;</span><span class="title-word hero-word">Builder</span></span>
       </h1>
 
-      <!-- Subtitle -->
-      <p class="hero-subtitle reveal" data-delay="600">
-        Driving automation, SaaS innovation, and global impact through product thinking.
+      <p class="hero-subtitle hero-anim">
+        6+ years driving product innovation, business analysis, and global impact.
         From <span class="text-amber">fintech platforms</span> to
-        <span class="text-amber">education systems</span> reaching thousands worldwide.
+        <span class="text-amber">education &amp; compliance systems</span> reaching thousands across 7+ countries.
       </p>
 
-      <!-- CTAs -->
-      <div class="hero-ctas reveal" data-delay="750">
-        <a href="#case-studies" class="btn-primary">
-          View My Work
+      <div class="hero-ctas hero-anim">
+        <a href="#work" class="btn-primary" data-magnetic><span>View My Work</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
+        <a href="#contact" class="btn-outline" data-magnetic><span>Get In Touch</span></a>
       </div>
 
-      <!-- Social row -->
-      <div class="hero-socials reveal" data-delay="900">
+      <div class="hero-socials hero-anim">
         <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
@@ -134,75 +146,104 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="scroll-indicator reveal" data-delay="1200">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+    <!-- Profile Photo -->
+    <div class="hero-photo hero-anim" id="heroPhoto">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-frame">
+        <img src="Profile Picture.png" alt="Suvashish Chakraborty" />
+      </div>
+      <div class="hero-photo-badge">
+        <span class="photo-badge-icon">&#9889;</span>
+        <span class="photo-badge-text">6+ Years Experience</span>
+      </div>
+    </div>
+
+    <div class="scroll-indicator hero-anim">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span class="scroll-text">Scroll</span>
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-item">Product Strategy</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Automation</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">SaaS</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Cross-functional Leadership</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Fintech</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">EdTech</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Product-Led Growth</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Data-Driven</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Product Strategy</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Automation</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">SaaS</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Cross-functional Leadership</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Fintech</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">EdTech</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Product-Led Growth</span><span class="marquee-sep">/</span>
+      <span class="marquee-item">Data-Driven</span><span class="marquee-sep">/</span>
+    </div>
+  </div>
 
-  <!-- ═══ ABOUT ═══ -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="label-number">01</span>
+      <div class="section-label gsap-fade">
+        <span class="label-num">01</span>
         <div class="label-line"></div>
         <span class="label-text">About Me</span>
       </div>
 
-      <div class="about-grid">
-        <div class="about-text reveal">
+      <div class="about-layout">
+        <div class="about-text gsap-fade">
           <h2 class="section-heading">
             I turn complex problems into
             <span class="gradient-text">products people love</span>
           </h2>
           <p class="body-text">
-            I'm a product manager who lives at the intersection of technology, data, and human impact. My journey started in software development, evolved through business analysis at one of the world's largest humanitarian organizations, and now I lead product innovation in fintech.
+            I'm a product-driven professional with over six years of experience spanning Product Management, Project Management, and Business Analysis. My journey started in software development, evolved through business operations and analysis at one of the world's largest humanitarian organizations, and now I lead product innovation in fintech.
           </p>
           <p class="body-text">
-            At <span class="text-amber">Next Ventures</span>, I lead a 20-person cross-functional team building FundedNext — a global prop-trading platform. Before that, I spent nearly three years at <span class="text-amber">Save the Children International</span>, shipping learning management systems that reached thousands of children across crisis-affected regions in Guatemala, Colombia, Ukraine, Pakistan, and beyond.
+            At <span class="text-amber">Next Ventures</span>, I lead a 20-person cross-functional team transforming FundedNext — a global prop-trading platform. I'm driving the full dashboard revamp, building compliance and risk frameworks, leading the Identity &amp; Investigation Squad, and shipping features like FNHunt that gamify user engagement. Before that, I spent nearly three years at <span class="text-amber">Save the Children International's TecHHub</span>, delivering global IT solutions including LMS platforms, enterprise apps like OnDesk, compliance systems like the SEAL Initiative Portal, Handicap Job Portal, and the Skill Optimization Management System.
           </p>
           <p class="body-text">
-            I believe in impact-first product thinking: start with the outcome you want to create, then work backwards through data, design, and engineering to make it happen.
+            I'm adept at translating complex data into actionable insights, ensuring compliance, and delivering end-to-end solutions on time and within budget. I believe in impact-first product thinking: start with the outcome you want to create, then work backwards through data, design, and engineering to make it happen.
           </p>
         </div>
 
-        <div class="about-cards">
-          <div class="highlight-card reveal" data-delay="0">
-            <div class="hc-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
-            </div>
-            <div class="hc-content">
-              <span class="hc-label">Current Role</span>
-              <span class="hc-value">Product Manager II, Next Ventures</span>
-            </div>
-          </div>
-          <div class="highlight-card reveal" data-delay="100">
-            <div class="hc-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            </div>
-            <div class="hc-content">
-              <span class="hc-label">Impact Reach</span>
-              <span class="hc-value">3,200+ users across 7+ countries</span>
+        <div class="bento-grid">
+          <div class="bento-card bento-wide gsap-fade">
+            <img src="logos/nextventures_logo.webp" alt="Next Ventures" class="bento-logo" />
+            <div>
+              <span class="bento-label">Current Role</span>
+              <span class="bento-value">Product Manager II</span>
+              <span class="bento-sub">Next Ventures</span>
             </div>
           </div>
-          <div class="highlight-card reveal" data-delay="200">
-            <div class="hc-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
-            </div>
-            <div class="hc-content">
-              <span class="hc-label">Education</span>
-              <span class="hc-value">B.Sc. Computer Science, Monash University</span>
+          <div class="bento-card gsap-fade">
+            <div class="bento-number" data-count="3700">0</div>
+            <span class="bento-label">Users Reached</span>
+            <span class="bento-sub">Across 7+ countries</span>
+          </div>
+          <div class="bento-card gsap-fade">
+            <div class="bento-number" data-count="20">0</div>
+            <span class="bento-label">Team Size Led</span>
+            <span class="bento-sub">Cross-functional</span>
+          </div>
+          <div class="bento-card gsap-fade">
+            <img src="logos/Monash-1.webp" alt="Monash University" class="bento-logo bento-logo-sm" />
+            <div>
+              <span class="bento-label">Education</span>
+              <span class="bento-value">B.Sc. Computer Science (Data Science)</span>
+              <span class="bento-sub">Monash University Malaysia, 2015–2019</span>
             </div>
           </div>
-          <div class="highlight-card reveal" data-delay="300">
-            <div class="hc-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="hc-content">
-              <span class="hc-label">Based In</span>
-              <span class="hc-value">Dhaka, Bangladesh</span>
+          <div class="bento-card gsap-fade">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon-svg"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="bento-label">Based In</span>
+              <span class="bento-value">Dhaka, Bangladesh</span>
             </div>
           </div>
         </div>
@@ -210,281 +251,586 @@
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ═══ CASE STUDIES ═══ -->
-  <section id="case-studies" class="section">
+  <!-- CASE STUDIES -->
+  <section id="work" class="section section-dark">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="label-number">02</span>
+      <div class="section-label gsap-fade">
+        <span class="label-num">02</span>
         <div class="label-line"></div>
         <span class="label-text">Selected Work</span>
       </div>
 
-      <h2 class="section-heading reveal">Case Studies</h2>
-      <p class="section-subtitle reveal">Products I've led from zero to impact — each one measured by the real-world change it delivered.</p>
-
-      <div class="case-grid">
-
-        <!-- Case Study 1: FundedNext -->
-        <article class="case-card reveal" data-color="amber">
-          <div class="case-accent"></div>
-          <div class="case-header">
-            <span class="case-company">Next Ventures</span>
-            <span class="case-period">April 2025 — Present</span>
-          </div>
-          <h3 class="case-title">FundedNext Automation & Notifications</h3>
-          <p class="case-subtitle">Building an AI-powered automation agent and notification system for a global fintech platform</p>
-
-          <div class="case-metric">
-            <span class="metric-value color-amber">40%+</span>
-            <span class="metric-label">Workflow Efficiency Gain</span>
-          </div>
-
-          <div class="case-tags">
-            <span class="tag">n8n</span>
-            <span class="tag">Automation</span>
-            <span class="tag">SaaS</span>
-            <span class="tag">Fintech</span>
-            <span class="tag">Notifications</span>
-          </div>
-
-          <button class="case-toggle" data-target="case1-details">
-            <span class="toggle-text">Read Case Study</span>
-            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <div class="work-header">
+        <div class="gsap-fade">
+          <h2 class="section-heading">Case Studies</h2>
+          <p class="section-subtitle">Products I've led from zero to impact — each one measured by the real-world change it delivered.</p>
+        </div>
+        <div class="slider-nav gsap-fade">
+          <button class="slider-btn" id="casePrev" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           </button>
-
-          <div class="case-details" id="case1-details">
-            <div class="detail-block">
-              <h4 class="detail-label">The Challenge</h4>
-              <p>FundedNext's cross-functional teams were losing hours to manual task creation, syncing across project tools, and scattered notifications. With a 20-person team spanning CFD and Futures products, communication gaps were slowing product velocity.</p>
-            </div>
-            <div class="detail-block">
-              <h4 class="detail-label">My Approach</h4>
-              <ol class="approach-list">
-                <li>Led a 20-person cross-functional team across engineering, design, and QA to identify automation opportunities</li>
-                <li>Architected an end-to-end automation agent using n8n that auto-creates tasks and syncs with project management tools</li>
-                <li>Designed and shipped a notification system for both CFD and Futures platforms, increasing real-time user engagement</li>
-                <li>Applied OKR methodology to measure and iterate on automation ROI</li>
-              </ol>
-            </div>
-            <div class="detail-block outcome-block">
-              <h4 class="detail-label">The Outcome</h4>
-              <p>The automation agent improved workflow efficiency by 40%+. The notification feature drove a 35% increase in user engagement across both platforms, setting a new benchmark for FundedNext's product-led growth strategy.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Case Study 2: ECW LMS -->
-        <article class="case-card reveal" data-color="emerald">
-          <div class="case-accent"></div>
-          <div class="case-header">
-            <span class="case-company">Save the Children International</span>
-            <span class="case-period">2022 — 2025</span>
-          </div>
-          <h3 class="case-title">Education Cannot Wait LMS</h3>
-          <p class="case-subtitle">A learning management system bringing education to 2,000+ crisis-affected students worldwide</p>
-
-          <div class="case-metric">
-            <span class="metric-value color-emerald">2,000+</span>
-            <span class="metric-label">Students Reached</span>
-          </div>
-
-          <div class="case-tags">
-            <span class="tag">LMS</span>
-            <span class="tag">EdTech</span>
-            <span class="tag">Global Impact</span>
-            <span class="tag">Agile</span>
-            <span class="tag">Cross-functional</span>
-          </div>
-
-          <button class="case-toggle" data-target="case2-details">
-            <span class="toggle-text">Read Case Study</span>
-            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <button class="slider-btn" id="caseNext" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
+        </div>
+      </div>
 
-          <div class="case-details" id="case2-details">
-            <div class="detail-block">
-              <h4 class="detail-label">The Challenge</h4>
-              <p>Students in crisis-affected regions lacked access to structured education. Existing tools were fragmented, and stakeholders across multiple countries had competing priorities and technical constraints.</p>
-            </div>
-            <div class="detail-block">
-              <h4 class="detail-label">My Approach</h4>
-              <ol class="approach-list">
-                <li>Led a 15-person cross-functional team through requirements gathering with international stakeholders</li>
-                <li>Aligned system features with diverse stakeholder goals across education, IT, and humanitarian teams</li>
-                <li>Ensured seamless vendor integration while maintaining quality standards through Agile practices</li>
-                <li>Built feedback loops with end users to continuously improve the learning experience</li>
-              </ol>
-            </div>
-            <div class="detail-block outcome-block">
-              <h4 class="detail-label">The Outcome</h4>
-              <p>Delivered a platform enabling 2,000+ students to access structured learning modules. User engagement increased by 35%, and the system became a reference implementation for future Save the Children education initiatives.</p>
-            </div>
+      <div class="swiper case-swiper gsap-fade">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1: FundedNext -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="amber">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/FundedNext_logo.webp" alt="FundedNext" class="case-logo" id="fn-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Next Ventures</span>
+                    <span class="case-period">April 2025 — Present</span>
+                  </div>
+                </div>
+                <h3 class="case-title">FundedNext — Platform Evolution &amp; Product Leadership</h3>
+                <p class="case-subtitle">Leading a full-scope product transformation across automation, dashboard revamp, compliance, risk visibility, and user engagement for a global prop-trading platform</p>
+                <!-- FundedNext Dashboard Screenshots (Current/OLD) -->
+                <div class="case-slideshow" data-slideshow>
+                  <div class="slideshow-track">
+                    <div class="slideshow-slide active">
+                      <img src="screenshots/FundedNext Dashboard Accounts Overview View_OLD_framed.png" alt="FundedNext — Account Overview" loading="lazy" />
+                      <span class="slide-caption">Account Overview — Trading Objectives</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/FundedNext Dashboard Accounts View_OLD_framed.png" alt="FundedNext — Accounts View" loading="lazy" />
+                      <span class="slide-caption">Accounts — CFDs &amp; Futures</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/FundedNext Dashboard Notifications View_OLD_framed.png" alt="FundedNext — Notifications" loading="lazy" />
+                      <span class="slide-caption">Notifications System</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/FundedNext Dashboard Payouts View_OLD_framed.png" alt="FundedNext — Payouts" loading="lazy" />
+                      <span class="slide-caption">Payouts &amp; Withdrawals</span>
+                    </div>
+                  </div>
+                  <div class="slideshow-controls">
+                    <button class="ss-btn ss-prev" aria-label="Previous screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <div class="ss-dots"></div>
+                    <button class="ss-btn ss-next" aria-label="Next screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-amber">40%+</span>
+                    <span class="metric-lbl">Workflow Efficiency</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-amber">18.5%</span>
+                    <span class="metric-lbl">Tickets Resolved</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-amber">35%</span>
+                    <span class="metric-lbl">Engagement Increase</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">n8n</span><span class="tag">Automation</span><span class="tag">SaaS</span><span class="tag">Fintech</span><span class="tag">Dashboard Revamp</span><span class="tag">KYC</span><span class="tag">2FA</span><span class="tag">Risk Management</span><span class="tag">Compliance</span>
+                </div>
+                <button class="case-toggle" data-target="case1">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case1">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>FundedNext needed a holistic product evolution — from an outdated dashboard and scattered notifications to critical gaps in compliance enforcement, risk transparency, and customer journey pain points around KYC, payouts, and a rigid 2FA flow that was driving a significant share of support tickets. The platform also lacked mechanisms to incentivize user engagement with knowledge resources.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led a 20-person cross-functional team to architect an end-to-end automation agent using n8n, improving workflow efficiency by 40%+</li>
+                      <li>Shipped a notification system (backend &amp; frontend) for both CFD and Futures, driving 35% engagement increase</li>
+                      <li>Leading the full dashboard revamp — modernizing the UI/UX to reduce customer pain points during KYC verification and Rewards (payout) flows</li>
+                      <li>Introduced Risk Cards to Account Overview so traders see real-time risk exposure and understand the repercussions of their trading behavior</li>
+                      <li>Built a regulations framework for abusive users — heavily monitoring flagged accounts and banning non-compliant traders to protect platform integrity</li>
+                      <li>Created FNHunt — a gamified coupon-code hunt embedded in the FAQ, substantially increasing FAQ engagement and plan purchases through single-use discoverable codes</li>
+                      <li>Lead of the Identity &amp; Investigation Squad — identifying customer journey pain points and systematically improving them</li>
+                      <li>Redesigned the 2FA flow — free users are no longer forced into 2FA (removing a major onboarding friction), while paid users are enforced 2FA after 14 days or post-KYC verification to secure profiles before payout, resolving 18.5% of support tickets</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Transformed FundedNext from a feature-by-feature product into a cohesive, modern platform. The automation agent cut manual work by 40%+, the 2FA redesign eliminated 18.5% of support tickets, FNHunt drove measurable spikes in FAQ engagement and plan purchases, Risk Cards improved trader awareness, and the compliance framework strengthened platform trust. The dashboard revamp is creating a fundamentally better experience for KYC, payouts, and day-to-day trading.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
 
-        <!-- Case Study 3: Learning Tree -->
-        <article class="case-card reveal" data-color="blue">
-          <div class="case-accent"></div>
-          <div class="case-header">
-            <span class="case-company">Save the Children International</span>
-            <span class="case-period">2022 — 2023</span>
+          <!-- Slide 2: ECW LMS -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="emerald">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/ECWLMS-logo.webp" alt="Education Cannot Wait" class="case-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Save the Children International</span>
+                    <span class="case-period">2022 — 2025</span>
+                  </div>
+                </div>
+                <h3 class="case-title">Education Cannot Wait LMS</h3>
+                <p class="case-subtitle">A learning management system bringing education to 2,000+ crisis-affected students worldwide</p>
+                <!-- Screenshot slideshow -->
+                <div class="case-slideshow" data-slideshow>
+                  <div class="slideshow-track">
+                    <div class="slideshow-slide active">
+                      <img src="screenshots/Education_Cannot_Wait_Landing_Page_Hero_framed.png" alt="ECW LMS — Landing Page" loading="lazy" />
+                      <span class="slide-caption">Landing Page — Hero</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Education_Cannot_Wait_Landing_Page_Resource_Category_framed.png" alt="ECW LMS — Resource Categories" loading="lazy" />
+                      <span class="slide-caption">Intervention Categories</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Education_Cannot_Wait_All_Resources_framed.png" alt="ECW LMS — All Resources" loading="lazy" />
+                      <span class="slide-caption">All Resources — User View</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Education_Cannot_Wait_Interactive_Radio_Before_Playing_framed.png" alt="ECW LMS — Interactive Radio" loading="lazy" />
+                      <span class="slide-caption">Interactive Radio Episodes</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Education_Cannot_Wait_Interactive_Radio_Playing_framed.png" alt="ECW LMS — Radio Playing" loading="lazy" />
+                      <span class="slide-caption">Interactive Radio — Now Playing</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Education_Cannot_Wait_Admin_Dashboard_Management_framed.png" alt="ECW LMS — Admin Dashboard" loading="lazy" />
+                      <span class="slide-caption">Admin Dashboard &amp; Analytics</span>
+                    </div>
+                  </div>
+                  <div class="slideshow-controls">
+                    <button class="ss-btn ss-prev" aria-label="Previous screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <div class="ss-dots"></div>
+                    <button class="ss-btn ss-next" aria-label="Next screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-emerald">2,000+</span>
+                    <span class="metric-lbl">Students Reached</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-emerald">35%</span>
+                    <span class="metric-lbl">Engagement Boost</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">LMS</span><span class="tag">EdTech</span><span class="tag">Global Impact</span><span class="tag">Agile</span>
+                </div>
+                <button class="case-toggle" data-target="case2">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case2">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>Students in crisis-affected regions lacked access to structured education. Existing tools were fragmented, and stakeholders across multiple countries had competing priorities and technical constraints.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led a 15-person cross-functional team through requirements gathering with international stakeholders</li>
+                      <li>Aligned system features with diverse stakeholder goals across education, IT, and humanitarian teams</li>
+                      <li>Ensured seamless vendor integration while maintaining quality standards through Agile practices</li>
+                      <li>Built feedback loops with end users to continuously improve the learning experience</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Delivered a platform enabling 2,000+ students to access structured learning modules. User engagement increased by 35%, and the system became a reference implementation for future Save the Children education initiatives.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-          <h3 class="case-title">Learning Tree Global LMS</h3>
-          <p class="case-subtitle">A multi-country learning platform reaching 1,200+ children across 5 nations</p>
 
-          <div class="case-metric">
-            <span class="metric-value color-blue">1,200+</span>
-            <span class="metric-label">Children Reached Across 5 Countries</span>
+          <!-- Slide 3: Learning Tree -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="blue">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/Learning Tree LMS.webp" alt="Learning Tree" class="case-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Save the Children International</span>
+                    <span class="case-period">2022 — 2023</span>
+                  </div>
+                </div>
+                <h3 class="case-title">Learning Tree Global LMS</h3>
+                <p class="case-subtitle">A multi-country learning platform reaching 1,200+ children across Guatemala, Colombia, Ukraine, Poland, and Pakistan</p>
+                <!-- Screenshot slideshow -->
+                <div class="case-slideshow" data-slideshow>
+                  <div class="slideshow-track">
+                    <div class="slideshow-slide active">
+                      <img src="screenshots/Learning_Tree_WebLogin_framed.png" alt="Learning Tree — Login" loading="lazy" />
+                      <span class="slide-caption">Web Login Page</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Learning_Tree_Admin_Children_Content_Management_framed.png" alt="Learning Tree — Admin Content" loading="lazy" />
+                      <span class="slide-caption">Admin — Children's Content</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT 6_framed.png" alt="Learning Tree — Content List" loading="lazy" />
+                      <span class="slide-caption">Admin — Content List View</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT 7_framed.png" alt="Learning Tree — Module Player" loading="lazy" />
+                      <span class="slide-caption">Module Player — Playlists</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT 8_framed.png" alt="Learning Tree — HALDO Dashboard" loading="lazy" />
+                      <span class="slide-caption">HALDO Assessment Dashboard</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/Learing_Tree_App_Lander_framed.png" alt="Learning Tree — App Landing" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Landing Screen</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT_App_Home_framed.png" alt="Learning Tree — App Home" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Home</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT_App_Content_framed.png" alt="Learning Tree — App Content" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Content Library</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT_App_Content_Inside_framed.png" alt="Learning Tree — Content Detail" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Lesson View</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT_App_Content_Load_framed.png" alt="Learning Tree — Content Loading" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Content Loading</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/LT_App_Language_Section_framed.png" alt="Learning Tree — Language Selection" loading="lazy" />
+                      <span class="slide-caption">Mobile App — Language Selection</span>
+                    </div>
+                  </div>
+                  <div class="slideshow-controls">
+                    <button class="ss-btn ss-prev" aria-label="Previous screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <div class="ss-dots"></div>
+                    <button class="ss-btn ss-next" aria-label="Next screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-blue">1,200+</span>
+                    <span class="metric-lbl">Children Reached</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-blue">5</span>
+                    <span class="metric-lbl">Countries</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">Multi-country</span><span class="tag">Localization</span><span class="tag">EdTech</span><span class="tag">Impact</span>
+                </div>
+                <button class="case-toggle" data-target="case3">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case3">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>Teachers and caregivers in Guatemala, Colombia, Ukraine, Poland, and Pakistan needed a unified yet locally adaptable learning platform. Language barriers, infrastructure differences, and varying educational standards made this a complex product challenge.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led product development coordinating across 5 country teams with different languages and curricula</li>
+                      <li>Adapted the platform to regional needs — localized content, offline-capable modules, and culturally relevant UX</li>
+                      <li>Implemented Agile ceremonies adapted for async, cross-timezone collaboration</li>
+                      <li>Built analytics to measure engagement and iterate on content effectiveness per region</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Reached 1,200+ children with a 30% increase in engagement during early adoption. The platform's modular architecture became the blueprint for subsequent Save the Children LMS projects worldwide.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <div class="case-tags">
-            <span class="tag">Multi-country</span>
-            <span class="tag">Localization</span>
-            <span class="tag">EdTech</span>
-            <span class="tag">Usability</span>
-            <span class="tag">Impact</span>
+          <!-- Slide 4: OnDesk -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="violet">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/ondesk-logo.webp" alt="OnDesk" class="case-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Save the Children International</span>
+                    <span class="case-period">2024 — 2025</span>
+                  </div>
+                </div>
+                <h3 class="case-title">OnDesk Mobile Enterprise App</h3>
+                <p class="case-subtitle">Transforming enterprise services with AI voice chat, asset tracking, and mobile-first design</p>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-violet">AI-Powered</span>
+                    <span class="metric-lbl">Voice Chat</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-violet">4-in-1</span>
+                    <span class="metric-lbl">Systems Unified</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">Mobile</span><span class="tag">AI Voice</span><span class="tag">Enterprise</span><span class="tag">IT Management</span>
+                </div>
+                <button class="case-toggle" data-target="case4">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case4">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>Employees relied on fragmented desktop tools for leave requests, travel bookings, IT support, and asset management. The lack of a unified mobile experience was hurting productivity and creating IT bottlenecks.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led a cross-functional team to design and develop the mobile version of OnDesk</li>
+                      <li>Introduced AI Voice Chat for automated support — a first for the organization</li>
+                      <li>Integrated IT Support & Management System for ticketing and troubleshooting</li>
+                      <li>Implemented ICT Asset Management for tracking organizational IT resources</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Delivered a mobile-first enterprise platform with AI-powered support, consolidating 4 separate systems into one seamless experience. The AI Voice Chat feature reduced IT ticket resolution time and set a new standard for internal tooling.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <button class="case-toggle" data-target="case3-details">
-            <span class="toggle-text">Read Case Study</span>
-            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
-
-          <div class="case-details" id="case3-details">
-            <div class="detail-block">
-              <h4 class="detail-label">The Challenge</h4>
-              <p>Teachers and caregivers in Guatemala, Colombia, Ukraine, Poland, and Pakistan needed a unified yet locally adaptable learning platform. Language barriers, infrastructure differences, and varying educational standards made this a complex product challenge.</p>
-            </div>
-            <div class="detail-block">
-              <h4 class="detail-label">My Approach</h4>
-              <ol class="approach-list">
-                <li>Led product development coordinating across 5 country teams with different languages and curricula</li>
-                <li>Adapted the platform to regional needs — localized content, offline-capable modules, and culturally relevant UX</li>
-                <li>Implemented Agile ceremonies adapted for async, cross-timezone collaboration</li>
-                <li>Built analytics to measure engagement and iterate on content effectiveness per region</li>
-              </ol>
-            </div>
-            <div class="detail-block outcome-block">
-              <h4 class="detail-label">The Outcome</h4>
-              <p>Reached 1,200+ children with a 30% increase in engagement during early adoption. The platform's modular architecture became the blueprint for subsequent Save the Children LMS projects worldwide.</p>
-            </div>
+          <!-- Slide 5: CSKC -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="amber">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/CSKC-logo.webp" alt="Cholo Shikhi Khelar Chholey" class="case-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Save the Children International</span>
+                    <span class="case-period">2023</span>
+                  </div>
+                </div>
+                <h3 class="case-title">Cholo Shikhi Khelar Chholey (CSKC) LMS</h3>
+                <p class="case-subtitle">An LMS built for 14 RMG sectors in Bangladesh, enhancing family education through interactive content</p>
+                <!-- Screenshot slideshow -->
+                <div class="case-slideshow" data-slideshow>
+                  <div class="slideshow-track slideshow-track--mobile">
+                    <div class="slideshow-slide active">
+                      <img src="screenshots/CSKC_App_Landing_framed.png" alt="CSKC — Landing Screen" />
+                      <span class="slide-caption">App Landing Screen</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/CSKC_App_Home_framed.png" alt="CSKC — Home Screen" />
+                      <span class="slide-caption">Home — Learning Modules</span>
+                    </div>
+                    <div class="slideshow-slide">
+                      <img src="screenshots/CSKC_App_Maternity_Care_Section_framed.png" alt="CSKC — Maternity Care" />
+                      <span class="slide-caption">Maternity Care &amp; Child Development</span>
+                    </div>
+                  </div>
+                  <div class="slideshow-controls">
+                    <button class="ss-btn ss-prev" aria-label="Previous screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <div class="ss-dots"></div>
+                    <button class="ss-btn ss-next" aria-label="Next screenshot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-amber">500+</span>
+                    <span class="metric-lbl">Families Reached</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-amber">14</span>
+                    <span class="metric-lbl">RMG Sectors</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">LMS</span><span class="tag">EdTech</span><span class="tag">Family Education</span><span class="tag">RMG</span><span class="tag">Bangladesh</span>
+                </div>
+                <button class="case-toggle" data-target="case5">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case5">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>Families across 14 Ready-Made Garment (RMG) sectors in Bangladesh needed accessible educational resources. Existing tools weren't tailored for diverse users in this context, and engagement with traditional learning materials was low.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led the development of the LMS targeting 14 RMG sectors to enhance family education</li>
+                      <li>Customized platform features for diverse user groups across different sectors</li>
+                      <li>Optimized engagement through interactive content tailored to family learning needs</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Launched a pilot reaching 500+ families, receiving positive feedback on usability. The platform enhanced educational access across RMG sectors and demonstrated the viability of LMS-driven family education at scale.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
 
-        <!-- Case Study 4: OnDesk -->
-        <article class="case-card reveal" data-color="violet">
-          <div class="case-accent"></div>
-          <div class="case-header">
-            <span class="case-company">Save the Children International</span>
-            <span class="case-period">2024 — 2025</span>
+          <!-- Slide 6: SEAL Initiative Portal -->
+          <div class="swiper-slide">
+            <article class="case-card" data-color="blue">
+              <div class="case-accent"></div>
+              <div class="case-inner">
+                <div class="case-top">
+                  <img src="logos/Save-the-children.webp" alt="Centre for Child Rights and Business" class="case-logo" />
+                  <div class="case-meta">
+                    <span class="case-company">Centre for Child Rights and Business</span>
+                    <span class="case-period">2022 — 2023</span>
+                  </div>
+                </div>
+                <h3 class="case-title">SEAL Initiative Portal</h3>
+                <p class="case-subtitle">A compliance portal for monitoring child rights in the tea industry, integrating multi-company data for real-time adherence tracking</p>
+                <div class="case-metrics">
+                  <div class="case-metric">
+                    <span class="metric-val color-blue">Multi-Company</span>
+                    <span class="metric-lbl">Data Integration</span>
+                  </div>
+                  <div class="case-metric">
+                    <span class="metric-val color-blue">Real-Time</span>
+                    <span class="metric-lbl">Compliance Tracking</span>
+                  </div>
+                </div>
+                <div class="case-tags">
+                  <span class="tag">Compliance</span><span class="tag">Child Rights</span><span class="tag">Portal</span><span class="tag">Data Integration</span>
+                </div>
+                <button class="case-toggle" data-target="case7">
+                  <span class="toggle-text">Read Case Study</span>
+                  <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="case-details" id="case7">
+                  <div class="detail-block">
+                    <h4 class="detail-label">The Challenge</h4>
+                    <p>Monitoring child rights compliance across multiple companies in the tea industry required a centralized platform. Existing processes relied on disconnected spreadsheets and manual reporting, making real-time oversight impossible.</p>
+                  </div>
+                  <div class="detail-block">
+                    <h4 class="detail-label">My Approach</h4>
+                    <ol class="approach-list">
+                      <li>Led the development of a compliance portal for monitoring child rights in the tea industry</li>
+                      <li>Integrated multi-company data for real-time adherence tracking and reporting</li>
+                      <li>Designed dashboards for stakeholders to monitor compliance metrics at a glance</li>
+                    </ol>
+                  </div>
+                  <div class="detail-block outcome-block">
+                    <h4 class="detail-label">The Outcome</h4>
+                    <p>Improved transparency and enhanced accountability in corporate child protection efforts. The portal enabled real-time compliance monitoring across the tea industry, becoming a reference tool for rights-based corporate governance.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-          <h3 class="case-title">OnDesk Mobile Enterprise App</h3>
-          <p class="case-subtitle">Transforming enterprise services with AI voice chat, asset tracking, and mobile-first design</p>
 
-          <div class="case-metric">
-            <span class="metric-value color-violet">AI-Powered</span>
-            <span class="metric-label">Enterprise Innovation</span>
-          </div>
-
-          <div class="case-tags">
-            <span class="tag">Mobile</span>
-            <span class="tag">AI Voice</span>
-            <span class="tag">Enterprise</span>
-            <span class="tag">IT Management</span>
-            <span class="tag">UX</span>
-          </div>
-
-          <button class="case-toggle" data-target="case4-details">
-            <span class="toggle-text">Read Case Study</span>
-            <svg class="toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
-
-          <div class="case-details" id="case4-details">
-            <div class="detail-block">
-              <h4 class="detail-label">The Challenge</h4>
-              <p>Employees relied on fragmented desktop tools for leave requests, travel bookings, IT support, and asset management. The lack of a unified mobile experience was hurting productivity and creating IT bottlenecks.</p>
-            </div>
-            <div class="detail-block">
-              <h4 class="detail-label">My Approach</h4>
-              <ol class="approach-list">
-                <li>Led a cross-functional team to design and develop the mobile version of OnDesk, an enterprise service platform</li>
-                <li>Introduced AI Voice Chat for automated support and real-time assistance — a first for the organization</li>
-                <li>Integrated IT Support & Management System for ticketing, troubleshooting, and service requests</li>
-                <li>Implemented ICT Asset Management for tracking and maintaining organizational IT resources</li>
-              </ol>
-            </div>
-            <div class="detail-block outcome-block">
-              <h4 class="detail-label">The Outcome</h4>
-              <p>Delivered a mobile-first enterprise platform with AI-powered support, consolidating 4 separate systems into one seamless experience. The AI Voice Chat feature reduced IT ticket resolution time and set a new standard for internal tooling.</p>
-            </div>
-          </div>
-        </article>
-
+        </div>
+        <div class="swiper-pagination case-pagination"></div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ═══ EXPERIENCE ═══ -->
+  <!-- EXPERIENCE -->
   <section id="experience" class="section">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="label-number">03</span>
+      <div class="section-label gsap-fade">
+        <span class="label-num">03</span>
         <div class="label-line"></div>
         <span class="label-text">Experience</span>
       </div>
 
-      <h2 class="section-heading reveal">Where I've Built</h2>
+      <h2 class="section-heading gsap-fade">Where I've Built</h2>
 
       <div class="timeline">
-        <div class="timeline-line" aria-hidden="true"></div>
+        <div class="timeline-line" aria-hidden="true"><div class="timeline-line-fill" id="timelineFill"></div></div>
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item gsap-slide">
           <div class="timeline-dot active"></div>
           <div class="timeline-card">
-            <div class="tc-header">
-              <div>
+            <div class="tc-top">
+              <img src="logos/nextventures_logo.webp" alt="Next Ventures" class="tc-logo" />
+              <div class="tc-info">
                 <h3 class="tc-role">Product Manager II</h3>
                 <p class="tc-company">Next Ventures</p>
               </div>
               <span class="tc-period">April 2025 — Present</span>
             </div>
-            <p class="tc-desc">Leading 20-person cross-functional teams driving automation, insights, and SaaS product innovation across FundedNext and FundedNext Futures.</p>
+            <p class="tc-desc">Leading 20-person cross-functional teams driving automation, platform modernization, compliance, and product-led growth across FundedNext CFD and Futures.</p>
             <ul class="tc-highlights">
               <li>Built an end-to-end automation agent using n8n — 40%+ workflow efficiency gain</li>
-              <li>Shipped notification system increasing user engagement by 35%</li>
-              <li>Driving product-led growth across CFD and Futures platforms</li>
+              <li>Shipped notification system (backend &amp; frontend) increasing user engagement by 35%</li>
+              <li>Leading full dashboard revamp — modernizing KYC, payouts, and trader experience</li>
+              <li>Introduced Risk Cards, compliance regulations for abusive users, and FNHunt gamified engagement</li>
+              <li>Redesigned 2FA flow — tiered enforcement for free vs paid users, resolving 18.5% of support tickets</li>
+              <li>Lead of Identity &amp; Investigation Squad — improving the customer journey end-to-end</li>
             </ul>
           </div>
         </div>
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item gsap-slide">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="tc-header">
-              <div>
+            <div class="tc-top">
+              <img src="logos/Save-the-children.webp" alt="Save the Children" class="tc-logo" />
+              <div class="tc-info">
                 <h3 class="tc-role">Business Analyst</h3>
                 <p class="tc-company">Save the Children International (TecHHub)</p>
               </div>
               <span class="tc-period">July 2022 — March 2025</span>
             </div>
-            <p class="tc-desc">Led 15-person cross-functional teams to deliver global IT solutions including LMS platforms, enterprise apps, and compliance systems.</p>
+            <p class="tc-desc">Led 15-person cross-functional teams to deliver global IT solutions including LMS platforms, enterprise apps, and compliance systems like Handicap Job Portal and Audit Tracker.</p>
             <ul class="tc-highlights">
               <li>Shipped Learning Tree LMS across 5 countries reaching 1,200+ children</li>
               <li>Built Education Cannot Wait LMS for 2,000+ crisis-affected students</li>
               <li>Led OnDesk mobile enterprise platform with AI Voice Chat</li>
+              <li>Developed Skill Optimization Management System to streamline workforce training</li>
+              <li>Championed SaaS enhancements improving operational efficiency and reducing delivery time</li>
             </ul>
           </div>
         </div>
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item gsap-slide">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="tc-header">
-              <div>
+            <div class="tc-top">
+              <img src="logos/lctech.webp" alt="Loosely Coupled Technologies" class="tc-logo" />
+              <div class="tc-info">
                 <h3 class="tc-role">Business Operations Analyst</h3>
                 <p class="tc-company">Loosely Coupled Technologies</p>
               </div>
@@ -499,11 +845,12 @@
           </div>
         </div>
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item gsap-slide">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="tc-header">
-              <div>
+            <div class="tc-top">
+              <img src="logos/lctech.webp" alt="Loosely Coupled Technologies" class="tc-logo" />
+              <div class="tc-info">
                 <h3 class="tc-role">Software Developer</h3>
                 <p class="tc-company">Loosely Coupled Technologies</p>
               </div>
@@ -520,147 +867,137 @@
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ═══ SKILLS ═══ -->
-  <section id="skills" class="section">
+  <!-- SKILLS -->
+  <section id="skills" class="section section-dark">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="label-number">04</span>
+      <div class="section-label gsap-fade">
+        <span class="label-num">04</span>
         <div class="label-line"></div>
         <span class="label-text">Skills & Tools</span>
       </div>
 
-      <h2 class="section-heading reveal">What I Work With</h2>
+      <h2 class="section-heading gsap-fade">What I Work With</h2>
+
+      <!-- Tool logos ribbon -->
+      <div class="tools-ribbon gsap-fade">
+        <img src="logos/jira-1.webp" alt="Jira" class="tool-logo" title="Jira" />
+        <img src="logos/clickup-1.webp" alt="ClickUp" class="tool-logo" title="ClickUp" />
+        <img src="logos/figma-1.webp" alt="Figma" class="tool-logo" title="Figma" />
+        <img src="logos/n8n-logo.webp" alt="n8n" class="tool-logo" title="n8n" />
+        <img src="logos/python-1.webp" alt="Python" class="tool-logo" title="Python" />
+        <img src="logos/SQL-1.webp" alt="SQL" class="tool-logo" title="SQL" />
+        <img src="logos/clevertap-1.webp" alt="CleverTap" class="tool-logo" title="CleverTap" />
+        <img src="logos/intercom-1.webp" alt="Intercom" class="tool-logo" title="Intercom" />
+        <img src="logos/sumsub-logo.webp" alt="Sumsub" class="tool-logo" title="Sumsub" />
+        <img src="logos/veriff-logo.webp" alt="Veriff" class="tool-logo" title="Veriff" />
+      </div>
 
       <div class="skills-grid">
-        <div class="skill-group reveal">
-          <h3 class="sg-title">Product & Strategy</h3>
+        <div class="skill-group gsap-fade">
+          <div class="sg-header">
+            <div class="sg-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="sg-title">Product & Strategy</h3>
+          </div>
           <div class="sg-tags">
-            <span class="skill-tag">Product Roadmapping</span>
-            <span class="skill-tag">OKRs & KPIs</span>
-            <span class="skill-tag">PRDs & User Stories</span>
-            <span class="skill-tag">A/B Testing</span>
-            <span class="skill-tag">Product Analytics</span>
-            <span class="skill-tag">Product-Led Growth</span>
-            <span class="skill-tag">Stakeholder Management</span>
+            <span class="skill-tag">Product Roadmapping</span><span class="skill-tag">OKRs & KPIs</span><span class="skill-tag">PRDs & User Stories</span><span class="skill-tag">A/B Testing</span><span class="skill-tag">Product Analytics</span><span class="skill-tag">Product-Led Growth</span><span class="skill-tag">Stakeholder Management</span>
           </div>
         </div>
 
-        <div class="skill-group reveal">
-          <h3 class="sg-title">Technical</h3>
+        <div class="skill-group gsap-fade">
+          <div class="sg-header">
+            <div class="sg-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="sg-title">Technical</h3>
+          </div>
           <div class="sg-tags">
-            <span class="skill-tag">SQL & Data Querying</span>
-            <span class="skill-tag">Azure</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">n8n Automation</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">SQL & Data Querying</span><span class="skill-tag">Azure</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">n8n Automation</span><span class="skill-tag">Firebase</span><span class="skill-tag">REST APIs</span>
           </div>
         </div>
 
-        <div class="skill-group reveal">
-          <h3 class="sg-title">Delivery & Process</h3>
+        <div class="skill-group gsap-fade">
+          <div class="sg-header">
+            <div class="sg-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+            </div>
+            <h3 class="sg-title">Delivery & Process</h3>
+          </div>
           <div class="sg-tags">
-            <span class="skill-tag">Agile / Scrum</span>
-            <span class="skill-tag">Kanban</span>
-            <span class="skill-tag">JIRA</span>
-            <span class="skill-tag">ClickUp</span>
-            <span class="skill-tag">Sprint Planning</span>
-            <span class="skill-tag">Risk Assessment</span>
-            <span class="skill-tag">Budgeting & Cost Tracking</span>
+            <span class="skill-tag">Agile / Scrum</span><span class="skill-tag">Kanban</span><span class="skill-tag">JIRA</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Sprint Planning</span><span class="skill-tag">Risk Assessment</span><span class="skill-tag">Budgeting & Cost Tracking</span>
           </div>
         </div>
 
-        <div class="skill-group reveal">
-          <h3 class="sg-title">Analytics & Tools</h3>
+        <div class="skill-group gsap-fade">
+          <div class="sg-header">
+            <div class="sg-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
+            <h3 class="sg-title">Analytics & Tools</h3>
+          </div>
           <div class="sg-tags">
-            <span class="skill-tag">Pendo</span>
-            <span class="skill-tag">MS Excel (Advanced)</span>
-            <span class="skill-tag">Google Workspace</span>
-            <span class="skill-tag">PowerPoint</span>
-            <span class="skill-tag">Data Visualization</span>
-            <span class="skill-tag">QA & Testing</span>
+            <span class="skill-tag">Pendo</span><span class="skill-tag">MS Excel (Advanced)</span><span class="skill-tag">Google Workspace</span><span class="skill-tag">PowerPoint</span><span class="skill-tag">Data Visualization</span><span class="skill-tag">QA & Testing</span>
           </div>
         </div>
       </div>
 
-      <!-- Certifications -->
-      <div class="cert-section reveal">
-        <h3 class="sg-title">Certifications</h3>
+      <!-- Certifications with badges -->
+      <div class="cert-section gsap-fade">
+        <h3 class="sg-title" style="margin-bottom:20px;">Certifications</h3>
         <div class="cert-grid">
           <div class="cert-card">
-            <p class="cert-name">Product Analytics Certification</p>
-            <p class="cert-issuer">Pendo & Mind the Product — Jan 2025</p>
+            <img src="logos/product-analytics-badge.webp" alt="Product Analytics Certification" class="cert-badge" />
+            <div>
+              <p class="cert-name">Product Analytics Certification</p>
+              <p class="cert-issuer">Pendo & Mind the Product — Jan 2025</p>
+            </div>
           </div>
           <div class="cert-card">
-            <p class="cert-name">Product-Led Certification</p>
-            <p class="cert-issuer">Pendo & Mind the Product — Feb 2025</p>
+            <img src="logos/product-led-badge.webp" alt="Product-Led Certification" class="cert-badge" />
+            <div>
+              <p class="cert-name">Product-Led Certification</p>
+              <p class="cert-issuer">Pendo & Mind the Product — Feb 2025</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ═══ CONTACT ═══ -->
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="label-number">05</span>
+      <div class="section-label gsap-fade">
+        <span class="label-num">05</span>
         <div class="label-line"></div>
         <span class="label-text">Contact</span>
       </div>
 
       <div class="contact-grid">
-        <div class="contact-text reveal">
-          <h2 class="section-heading">
-            Let's Build
-            <span class="gradient-text">Something Great</span>
-          </h2>
-          <p class="body-text">
-            Whether you're looking for a product leader, want to discuss an idea, or just want to connect — I'd love to hear from you.
-          </p>
-
+        <div class="contact-text gsap-fade">
+          <h2 class="section-heading">Let's Build <span class="gradient-text">Something Great</span></h2>
+          <p class="body-text">Whether you're looking for a product leader, want to discuss an idea, or just want to connect — I'd love to hear from you.</p>
           <div class="contact-links">
             <a href="mailto:suvashish991@gmail.com" class="contact-link-item">
-              <div class="cl-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              </div>
-              <div class="cl-text">
-                <span class="cl-label">Email</span>
-                <span class="cl-value">suvashish991@gmail.com</span>
-              </div>
+              <div class="cl-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+              <div class="cl-text"><span class="cl-label">Email</span><span class="cl-value">suvashish991@gmail.com</span></div>
               <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
-
             <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-              <div class="cl-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </div>
-              <div class="cl-text">
-                <span class="cl-label">LinkedIn</span>
-                <span class="cl-value">linkedin.com/in/suvashishc</span>
-              </div>
+              <div class="cl-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+              <div class="cl-text"><span class="cl-label">LinkedIn</span><span class="cl-value">linkedin.com/in/suvashishc</span></div>
               <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
-
             <a href="tel:+8801623791171" class="contact-link-item">
-              <div class="cl-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div class="cl-text">
-                <span class="cl-label">Phone</span>
-                <span class="cl-value">+880 1623 791 171</span>
-              </div>
+              <div class="cl-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="cl-text"><span class="cl-label">Phone</span><span class="cl-value">+880 1623 791 171</span></div>
               <svg class="cl-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
           </div>
         </div>
 
-        <form id="contactForm" class="contact-form reveal" data-delay="200">
+        <form id="contactForm" class="contact-form gsap-fade">
           <div class="form-group">
             <label for="name" class="form-label">Name</label>
             <input type="text" id="name" name="name" required maxlength="100" class="form-input" placeholder="Your name" />
@@ -683,13 +1020,12 @@
     </div>
   </section>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <span>&copy; 2026 Suvashish Chakraborty</span>
-        <span class="footer-sep">|</span>
-        <span>Built with care and Next-level ambition</span>
+        <a href="#" class="nav-logo footer-logo"><span class="gradient-text">SC</span><span class="logo-dot">.</span></a>
+        <span class="footer-copy">&copy; 2026 Suvashish Chakraborty. Built with care and Next-level ambition.</span>
       </div>
       <div class="footer-right">
         <a href="https://linkedin.com/in/suvashishc" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-icon">
@@ -704,6 +1040,10 @@
       </div>
     </div>
   </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
 
   <script src="script.js"></script>
 </body>
