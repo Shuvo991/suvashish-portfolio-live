@@ -1,1 +1,46 @@
+name: Deploy to Public Repo
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+
+      - name: Push static files to public repo
+        run: |
+          git config --global user.name "Suvashish Chakraborty"
+          git config --global user.email "suvashish991@gmail.com"
+
+          git clone https://x-access-token:${{ secrets.suvashish_portfolio_token_secret }}@github.com/Shuvo991/suvashish-portfolio-live.git deploy
+
+          cd deploy
+          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} +
+
+          cd ..
+          cp index.html deploy/
+          cp styles.css deploy/
+          cp script.js deploy/
+          cp -r logos/ deploy/ 2>/dev/null || true
+          cp favicon.ico deploy/ 2>/dev/null || true
+          cp favicon.png deploy/ 2>/dev/null || true
+          cp favicon-192.png deploy/ 2>/dev/null || true
+          cp apple-touch-icon.png deploy/ 2>/dev/null || true
+          cp og-image.png deploy/ 2>/dev/null || true
+          cp "Profile Picture.png" deploy/ 2>/dev/null || true
+          cp robots.txt deploy/ 2>/dev/null || true
+          cp sitemap.xml deploy/ 2>/dev/null || true
+          cp CNAME deploy/ 2>/dev/null || true
+          cp .nojekyll deploy/ 2>/dev/null || true
+
+          cd deploy
+          git add -A
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
+          git commit -m "Deploy site update $(date +'%Y-%m-%d %H:%M')"
+          git push
