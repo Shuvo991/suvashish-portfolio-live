@@ -18,7 +18,7 @@ jobs:
           git config --global user.name "Suvashish Chakraborty"
           git config --global user.email "suvashish991@gmail.com"
 
-          git clone https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/Shaon991/suvashish-portfolio-live.git deploy
+          git clone https://x-access-token:${{ secrets.PORTFOLIO_DEPLOY }}@github.com/Shaon991/suvashish-portfolio-live.git deploy
 
           cd deploy
           find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} +
