@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Tree Global LMS | Suvashish Chakraborty</title>
+  <meta name="description" content="Case study: A multi-country learning platform reaching 1,200+ children across Guatemala, Colombia, Ukraine, Poland, and Pakistan." />
+  <link rel="canonical" href="https://suvashishchky.pro/learning-tree" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cs-page">
+<div class="noise" aria-hidden="true"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+<div id="scrollProgress" class="scroll-bar" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SC<span class="nav-dot">.</span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">Process</a>
+      <a href="index.html#work" class="nav-link active">Work</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="Suvashish_Chakraborty_CV.pdf" download class="nav-cv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <a href="index.html#about" class="drawer-link">About</a>
+    <a href="index.html#process" class="drawer-link">Process</a>
+    <a href="index.html#work" class="drawer-link">Work</a>
+    <a href="index.html#experience" class="drawer-link">Experience</a>
+    <a href="index.html#skills" class="drawer-link">Skills</a>
+    <a href="index.html#contact" class="drawer-link">Contact</a>
+    <a href="Suvashish_Chakraborty_CV.pdf" download class="drawer-cv">Download CV</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="index.html#work">Work</a><span>/</span>
+      <span>Learning Tree</span>
+    </nav>
+    <img src="logos/Learning Tree LMS.webp" alt="Learning Tree" class="cs-hero-logo" loading="eager" />
+    <h1 class="cs-hero-title">Learning Tree Global LMS</h1>
+    <p class="cs-hero-sub">A multi-country learning platform delivering localized, culturally-relevant education to 1,200+ children across Guatemala, Colombia, Ukraine, Poland, and Pakistan.</p>
+    <div class="cs-info-bar">
+      <div class="cs-info-chip glass-card"><span class="ic-label">Role</span><span class="ic-value">Business Analyst / PM</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Company</span><span class="ic-value">Save the Children International</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">2022 — 2023</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Reach</span><span class="ic-value">5 Countries · 1,200+ Children</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Domain</span><span class="ic-value">EdTech · Localization · Humanitarian</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-two-col">
+      <div>
+        <div class="cs-section-label">The Challenge</div>
+        <h2 class="cs-section-title">One platform, five countries, infinite complexity</h2>
+        <p class="cs-para">Teachers and caregivers in Guatemala, Colombia, Ukraine, Poland, and Pakistan needed a unified yet locally adaptable learning platform. Language barriers, infrastructure differences, and varying educational standards made this a deeply complex product challenge.</p>
+        <p class="cs-para">Existing tools were built for a single context — they weren't designed to flex across cultural, linguistic, and technological divides simultaneously. Any solution needed to feel local to each country while being manageable from a single administrative layer.</p>
+        <p class="cs-para">Coordinating a team across 5 country offices, each with its own curriculum teams and technical constraints, meant the delivery challenge was as complex as the product itself.</p>
+      </div>
+      <div>
+        <div class="cs-section-label">My Approach</div>
+        <h2 class="cs-section-title">Localization-first, async-ready delivery</h2>
+        <div class="cs-steps">
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">01</span>
+            <p class="cs-step-text">Led product development coordinating across <strong>5 country teams</strong> with different languages, curricula, and technical infrastructure requirements</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">02</span>
+            <p class="cs-step-text">Adapted the platform to regional needs — <strong>localized content</strong>, offline-capable learning modules, and culturally relevant UX for each context</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">03</span>
+            <p class="cs-step-text">Implemented <strong>Agile ceremonies adapted for async, cross-timezone collaboration</strong> — keeping delivery on track across wildly different working hours</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">04</span>
+            <p class="cs-step-text">Built <strong>per-region analytics</strong> to measure engagement and iterate on content effectiveness — data-driven decisions at the country level</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">05</span>
+            <p class="cs-step-text">Designed a <strong>modular architecture</strong> that could accept country-specific content packs — future-proofing expansion to additional regions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PRODUCT LINKS -->
+<section class="cs-screenshots">
+  <div class="container">
+    <div class="cs-section-label">Explore the Platform</div>
+    <h2 class="cs-section-title">See it live</h2>
+    <p class="cs-para" style="max-width:580px; color: var(--t2);">Learning Tree is a live, multi-country platform. The web dashboard is accessible and gives a real sense of the localization, content architecture, and user experience across regions.</p>
+    <div class="live-links-grid">
+      <a href="https://lt.scibd.info" target="_blank" rel="noopener noreferrer" class="live-link-card glass-card">
+        <div class="llc-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="llc-title">Learning Tree Web Platform</div>
+        <div class="llc-desc">The live web dashboard — browse localized learning content, see how multi-country content architecture works, and explore the teacher and admin experience.</div>
+        <div class="llc-url">lt.scibd.info ↗</div>
+      </a>
+    </div>
+    <p class="llc-note">The admin content management system, per-region analytics, and full localization workflow can be walked through in detail upon request.</p>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-outcomes">
+  <div class="container">
+    <div class="cs-section-label">The Outcome</div>
+    <h2 class="cs-section-title">A global blueprint, locally delivered</h2>
+    <p class="cs-para" style="max-width:600px;">The platform's modular architecture became the blueprint for subsequent Save the Children LMS projects worldwide — proving that a single product, thoughtfully designed, can serve radically different contexts.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">1,200+</div>
+        <div class="outcome-lbl">Children reached with localized, accessible learning content</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">5</div>
+        <div class="outcome-lbl">Countries served — Guatemala, Colombia, Ukraine, Poland, Pakistan</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">30%</div>
+        <div class="outcome-lbl">Increase in engagement during early adoption across country cohorts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<nav class="cs-nav-bar" aria-label="Case study navigation">
+  <div class="container">
+    <div class="cs-nav-inner">
+      <a href="ecw-lms.html" class="cs-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div><span class="cs-nav-label">Previous Case</span>Education Cannot Wait LMS</div>
+      </a>
+      <a href="cskc.html" class="cs-nav-link">
+        <div style="text-align:right"><span class="cs-nav-label">Next Case</span>Cholo Shikhi Khelar Chholey LMS</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+<script src="script.js"></script>
+</body>
+</html>

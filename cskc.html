@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cholo Shikhi Khelar Chholey LMS | Suvashish Chakraborty</title>
+  <meta name="description" content="Case study: How Suvashish Chakraborty built the Cholo Shikhi Khelar Chholey (CSKC) mobile LMS for Save the Children — reaching 500+ families across 14 RMG sectors in Bangladesh." />
+  <link rel="canonical" href="https://suvashishchky.pro/cskc" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cs-page">
+<div class="noise" aria-hidden="true"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+<div id="scrollProgress" class="scroll-bar" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SC<span class="nav-dot">.</span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">Process</a>
+      <a href="index.html#work" class="nav-link active">Work</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="Suvashish_Chakraborty_CV.pdf" download class="nav-cv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <a href="index.html#about" class="drawer-link">About</a>
+    <a href="index.html#process" class="drawer-link">Process</a>
+    <a href="index.html#work" class="drawer-link">Work</a>
+    <a href="index.html#experience" class="drawer-link">Experience</a>
+    <a href="index.html#skills" class="drawer-link">Skills</a>
+    <a href="index.html#contact" class="drawer-link">Contact</a>
+    <a href="Suvashish_Chakraborty_CV.pdf" download class="drawer-cv">Download CV</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="index.html#work">Work</a><span>/</span>
+      <span>CSKC</span>
+    </nav>
+    <img src="logos/CSKC-logo.webp" alt="Cholo Shikhi Khelar Chholey" class="cs-hero-logo" loading="eager" />
+    <h1 class="cs-hero-title">Cholo Shikhi Khelar Chholey LMS</h1>
+    <p class="cs-hero-sub">A mobile-first learning platform built for Bangladesh's garment sector — bringing structured family education to factory workers and their children across 14 RMG industries.</p>
+    <div class="cs-info-bar">
+      <div class="cs-info-chip glass-card"><span class="ic-label">Role</span><span class="ic-value">Business Analyst / PM</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Company</span><span class="ic-value">Save the Children</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">2023</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Reach</span><span class="ic-value">500+ Families — Pilot</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Domain</span><span class="ic-value">EdTech · Mobile · Bangladesh</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-two-col">
+      <div>
+        <div class="cs-section-label">The Challenge</div>
+        <h2 class="cs-section-title">Education out of reach for the hands that run the industry</h2>
+        <p class="cs-para">Bangladesh's Ready-Made Garment (RMG) sector employs millions of workers — predominantly women — who work long hours in demanding conditions. For these families, accessing structured education for themselves or their children was nearly impossible. Geographic barriers, financial constraints, and time poverty all compounded the problem.</p>
+        <p class="cs-para">Save the Children identified a critical opportunity: bring learning to the workers where they already are — on their phones, during breaks, in simple Bengali. The challenge was building something that could actually work in low-literacy, low-bandwidth, high-fatigue environments across 14 different factory sectors.</p>
+        <p class="cs-para">The solution couldn't be a watered-down version of an existing LMS. It had to be purpose-built: mobile-first, intuitive without instruction, and meaningful for families who had never used a learning app before.</p>
+      </div>
+      <div>
+        <div class="cs-section-label">My Approach</div>
+        <h2 class="cs-section-title">Purpose-built for families, not classrooms</h2>
+        <div class="cs-steps">
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">01</span>
+            <p class="cs-step-text">Conducted <strong>stakeholder and field research</strong> across RMG sectors to understand worker literacy levels, device types, connectivity constraints, and real daily routines</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">02</span>
+            <p class="cs-step-text">Defined a <strong>mobile-first product scope</strong> — Bengali-language content, minimal text dependency, icon-led navigation — reducing barriers for first-time app users</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">03</span>
+            <p class="cs-step-text">Led cross-functional delivery across <strong>14 RMG sector deployments</strong> — coordinating with factory liaisons, field educators, and Save the Children's TecHHub team</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">04</span>
+            <p class="cs-step-text">Ran a <strong>structured pilot program</strong> with usability feedback loops — iterating on content structure, navigation flows, and onboarding based on real family responses</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">05</span>
+            <p class="cs-step-text">Shipped the platform to <strong>Google Play Store</strong> — making it publicly accessible for families with Android devices across Bangladesh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PRODUCT LINKS -->
+<section class="cs-screenshots">
+  <div class="container">
+    <div class="cs-section-label">Explore the Platform</div>
+    <h2 class="cs-section-title">See it live</h2>
+    <p class="cs-para" style="max-width:580px; color: var(--t2);">The CSKC app is live on Google Play — available to any Android user in Bangladesh. The experience is entirely in Bengali and designed for users with minimal digital literacy.</p>
+    <div class="live-links-grid">
+      <a href="https://play.google.com/store/apps/details?id=com.savethechildren.cskc&hl=bn" target="_blank" rel="noopener noreferrer" class="live-link-card glass-card">
+        <div class="llc-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="llc-title">CSKC on Google Play</div>
+        <div class="llc-desc">The live Android app — Bengali-language, mobile-first family learning platform for Bangladesh's RMG sector workers. Available publicly on the Play Store.</div>
+        <div class="llc-url">Google Play Store ↗</div>
+      </a>
+    </div>
+    <p class="llc-note">Full content management workflows, admin dashboards, and sector-specific deployments can be walked through in detail upon request.</p>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-outcomes">
+  <div class="container">
+    <div class="cs-section-label">The Outcome</div>
+    <h2 class="cs-section-title">Education where it was never accessible before</h2>
+    <p class="cs-para" style="max-width:620px;">The CSKC pilot demonstrated that purposeful, context-aware product design can overcome significant access barriers — and that families in even the most resource-constrained environments will engage with learning when the product meets them where they are.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">500+</div>
+        <div class="outcome-lbl">Families reached during the pilot with positive usability feedback</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">14</div>
+        <div class="outcome-lbl">RMG sectors covered across Bangladesh's garment industry</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">Live</div>
+        <div class="outcome-lbl">Publicly available on Google Play — accessible to any Android user in Bangladesh</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<nav class="cs-nav-bar" aria-label="Case study navigation">
+  <div class="container">
+    <div class="cs-nav-inner">
+      <a href="learning-tree.html" class="cs-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div><span class="cs-nav-label">Previous Case</span>Learning Tree Global LMS</div>
+      </a>
+      <a href="ondesk.html" class="cs-nav-link">
+        <div style="text-align:right"><span class="cs-nav-label">Next Case</span>OnDesk Mobile Enterprise App</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+<script src="script.js"></script>
+</body>
+</html>

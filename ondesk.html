@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnDesk Mobile Enterprise App | Suvashish Chakraborty</title>
+  <meta name="description" content="Case study: How Suvashish Chakraborty led the OnDesk mobile enterprise platform — consolidating 4 systems into one with AI voice chat and mobile-first design." />
+  <link rel="canonical" href="https://suvashishchky.pro/ondesk" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cs-page">
+<div class="noise" aria-hidden="true"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+<div id="scrollProgress" class="scroll-bar" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SC<span class="nav-dot">.</span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">Process</a>
+      <a href="index.html#work" class="nav-link active">Work</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="Suvashish_Chakraborty_CV.pdf" download class="nav-cv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <a href="index.html#about" class="drawer-link">About</a>
+    <a href="index.html#process" class="drawer-link">Process</a>
+    <a href="index.html#work" class="drawer-link">Work</a>
+    <a href="index.html#experience" class="drawer-link">Experience</a>
+    <a href="index.html#skills" class="drawer-link">Skills</a>
+    <a href="index.html#contact" class="drawer-link">Contact</a>
+    <a href="Suvashish_Chakraborty_CV.pdf" download class="drawer-cv">Download CV</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="index.html#work">Work</a><span>/</span>
+      <span>OnDesk</span>
+    </nav>
+    <img src="logos/ondesk-logo.webp" alt="OnDesk" class="cs-hero-logo" loading="eager" />
+    <h1 class="cs-hero-title">OnDesk Mobile Enterprise App</h1>
+    <p class="cs-hero-sub">Transforming fragmented enterprise tooling into a single mobile-first platform — with AI voice chat, asset management, and IT support unified under one experience.</p>
+    <div class="cs-info-bar">
+      <div class="cs-info-chip glass-card"><span class="ic-label">Role</span><span class="ic-value">Business Analyst / PM</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Company</span><span class="ic-value">Save the Children International</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">2024 — 2025</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Key Feature</span><span class="ic-value">AI Voice Chat — First in Org</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Domain</span><span class="ic-value">Enterprise · Mobile · AI-Powered</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-two-col">
+      <div>
+        <div class="cs-section-label">The Challenge</div>
+        <h2 class="cs-section-title">Four systems, zero mobility</h2>
+        <p class="cs-para">Employees relied on fragmented desktop tools for leave requests, travel bookings, IT support, and asset management. Each lived in a different system, with different interfaces, different logins, and different failure modes.</p>
+        <p class="cs-para">The lack of a unified mobile experience was hurting productivity and creating IT bottlenecks. Employees in the field — often working in difficult conditions — couldn't access these tools easily without a laptop. The feedback was consistent: the tools don't work for how people actually work.</p>
+        <p class="cs-para">The organization needed a mobile-first solution that didn't just consolidate the tools, but rethought how employees would actually interact with IT support in a modern, AI-capable world.</p>
+      </div>
+      <div>
+        <div class="cs-section-label">My Approach</div>
+        <h2 class="cs-section-title">Unify, mobilize, and introduce AI-first support</h2>
+        <div class="cs-steps">
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">01</span>
+            <p class="cs-step-text">Led a cross-functional team to <strong>design and build the mobile version of OnDesk</strong> — translating a desktop-first platform into a genuinely mobile-native experience</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">02</span>
+            <p class="cs-step-text">Introduced <strong>AI Voice Chat for automated support</strong> — the first AI-powered feature in the organization, enabling employees to resolve IT issues through voice interaction</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">03</span>
+            <p class="cs-step-text">Integrated the <strong>IT Support and Management System</strong> — ticketing, troubleshooting, and escalation pathways unified into the OnDesk mobile app</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">04</span>
+            <p class="cs-step-text">Implemented <strong>ICT Asset Management</strong> — employees and IT admins can track, request, and manage organizational IT resources directly from their phones</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">05</span>
+            <p class="cs-step-text">Delivered the full <strong>4-in-1 consolidation</strong>: Leave Management, Travel Booking, IT Support, and Asset Management — one app, one login, one experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="cs-screenshots">
+  <div class="container">
+    <div class="cs-section-label">Platform Access</div>
+    <h2 class="cs-section-title">Internal enterprise app</h2>
+    <p class="cs-para" style="max-width:580px; color: var(--t2);">OnDesk is an internal enterprise platform — not publicly accessible. It operates behind Save the Children's organizational authentication with field staff access managed centrally.</p>
+    <div class="internal-callout glass-card">
+      <div class="inc-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <span class="inc-label">Internal Only</span>
+      <div class="inc-title">Available upon request</div>
+      <div class="inc-desc">A guided walkthrough of OnDesk — including the AI Voice Chat feature, asset management flows, and IT support integration — can be arranged directly. Screenshots, recordings, and a live demo can be coordinated with appropriate authorization.</div>
+      <a href="mailto:suvashish991@gmail.com?subject=OnDesk%20Demo%20Request" class="inc-cta">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Request a walkthrough
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="cs-outcomes">
+  <div class="container">
+    <div class="cs-section-label">The Outcome</div>
+    <h2 class="cs-section-title">Enterprise productivity, genuinely modernized</h2>
+    <p class="cs-para" style="max-width:620px;">OnDesk became the new standard for internal tooling at Save the Children International — demonstrating that enterprise software can be both powerful and pleasant to use, even in demanding field conditions.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">4-in-1</div>
+        <div class="outcome-lbl">Separate systems unified into a single mobile-native experience</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">First</div>
+        <div class="outcome-lbl">AI Voice Chat feature — a first for the organization, setting the bar for future AI initiatives</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">Mobile</div>
+        <div class="outcome-lbl">Field staff could finally access enterprise tools without a laptop — genuine workflow unblocked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<nav class="cs-nav-bar" aria-label="Case study navigation">
+  <div class="container">
+    <div class="cs-nav-inner">
+      <a href="cskc.html" class="cs-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div><span class="cs-nav-label">Previous Case</span>Cholo Shikhi Khelar Chholey LMS</div>
+      </a>
+      <a href="fundednext.html" class="cs-nav-link">
+        <div style="text-align:right"><span class="cs-nav-label">Back to start</span>FundedNext</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+<script src="script.js"></script>
+</body>
+</html>

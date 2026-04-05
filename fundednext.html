@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FundedNext — Platform Evolution | Suvashish Chakraborty</title>
+  <meta name="description" content="Case study: How Suvashish Chakraborty led FundedNext's platform transformation — automation, dashboard revamp, compliance, and gamified engagement." />
+  <link rel="canonical" href="https://suvashishchky.pro/fundednext" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cs-page">
+<div class="noise" aria-hidden="true"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+<div id="scrollProgress" class="scroll-bar" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SC<span class="nav-dot">.</span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">Process</a>
+      <a href="index.html#work" class="nav-link active">Work</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="Suvashish_Chakraborty_CV.pdf" download class="nav-cv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <a href="index.html#about" class="drawer-link">About</a>
+    <a href="index.html#process" class="drawer-link">Process</a>
+    <a href="index.html#work" class="drawer-link">Work</a>
+    <a href="index.html#experience" class="drawer-link">Experience</a>
+    <a href="index.html#skills" class="drawer-link">Skills</a>
+    <a href="index.html#contact" class="drawer-link">Contact</a>
+    <a href="Suvashish_Chakraborty_CV.pdf" download class="drawer-cv">Download CV</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="index.html#work">Work</a>
+      <span>/</span>
+      <span>FundedNext</span>
+    </nav>
+    <img src="logos/FundedNext_logo.webp" alt="FundedNext" class="cs-hero-logo" loading="eager" />
+    <h1 class="cs-hero-title">Platform Evolution &amp;<br>Product Leadership</h1>
+    <p class="cs-hero-sub">Leading a full-scope product transformation — from an outdated dashboard to a cohesive, modern platform with automation, compliance, risk visibility, and gamified user engagement.</p>
+    <div class="cs-info-bar">
+      <div class="cs-info-chip glass-card"><span class="ic-label">Role</span><span class="ic-value">Product Manager II</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Company</span><span class="ic-value">Next Ventures · FundedNext</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">April 2025 — Present</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Team</span><span class="ic-value">20 People (Cross-functional)</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Domain</span><span class="ic-value">Fintech · SaaS · Prop Trading</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE + APPROACH -->
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-two-col">
+      <div>
+        <div class="cs-section-label">The Challenge</div>
+        <h2 class="cs-section-title">A platform in need of a full rethink</h2>
+        <p class="cs-para">FundedNext needed a holistic product evolution. The dashboard was outdated with scattered notifications and critical gaps in compliance enforcement. Risk transparency was missing — traders couldn't understand their exposure in real time.</p>
+        <p class="cs-para">Customer journey pain points around KYC, payouts, and a rigid 2FA flow were driving a significant share of support tickets. The platform also lacked mechanisms to incentivize user engagement with key resources, creating a gap between the product and its users.</p>
+        <p class="cs-para">The challenge wasn't one problem — it was an entire product that needed a coherent strategy pulling all these threads together into a unified vision.</p>
+      </div>
+      <div>
+        <div class="cs-section-label">My Approach</div>
+        <h2 class="cs-section-title">Leading end-to-end transformation</h2>
+        <div class="cs-steps">
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">01</span>
+            <p class="cs-step-text">Led a <strong>20-person cross-functional team</strong> to architect an end-to-end automation agent using n8n — improving workflow efficiency by 40%+</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">02</span>
+            <p class="cs-step-text">Shipped a <strong>notification system</strong> (backend &amp; frontend) for both CFD and Futures — driving a 35% engagement increase</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">03</span>
+            <p class="cs-step-text">Leading the <strong>full dashboard revamp</strong> — modernizing the UI/UX to reduce customer pain points during KYC verification and Rewards (payout) flows</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">04</span>
+            <p class="cs-step-text">Introduced <strong>Risk Cards</strong> to Account Overview so traders see real-time risk exposure and understand the repercussions of their trading behavior</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">05</span>
+            <p class="cs-step-text">Built a <strong>compliance regulations framework</strong> for abusive users — heavily monitoring flagged accounts and banning non-compliant traders to protect platform integrity</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">06</span>
+            <p class="cs-step-text">Created <strong>FNHunt</strong> — a gamified coupon-code hunt embedded in the FAQ, substantially increasing FAQ engagement and plan purchases through single-use discoverable codes</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">07</span>
+            <p class="cs-step-text">Lead of the <strong>Identity &amp; Investigation Squad</strong> — identifying customer journey pain points and systematically improving them across the full platform</p>
+          </div>
+          <div class="cs-step glass-card">
+            <span class="cs-step-num">08</span>
+            <p class="cs-step-text">Redesigned the <strong>2FA flow</strong> — free users no longer forced into 2FA (removing onboarding friction), paid users enforced after 14 days or post-KYC, <strong>resolving 18.5% of support tickets</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PRODUCT LINKS -->
+<section class="cs-screenshots">
+  <div class="container">
+    <div class="cs-section-label">Explore the Platform</div>
+    <h2 class="cs-section-title">See it live</h2>
+    <p class="cs-para" style="max-width:580px; color: var(--t2);">FundedNext is an active, live platform serving tens of thousands of traders globally. Explore it directly — the public site gives you full context on the product offering, and the trader dashboard shows the experience I've been redesigning.</p>
+    <div class="live-links-grid">
+      <a href="https://fundednext.com" target="_blank" rel="noopener noreferrer" class="live-link-card glass-card">
+        <div class="llc-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="llc-title">FundedNext Marketing Site</div>
+        <div class="llc-desc">The public-facing product — full overview of challenge programs, pricing, trader rules, and platform positioning. Best starting point for context.</div>
+        <div class="llc-url">fundednext.com ↗</div>
+      </a>
+      <a href="https://app.fundednext.com/login" target="_blank" rel="noopener noreferrer" class="live-link-card glass-card">
+        <div class="llc-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="llc-title">Trader Dashboard</div>
+        <div class="llc-desc">The live platform where traders manage funded accounts, track performance, handle KYC, and submit payouts — the core product under active transformation.</div>
+        <div class="llc-url">app.fundednext.com ↗</div>
+      </a>
+    </div>
+    <p class="llc-note">Dashboard revamp designs, Risk Cards, notification system, and compliance framework can all be walked through in detail upon request.</p>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-outcomes">
+  <div class="container">
+    <div class="cs-section-label">The Outcome</div>
+    <h2 class="cs-section-title">Measurable impact, platform-wide</h2>
+    <p class="cs-para" style="max-width:600px;">Transformed FundedNext from a feature-by-feature product into a cohesive, modern platform. Each initiative delivered against a specific metric — not just shipped, but validated.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">40%+</div>
+        <div class="outcome-lbl">Workflow efficiency gained through end-to-end automation agent (n8n)</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">18.5%</div>
+        <div class="outcome-lbl">Support tickets resolved through 2FA flow redesign alone</div>
+      </div>
+      <div class="outcome-card glass-card">
+        <div class="outcome-val">35%</div>
+        <div class="outcome-lbl">Engagement increase from new notification system (CFD + Futures)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<nav class="cs-nav-bar" aria-label="Case study navigation">
+  <div class="container">
+    <div class="cs-nav-inner">
+      <a href="index.html#work" class="cs-nav-link cs-nav-home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div><span class="cs-nav-label">Back to</span>All Work</div>
+      </a>
+      <a href="ecw-lms.html" class="cs-nav-link">
+        <div style="text-align:right"><span class="cs-nav-label">Next Case</span>Education Cannot Wait LMS</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
