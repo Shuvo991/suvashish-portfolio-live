@@ -45,6 +45,7 @@
     initContactForm();
     initBackToTop();
     initSmoothAnchors();
+    initThemeToggle();
   }
 
   /* ── Lenis Smooth Scroll ───────────────────────────────── */
@@ -452,6 +453,35 @@
         if (lenis) lenis.scrollTo(target, { duration: 1.2, offset: -80 });
         else target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
+    });
+  }
+
+  /* ── Theme Toggle ─────────────────────────────────────── */
+  function initThemeToggle() {
+    const btn = document.getElementById("themeToggle");
+    if (!btn) return;
+
+    // Apply saved theme on init (FOUC already handled by inline <head> script)
+    const saved = localStorage.getItem("sc-theme");
+    if (saved === "light") document.documentElement.setAttribute("data-theme", "light");
+
+    // Sync aria-label to reflect what clicking will do
+    function updateAriaLabel() {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      btn.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+    }
+    updateAriaLabel();
+
+    btn.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("sc-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("sc-theme", "light");
+      }
+      updateAriaLabel();
     });
   }
 
