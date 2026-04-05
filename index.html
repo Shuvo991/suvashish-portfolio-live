@@ -300,9 +300,30 @@
             <span class="bento-sub">Monash University Malaysia, 2015–2019</span>
           </div>
         </div>
-        <div class="bento-card glass-card">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div>
+        <div class="bento-card bento-location glass-card">
+          <div class="bl-map" aria-hidden="true">
+            <svg class="bl-world" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+              <!-- North America -->
+              <path d="M8,14 L22,8 L36,10 L44,16 L48,30 L44,46 L36,56 L22,56 L12,46 L6,30 Z"/>
+              <!-- South America -->
+              <path d="M22,58 L40,56 L50,66 L48,82 L38,90 L26,86 L18,74 L20,62 Z"/>
+              <!-- Europe -->
+              <path d="M84,10 L100,8 L106,14 L102,24 L90,26 L84,18 Z"/>
+              <!-- Africa -->
+              <path d="M82,26 L108,24 L116,34 L114,58 L102,78 L86,74 L78,56 L80,36 Z"/>
+              <!-- Asia (with South Asian peninsula) -->
+              <path d="M100,8 L172,6 L178,20 L174,38 L160,50 L150,60 L140,60 L134,50 L116,46 L104,32 L100,20 Z"/>
+              <!-- Australia -->
+              <path d="M150,64 L170,62 L176,72 L166,80 L152,78 L146,70 Z"/>
+              <!-- Dhaka: lon 90.4E, lat 23.8N → x≈150, y≈37 -->
+              <circle cx="150" cy="37" r="2.5" fill="var(--gold)"/>
+              <circle cx="150" cy="37" r="2.5" fill="var(--gold)" opacity="0.5">
+                <animate attributeName="r" values="2.5;7;2.5" dur="2.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <div class="bl-text">
             <span class="bento-label">Based In</span>
             <span class="bento-value">Dhaka, Bangladesh</span>
           </div>
