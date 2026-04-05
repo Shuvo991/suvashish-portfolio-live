@@ -40,6 +40,7 @@
     initHeroGSAP();
     initTimelineFill();
     initCountUp();
+    initChipAnimation();
     initProcessAnimation();
     initCardLinks();
     initContactForm();
@@ -343,12 +344,13 @@
         if (!e.isIntersecting) return;
         const el     = e.target;
         const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || "";
         const dur    = 1800;
         const start  = performance.now();
         const step   = (now) => {
-          const p = Math.min(1, (now - start) / dur);
+          const p    = Math.min(1, (now - start) / dur);
           const ease = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(ease * target).toLocaleString();
+          el.textContent = Math.round(ease * target).toLocaleString() + suffix;
           if (p < 1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
@@ -356,6 +358,24 @@
       });
     }, { threshold: 0.5 });
     nums.forEach((n) => io.observe(n));
+  }
+
+  /* ── Photo Stats Chip Animation ────────────────────────── */
+  function initChipAnimation() {
+    const chips = document.querySelectorAll(".photo-stats .photo-chip");
+    if (!chips.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        chips.forEach((chip, i) => {
+          setTimeout(() => chip.classList.add("in-view"), i * 150);
+        });
+        io.disconnect();
+      });
+    }, { threshold: 0.3 });
+
+    io.observe(chips[0].closest(".photo-wrap") || chips[0]);
   }
 
   /* ── Contact Form ──────────────────────────────────────── */
