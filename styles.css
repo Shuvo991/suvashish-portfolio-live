@@ -791,10 +791,10 @@ em { font-style: normal; color: var(--gold); }
 }
 @media (max-width: 768px) {
   :root { --gap: 68px; }
-  .nav-inner { padding: 0 16px; gap: 8px; }
+  .nav-inner { padding: 0 28px; gap: 12px; }
   .nav-links { display: none; }
-  .nav-right { margin-left: auto; gap: 6px; }
-  .nav-cv { padding: 6px 10px; font-size: 12px; }
+  .nav-right { margin-left: auto; gap: 8px; }
+  .nav-cv { padding: 6px 12px; font-size: 13px; }
   .nav-toggle { display: flex; }
   .hero { padding: 100px 0 60px; }
   .hero-title { font-size: clamp(46px, 13vw, 76px); }
@@ -820,8 +820,8 @@ em { font-style: normal; color: var(--gold); }
   .cs-nav-inner { flex-direction: column; gap: 20px; text-align: center; }
 }
 @media (max-width: 480px) {
-  .nav-inner { padding: 0 12px; gap: 6px; }
-  .nav-cv { padding: 5px 8px; font-size: 11px; gap: 4px; }
+  .nav-inner { padding: 0 18px; gap: 10px; }
+  .nav-cv { padding: 5px 10px; font-size: 12px; }
   .container { padding: 0 18px; }
   .hero-ctas { flex-direction: column; align-items: center; }
   .hero-ctas .btn-primary,
