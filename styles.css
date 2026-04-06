@@ -39,7 +39,7 @@
 
 /* ── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-font-smoothing: antialiased; scroll-padding-top: 80px; }
+html { -webkit-font-smoothing: antialiased; scroll-padding-top: 80px; overflow-x: hidden; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
@@ -821,6 +821,9 @@ em { font-style: normal; color: var(--gold); }
 }
 @media (max-width: 480px) {
   .nav-inner { padding: 0 18px; gap: 10px; }
+  .hero-content { padding: 0 18px; }
+  .drawer-link { padding: 14px 18px; }
+  .drawer-cv { padding: 14px 18px; }
   .nav-cv { padding: 5px 10px; font-size: 12px; }
   .container { padding: 0 18px; }
   .hero-ctas { flex-direction: column; align-items: center; }
