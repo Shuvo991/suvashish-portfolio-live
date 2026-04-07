@@ -403,25 +403,26 @@
       btn.disabled = true;
       btn.querySelector("span").textContent = "Sending…";
 
-      // Formspree endpoint — replace XXXXXXXX with your Formspree form ID
-      const FORMSPREE = "https://formspree.io/f/XXXXXXXX";
+      // Web3Forms endpoint — access key tied to suvashish991@gmail.com
+      const WEB3FORMS = "https://api.web3forms.com/submit";
+      const ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"; // replace with key from web3forms.com
 
       try {
-        const res = await fetch(FORMSPREE, {
+        const res = await fetch(WEB3FORMS, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify({ access_key: ACCESS_KEY, name, email, message }),
         });
-        if (res.ok) {
+        const data = await res.json();
+        if (res.ok && data.success) {
           setStatus("Message sent! I'll get back to you soon.", "success");
           form.reset();
         } else {
-          throw new Error("Server error");
+          throw new Error(data.message || "Server error");
         }
-      } catch {
-        // Fallback to mailto
-        window.location.href = `mailto:suvashish991@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nFrom: " + email)}`;
-        setStatus("Opening your email client…", "success");
+      } catch (err) {
+        setStatus("Something went wrong. Please email me directly at suvashish991@gmail.com", "error");
+        console.error("Form error:", err);
       } finally {
         btn.disabled = false;
         btn.querySelector("span").textContent = "Send Message";
