@@ -47,6 +47,7 @@
     initBackToTop();
     initSmoothAnchors();
     initThemeToggle();
+    initTypewriter();
   }
 
   /* ── Lenis Smooth Scroll ───────────────────────────────── */
@@ -231,6 +232,73 @@
       ease: "power4.out",
       delay: 0.2,
     });
+  }
+
+  /* ── Hero Typewriter ───────────────────────────────────── */
+  // CSS controls which greeting is visible — JS just animates both.
+  // No window.innerWidth checks needed: the right element is already shown by media query.
+  // onDone callback lets callers react when typing finishes (e.g. trigger underline)
+  function typeIt(container, prefix, name, suffix, onDone) {
+    if (!container) return;
+    const prefixEl = container.querySelector('.greeting-prefix');
+    const nameEl   = container.querySelector('.greeting-name');
+    const suffixEl = container.querySelector('.greeting-suffix');
+    const cursorEl = container.querySelector('.greeting-cursor');
+
+    const SPEED_PREFIX = 60;
+    const SPEED_NAME   = 70;
+    const SPEED_SUFFIX = 60;
+
+    let phase = 'prefix';
+    let idx   = 0;
+
+    function tick() {
+      if (phase === 'prefix') {
+        if (idx < prefix.length) {
+          prefixEl.textContent += prefix[idx++];
+          setTimeout(tick, SPEED_PREFIX);
+        } else {
+          phase = 'name'; idx = 0;
+          setTimeout(tick, SPEED_PREFIX);
+        }
+      } else if (phase === 'name') {
+        if (idx < name.length) {
+          nameEl.textContent += name[idx++];
+          setTimeout(tick, SPEED_NAME);
+        } else {
+          phase = 'suffix'; idx = 0;
+          setTimeout(tick, SPEED_NAME);
+        }
+      } else if (phase === 'suffix') {
+        if (idx < suffix.length) {
+          suffixEl.textContent += suffix[idx++];
+          setTimeout(tick, SPEED_SUFFIX);
+        } else {
+          // Typing complete — fire callback then fade cursor
+          if (typeof onDone === 'function') onDone();
+          setTimeout(() => {
+            cursorEl.style.transition = 'opacity 0.4s ease';
+            cursorEl.style.opacity    = '0';
+          }, 1800);
+        }
+      }
+    }
+    tick();
+  }
+
+  function initTypewriter() {
+    const webEl      = document.querySelector('.hero-greeting-web');
+    const mobEl      = document.querySelector('.hero-greeting-mob');
+    const underlineEl = document.querySelector('.ht-underline');
+
+    // Fire after GSAP has faded the greeting elements in (~1.1s)
+    setTimeout(() => {
+      // Web greeting: trigger underline animation only after last character is typed
+      typeIt(webEl, 'Hello, I am\u00A0', 'Suvashish Chakraborty', '', () => {
+        if (underlineEl) underlineEl.classList.add('typed');
+      });
+      typeIt(mobEl, 'Hi,\u00A0', 'Suvashish Chakraborty', '\u00A0here');
+    }, 1150);
   }
 
   /* ── Process Section Animation ────────────────────────── */

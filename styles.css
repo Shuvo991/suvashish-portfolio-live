@@ -201,16 +201,66 @@ em { font-style: normal; color: var(--gold); }
 .ha { opacity: 0; transform: translateY(28px); }
 
 /* Status pill */
-.status-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 100px; font-size: 13px; color: var(--t2); backdrop-filter: blur(12px); margin-bottom: 28px; }
+.status-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 100px; font-size: 13px; color: var(--t2); backdrop-filter: blur(12px); margin-bottom: 12px; }
 .status-pill strong { color: var(--t1); font-weight: 600; }
 .pulse-wrap { position: relative; width: 10px; height: 10px; flex-shrink: 0; }
-.pulse-ring { position: absolute; inset: -2px; border-radius: 50%; border: 1.5px solid var(--gold); animation: pulseRing 2s ease-out infinite; }
-.pulse-core { position: absolute; inset: 1px; border-radius: 50%; background: var(--gold); }
+.pulse-ring { position: absolute; inset: -2px; border-radius: 50%; border: 1.5px solid #22c55e; animation: pulseRing 2s ease-out infinite; }
+.pulse-core { position: absolute; inset: 1px; border-radius: 50%; background: #22c55e; }
 @keyframes pulseRing { 0% { transform: scale(.8); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+
+/* ── Hero greeting / typewriter ────────────────────────── */
+.hero-greeting {
+  display: flex;
+  align-items: center;
+  font-size: clamp(15px, 1.35vw, 18px);
+  font-weight: 500;
+  letter-spacing: .01em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  min-height: 1.6em;
+}
+/* CSS controls which greeting is visible — no JS breakpoint detection */
+.hero-greeting-mob { display: none; }
+.greeting-prefix { color: var(--t2); white-space: pre; }
+.greeting-name   { color: var(--t1); font-weight: 600; }
+.greeting-suffix { color: var(--t2); white-space: pre; }
+.greeting-cursor {
+  color: var(--gold);
+  font-weight: 300;
+  margin-left: 1px;
+  animation: blink-cursor 0.7s step-end infinite;
+}
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
 
 /* Hero title */
 .hero-title { font-family: var(--display); font-size: clamp(54px, 8vw, 108px); font-weight: 800; line-height: .93; letter-spacing: -.04em; margin-bottom: 22px; }
 .ht-row { display: block; }
+
+/* "Product" — lighter qualifier so eye flows naturally to "Manager" as the anchor */
+.ht-qualifier {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.68);
+  letter-spacing: -.03em;
+}
+
+/* ── "Manager" gold underline accent ───────────────────── */
+/* background-image is always painted BEHIND text — descenders like "g" sit on top naturally */
+.ht-underline {
+  display: inline;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-size: 0% 4px;
+  /* 88% from top ≈ just below baseline, above descender depth */
+  background-position: 0 88%;
+  transition: background-size 0s; /* no transition until .typed is added */
+}
+.ht-underline.typed {
+  background-size: 100% 4px;
+  transition: background-size 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .ht-accent {
   background: linear-gradient(
     110deg,
@@ -230,12 +280,14 @@ em { font-style: normal; color: var(--gold); }
   0%, 100% { background-position: 0% center; }
   50%       { background-position: 100% center; }
 }
-.hero-name { font-family: var(--display); font-size: clamp(14px, 1.8vw, 18px); font-weight: 500; color: var(--t2); letter-spacing: .02em; margin-top: 10px; margin-bottom: 14px; }
+/* .hero-name removed — name now lives in .hero-greeting typewriter */
 .hero-lead { font-size: clamp(14.5px, 1.4vw, 16.5px); color: var(--t2); line-height: 1.8; max-width: 470px; margin-bottom: 20px; }
 .hero-impact-strip { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 6px; max-width: 470px; }
 .hero-impact-strip li { display: flex; align-items: baseline; gap: 8px; font-size: clamp(13px, 1.15vw, 14.5px); color: var(--t2); line-height: 1.55; }
 .his-bullet { color: var(--gold); font-size: 12px; flex-shrink: 0; font-weight: 600; }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+/* Mobile-only secondary CTAs — hidden by default, shown when hero-right is hidden */
+.hero-ctas-mobile { display: none; }
 .hero-socials { display: flex; gap: 10px; }
 .social-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg-2); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--t2); transition: border-color var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease); }
 .social-btn:hover { border-color: var(--glass-border-h); color: var(--t1); transform: translateY(-2px); }
@@ -561,11 +613,12 @@ em { font-style: normal; color: var(--gold); }
 .bl-text { padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 3px; }
 
 /* ── Process ───────────────────────────────────────────── */
-.process-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 0; align-items: center; margin-top: 8px; }
+.process-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 0; align-items: stretch; margin-top: 8px; }
 
 .process-step {
   border-radius: 16px; padding: 28px 22px;
   position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
   transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
               border-color 0.4s ease,
               box-shadow 0.4s ease;
@@ -598,10 +651,10 @@ em { font-style: normal; color: var(--gold); }
 .ps-num { position: absolute; top: 8px; right: 12px; font-family: var(--display); font-size: 72px; font-weight: 800; color: rgba(240,180,41,0.06); letter-spacing: -.04em; line-height: 1; margin-bottom: 0; z-index: 0; transition: color 0.4s ease; pointer-events: none; }
 .ps-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--gold-dim); border: 1px solid rgba(240,180,41,.2); border-radius: 12px; color: var(--gold); margin-bottom: 16px; transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
 .ps-title { font-family: var(--display); font-size: 19px; font-weight: 700; color: var(--t1); margin-bottom: 10px; letter-spacing: -.02em; position: relative; z-index: 1; }
-.ps-desc { font-size: 13.5px; color: var(--t2); line-height: 1.65; position: relative; z-index: 1; }
+.ps-desc { font-size: 13.5px; color: var(--t2); line-height: 1.65; position: relative; z-index: 1; flex: 1; }
 
 /* Connector arrows */
-.process-arrow { padding: 0 10px; flex-shrink: 0; }
+.process-arrow { padding: 0 10px; flex-shrink: 0; align-self: center; display: flex; align-items: center; }
 .proc-connector { overflow: visible; display: block; }
 .proc-track { stroke: rgba(255,255,255,0.07); stroke-width: 1.5; fill: none; stroke-linecap: round; }
 .proc-flow {
@@ -973,10 +1026,39 @@ em { font-style: normal; color: var(--gold); }
 .inc-cta:hover { background: var(--gold-glow); border-color: var(--gold); }
 
 /* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .hero-content { grid-template-columns: 1fr; gap: 0; }
+  .hero-right { display: none; }
+  .status-pill { display: block; text-align: center; }
+  .hero-left { text-align: center; }
+  .hero-greeting { justify-content: center; margin-top: 10px; }
+}
+
 @media (max-width: 1024px) {
   :root { --gap: 88px; }
   .hero-content { grid-template-columns: 1fr; gap: 0; }
   .hero-right { display: none; }
+
+  /* 2×2 grid for all four hero CTAs on tablet/mobile */
+  .hero-ctas,
+  .hero-ctas-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  /* Normalise all four buttons to the same height and font */
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-glass,
+  .hero-ctas-mobile .btn-canvas {
+    padding: 13px 14px;
+    font-size: 13.5px;
+    white-space: nowrap;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
   /* Avatar appears on tablet + mobile */
   /* ── Mobile/tablet hero avatar ── */
@@ -1017,7 +1099,7 @@ em { font-style: normal; color: var(--gold); }
   .ha-chip-gold { color: var(--gold); font-size: 13px; }
   .ha-pulse {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0;
+    background: #22c55e; flex-shrink: 0;
     animation: pulse-dot 2s ease-in-out infinite;
   }
   .ha-stats {
@@ -1032,9 +1114,10 @@ em { font-style: normal; color: var(--gold); }
 
   /* Center all hero-left content to match centered avatar */
   .hero-left { text-align: center; }
+  .hero-greeting { margin-top: 8px; justify-content: center; }
   .hero-lead { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-impact-strip { max-width: 100%; margin-left: auto; margin-right: auto; align-items: flex-start; }
-  .hero-ctas { justify-content: center; }
+  /* hero-ctas is now a grid — no justify-content needed */
   .hero-socials { justify-content: center; }
 
   .about-layout     { grid-template-columns: 1fr; gap: 48px; }
@@ -1062,6 +1145,9 @@ em { font-style: normal; color: var(--gold); }
 }
 @media (max-width: 768px) {
   :root { --gap: 68px; }
+  /* Swap greetings — mobile version takes over */
+  .hero-greeting-web { display: none; }
+  .hero-greeting-mob { display: flex; justify-content: center; }
   .nav-inner { padding: 0 28px; gap: 12px; }
   .nav-links { display: none; }
   .nav-right { margin-left: auto; gap: 8px; }
@@ -1103,9 +1189,9 @@ em { font-style: normal; color: var(--gold); }
   .drawer-cv { padding: 14px 18px; }
   .nav-cv { padding: 5px 10px; font-size: 12px; }
   .container { padding: 0 18px; }
-  .hero-ctas { flex-direction: column; align-items: center; }
-  .hero-ctas .btn-primary,
-  .hero-ctas .btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+  /* hero-ctas is already a grid from the 1024px rule; just tighten gap on smallest screens */
+  .hero-ctas,
+  .hero-ctas-mobile { gap: 8px; }
   .tc-top { flex-direction: column; gap: 8px; }
   .tc-period { margin-left: 0; }
 }
