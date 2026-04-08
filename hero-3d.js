@@ -466,6 +466,51 @@
     Px(cx-5,fy-30,P.skinDk);
   }
 
+  /* ═══ DATA METRIC PARTICLES (typing phase) ══════════════════════════ */
+  const METRICS = ['+40%','97%','↑23%','14k+','×2.4','NPS82','0.3s','+12%','99%','↑UX','3.2s','sprint+'];
+  const dataParticles = [];
+  let lastMetricTick = 0;
+
+  function spawnDataParticle() {
+    const {x,y,w} = KBD;
+    dataParticles.push({
+      lbl:  METRICS[Math.floor(Math.random()*METRICS.length)],
+      x:    x + 2 + Math.random()*(w-4),
+      y:    y - 3,
+      vy:  -(0.22 + Math.random()*0.18),
+      vx:   (Math.random()-0.5)*0.14,
+      life: 1.0,
+      decay:0.009 + Math.random()*0.007,
+      col:  [P.gold,P.violet,P.blue,P.emerald][Math.floor(Math.random()*4)],
+    });
+  }
+
+  function updateDataParticles(isTyping) {
+    if (isTyping && dataParticles.length < 7 && (tick - lastMetricTick) >= 9) {
+      spawnDataParticle();
+      lastMetricTick = tick;
+    }
+    for (let i = dataParticles.length-1; i >= 0; i--) {
+      const p = dataParticles[i];
+      p.x += p.vx; p.y += p.vy;
+      p.life -= p.decay;
+      if (p.life <= 0) dataParticles.splice(i, 1);
+    }
+  }
+
+  function drawDataParticles() {
+    dataParticles.forEach(p => {
+      const a = Math.max(0, p.life);
+      g.globalAlpha = a * 0.92;
+      T(p.lbl, p.x|0, p.y|0, p.col, 3);
+      // tiny glow dot under the label
+      g.globalAlpha = a * 0.35;
+      g.fillStyle = p.col;
+      g.fillRect((p.x|0)-1, (p.y|0)+4, p.lbl.length*3.6|0, 1);
+      g.globalAlpha = 1;
+    });
+  }
+
   /* ═══ PARTICLES ══════════════════════════════════════════════════════ */
   const PARTS = Array.from({length:12},(_,i)=>({
     x:10+Math.random()*182, y:10+Math.random()*104,
@@ -602,6 +647,7 @@
     fcTick = (fcTick + 1) % FC_TOTAL;
     const [phase, pf] = getPhase(tick);
     if (phase===0) {
+      updateDataParticles(true);
       tTick++;
       if (tTick>=3) {
         tTick=0;
@@ -613,6 +659,7 @@
         }
       }
     }
+    if (phase!==0) updateDataParticles(false);
     if (phase===3) {
       boardProg=Math.min((pf/100)*BSEGS.length, BSEGS.length);
       if (pf>=108 && !newStickyShown) newStickyShown=true;
@@ -662,6 +709,7 @@
     /* Desk-top objects (on top of apron) */
     drawMonitor();
     drawKeyboard();
+    drawDataParticles();
     drawCoffee();
 
     /* Character if in front of desk (walked past left edge) */
