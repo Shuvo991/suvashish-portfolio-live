@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animation Test — Variant 3: Product Roadmap Flow</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #070709;
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .label {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: rgba(240,180,41,0.6);
+      z-index: 10; pointer-events: none; white-space: nowrap;
+    }
+    .hint {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; color: rgba(152,152,168,0.5); letter-spacing: .08em;
+      z-index: 10; pointer-events: none;
+    }
+    canvas { display: block; position: fixed; inset: 0; }
+  </style>
+</head>
+<body>
+  <span class="label">Variant 3 — Product Roadmap Flow · Move your mouse</span>
+  <span class="hint">Represents: Discovery → Build → Ship → Iterate</span>
+  <canvas id="c"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    /* ── Tokens ────────────────────────────────────────────── */
+    const GOLD   = 0xF0B429;
+    const VIOLET = 0xA78BFA;
+    const EMERALD= 0x34D399;
+    const BLUE   = 0x60A5FA;
+    const BG     = 0x070709;
+
+    /* ── Renderer ──────────────────────────────────────────── */
+    const canvas = document.getElementById('c');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(BG, 1);
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 11);
+
+    scene.fog = new THREE.FogExp2(BG, 0.038);
+
+    /* ── Lights ────────────────────────────────────────────── */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.08));
+    const goldPt = new THREE.PointLight(GOLD, 5, 18);
+    goldPt.position.set(0, 2, 5);
+    scene.add(goldPt);
+    const accentPt = new THREE.PointLight(VIOLET, 2, 14);
+    accentPt.position.set(-5, -2, 3);
+    scene.add(accentPt);
+
+    /* ── Pipeline stages ───────────────────────────────────── */
+    /* 5 stages arranged in a gentle arc: Discovery, Define, Build, Launch, Iterate */
+    const stages = [
+      { label: 'DISCOVER', color: BLUE,    x: -5.2 },
+      { label: 'DEFINE',   color: VIOLET,  x: -2.6 },
+      { label: 'BUILD',    color: GOLD,    x:  0   },
+      { label: 'LAUNCH',   color: EMERALD, x:  2.6 },
+      { label: 'ITERATE',  color: GOLD,    x:  5.2 },
+    ];
+
+    const stageGroup = new THREE.Group();
+    scene.add(stageGroup);
+
+    const stageMeshes = [];
+    const stageData   = [];
+
+    stages.forEach((s, i) => {
+      const y = Math.sin((i / (stages.length - 1)) * Math.PI) * 0.6 - 0.3;
+
+      /* Outer glow ring */
+      const ringGeo = new THREE.TorusGeometry(0.58, 0.045, 8, 40);
+      const ringMat = new THREE.MeshBasicMaterial({ color: s.color, transparent: true, opacity: 0.5 });
+      const ring    = new THREE.Mesh(ringGeo, ringMat);
+      ring.position.set(s.x, y, 0);
+      stageGroup.add(ring);
+
+      /* Inner solid node */
+      const nodeGeo = new THREE.SphereGeometry(0.28, 20, 20);
+      const nodeMat = new THREE.MeshStandardMaterial({
+        color: s.color,
+        emissive: new THREE.Color(s.color),
+        emissiveIntensity: 0.6,
+        roughness: 0.25,
+        metalness: 0.8,
+      });
+      const node = new THREE.Mesh(nodeGeo, nodeMat);
+      node.position.set(s.x, y, 0);
+      stageGroup.add(node);
+
+      /* Connecting pipe to next stage */
+      if (i < stages.length - 1) {
+        const nextX = stages[i + 1].x;
+        const nextY = Math.sin(((i + 1) / (stages.length - 1)) * Math.PI) * 0.6 - 0.3;
+        const dx = nextX - s.x, dy = nextY - y;
+        const length = Math.sqrt(dx * dx + dy * dy) - 0.6;
+        const pipeGeo = new THREE.CylinderGeometry(0.018, 0.018, length, 6);
+        const pipeMat = new THREE.MeshBasicMaterial({ color: 0x2a2a36, transparent: true, opacity: 0.7 });
+        const pipe    = new THREE.Mesh(pipeGeo, pipeMat);
+        pipe.position.set(s.x + dx / 2, y + dy / 2, 0);
+        pipe.rotation.z = Math.atan2(dy, dx) - Math.PI / 2;
+        stageGroup.add(pipe);
+      }
+
+      stageMeshes.push(node);
+      stageData.push({ x: s.x, y, phase: i * (Math.PI * 2 / stages.length), color: new THREE.Color(s.color), ring });
+    });
+
+    /* ── Pulse particles flowing along the pipeline ─────────── */
+    const PULSE_COUNT = 30;
+    const pulseMeshes = [];
+
+    for (let i = 0; i < PULSE_COUNT; i++) {
+      const geo = new THREE.SphereGeometry(0.04, 6, 6);
+      const mat = new THREE.MeshBasicMaterial({ color: GOLD, transparent: true, opacity: 0.0 });
+      const mesh = new THREE.Mesh(geo, mat);
+      scene.add(mesh);
+
+      pulseMeshes.push({
+        mesh,
+        progress: Math.random(),           // 0–1 along full pipeline
+        speed: 0.0012 + Math.random() * 0.002,
+        offset: (Math.random() - 0.5) * 0.15,
+      });
+    }
+
+    /* Compute position along pipeline arc given t [0,1] */
+    function pipelinePos(t) {
+      const raw = t * (stages.length - 1);
+      const seg = Math.floor(Math.min(raw, stages.length - 2));
+      const frac = raw - seg;
+
+      const ax = stages[seg].x;
+      const ay = Math.sin((seg / (stages.length - 1)) * Math.PI) * 0.6 - 0.3;
+      const bx = stages[seg + 1].x;
+      const by = Math.sin(((seg + 1) / (stages.length - 1)) * Math.PI) * 0.6 - 0.3;
+
+      return new THREE.Vector3(ax + (bx - ax) * frac, ay + (by - ay) * frac, 0);
+    }
+
+    /* ── Floating particles per stage ──────────────────────── */
+    const floatParticles = [];
+    stages.forEach((s, si) => {
+      const y = Math.sin((si / (stages.length - 1)) * Math.PI) * 0.6 - 0.3;
+      for (let i = 0; i < 22; i++) {
+        const geo = new THREE.SphereGeometry(0.022, 5, 5);
+        const mat = new THREE.MeshBasicMaterial({
+          color: s.color, transparent: true,
+          opacity: 0.25 + Math.random() * 0.35,
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        const angle = Math.random() * Math.PI * 2;
+        const r     = 0.55 + Math.random() * 1.1;
+        mesh.position.set(s.x + Math.cos(angle) * r, y + Math.sin(angle) * r, (Math.random() - 0.5) * 1.2);
+        scene.add(mesh);
+        floatParticles.push({
+          mesh,
+          cx: s.x, cy: y,
+          angle, r,
+          speed: (Math.random() - 0.5) * 0.008,
+          floatPhase: Math.random() * Math.PI * 2,
+        });
+      }
+    });
+
+    /* ── Mouse ─────────────────────────────────────────────── */
+    let mouseX = 0, mouseY = 0, camTX = 0, camTY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    /* ── Animation ─────────────────────────────────────────── */
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      /* Camera mouse follow */
+      camTX += (mouseX * 1.2 - camTX) * 0.035;
+      camTY += (-mouseY * 0.7 - camTY) * 0.035;
+      camera.position.x = camTX;
+      camera.position.y = camTY;
+      camera.lookAt(0, 0, 0);
+
+      /* Gentle group rotation tilt */
+      stageGroup.rotation.x = Math.sin(t * 0.15) * 0.06;
+      stageGroup.rotation.y = Math.sin(t * 0.08) * 0.04;
+
+      /* Pulse node rings */
+      stageData.forEach((s, i) => {
+        const pulse = 0.9 + Math.sin(t * 1.4 + s.phase) * 0.12;
+        s.ring.scale.setScalar(pulse);
+        s.ring.material.opacity = 0.3 + Math.sin(t * 1.4 + s.phase) * 0.25;
+        stageMeshes[i].material.emissiveIntensity = 0.45 + Math.sin(t * 1.8 + s.phase) * 0.3;
+      });
+
+      /* Move pulse particles along pipeline */
+      pulseMeshes.forEach((p) => {
+        p.progress += p.speed;
+        if (p.progress > 1) p.progress = 0;
+
+        const pos = pipelinePos(p.progress);
+        const fade = Math.sin(p.progress * Math.PI);
+
+        p.mesh.position.set(pos.x + p.offset, pos.y + p.offset * 0.4, pos.z + 0.2);
+        p.mesh.material.opacity = fade * 0.9;
+      });
+
+      /* Float particles orbit their stage */
+      floatParticles.forEach((fp) => {
+        fp.angle += fp.speed;
+        fp.mesh.position.x = fp.cx + Math.cos(fp.angle) * fp.r;
+        fp.mesh.position.y = fp.cy + Math.sin(fp.angle) * fp.r * 0.6 + Math.sin(t * 0.7 + fp.floatPhase) * 0.08;
+      });
+
+      /* Gold light orbit */
+      goldPt.position.x = Math.cos(t * 0.25) * 6;
+      goldPt.position.y = Math.sin(t * 0.18) * 2.5 + 1;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

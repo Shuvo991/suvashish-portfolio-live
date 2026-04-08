@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animation Test — Variant 5: Morphing Product Cube</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #070709;
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .label {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: rgba(240,180,41,0.6);
+      z-index: 10; pointer-events: none; white-space: nowrap;
+    }
+    .hint {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; color: rgba(152,152,168,0.5); letter-spacing: .08em;
+      z-index: 10; pointer-events: none;
+    }
+    canvas { display: block; position: fixed; inset: 0; }
+  </style>
+</head>
+<body>
+  <span class="label">Variant 5 — Morphing IT Product · Move your mouse</span>
+  <span class="hint">Represents: Constant transformation · Build → Measure → Learn</span>
+  <canvas id="c"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    /* ── Tokens ────────────────────────────────────────────── */
+    const GOLD    = 0xF0B429;
+    const VIOLET  = 0xA78BFA;
+    const BLUE    = 0x60A5FA;
+    const EMERALD = 0x34D399;
+    const BG      = 0x070709;
+
+    /* ── Renderer ──────────────────────────────────────────── */
+    const canvas = document.getElementById('c');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(BG, 1);
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 7);
+
+    scene.fog = new THREE.FogExp2(BG, 0.04);
+
+    /* ── Lights ────────────────────────────────────────────── */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.08));
+    const goldPt   = new THREE.PointLight(GOLD, 5, 15);
+    goldPt.position.set(2, 2, 4);
+    scene.add(goldPt);
+    const bluePt   = new THREE.PointLight(BLUE, 2, 12);
+    bluePt.position.set(-3, 0, 2);
+    scene.add(bluePt);
+    const violetPt = new THREE.PointLight(VIOLET, 1.5, 10);
+    violetPt.position.set(0, -3, -2);
+    scene.add(violetPt);
+
+    /* ── Central morphing shape ────────────────────────────── */
+    const coreGroup = new THREE.Group();
+    scene.add(coreGroup);
+
+    /* We use an IcosahedronGeometry and animate its vertices */
+    const morphGeo  = new THREE.IcosahedronGeometry(1.3, 3);
+    const morphMat  = new THREE.MeshStandardMaterial({
+      color: 0x0c0c18,
+      metalness: 0.92,
+      roughness: 0.08,
+      emissive: new THREE.Color(GOLD),
+      emissiveIntensity: 0.06,
+    });
+    const morphMesh = new THREE.Mesh(morphGeo, morphMat);
+    coreGroup.add(morphMesh);
+
+    /* Store original positions for morph */
+    const origPos = morphGeo.attributes.position.array.slice();
+    const vertCount = origPos.length / 3;
+    const noiseSeeds = [];
+    for (let i = 0; i < vertCount; i++) {
+      noiseSeeds.push({
+        ax: Math.random() * Math.PI * 2,
+        ay: Math.random() * Math.PI * 2,
+        az: Math.random() * Math.PI * 2,
+        freq: 0.3 + Math.random() * 0.5,
+        amp:  0.04 + Math.random() * 0.09,
+      });
+    }
+
+    /* Gold wireframe on top */
+    const wireGeo  = new THREE.IcosahedronGeometry(1.35, 1);
+    const wireMat  = new THREE.MeshBasicMaterial({
+      color: GOLD, wireframe: true, transparent: true, opacity: 0.28,
+    });
+    coreGroup.add(new THREE.Mesh(wireGeo, wireMat));
+
+    /* ── Orbiting mini-shapes representing product features ── */
+    const orbitals = [
+      { geo: new THREE.OctahedronGeometry(0.18, 0), color: GOLD,    r: 2.3, speed: 0.38, yOff: 0.3,  tiltX: 0.4  },
+      { geo: new THREE.TetrahedronGeometry(0.15, 0), color: BLUE,   r: 2.0, speed: -0.28, yOff: -0.4, tiltX: -0.5 },
+      { geo: new THREE.IcosahedronGeometry(0.13, 0), color: VIOLET, r: 2.5, speed: 0.22,  yOff: 0.1,  tiltX: 0.7  },
+      { geo: new THREE.OctahedronGeometry(0.14, 0), color: EMERALD, r: 1.9, speed: -0.45, yOff: -0.2, tiltX: -0.3 },
+      { geo: new THREE.TetrahedronGeometry(0.12, 0), color: GOLD,   r: 2.2, speed: 0.31,  yOff: 0.5,  tiltX: 0.6  },
+      { geo: new THREE.IcosahedronGeometry(0.1, 0),  color: BLUE,   r: 2.4, speed: -0.19, yOff: -0.3, tiltX: -0.6 },
+    ];
+
+    const orbitalMeshes = orbitals.map((o, i) => {
+      const mat  = new THREE.MeshStandardMaterial({
+        color: o.color, emissive: new THREE.Color(o.color),
+        emissiveIntensity: 0.7, roughness: 0.2, metalness: 0.8,
+      });
+      const mesh = new THREE.Mesh(o.geo, mat);
+      const initAngle = (i / orbitals.length) * Math.PI * 2;
+      mesh.position.set(
+        Math.cos(initAngle) * o.r,
+        o.yOff,
+        Math.sin(initAngle) * o.r,
+      );
+      scene.add(mesh);
+      return { mesh, ...o, angle: initAngle };
+    });
+
+    /* Orbit ring lines */
+    orbitals.forEach((o, i) => {
+      const pts = [];
+      for (let j = 0; j <= 80; j++) {
+        const a = (j / 80) * Math.PI * 2;
+        pts.push(new THREE.Vector3(Math.cos(a) * o.r, o.yOff, Math.sin(a) * o.r));
+      }
+      const ringGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      const ringMat = new THREE.LineBasicMaterial({
+        color: o.color, transparent: true, opacity: 0.1,
+      });
+      scene.add(new THREE.Line(ringGeo, ringMat));
+    });
+
+    /* ── Particle field ────────────────────────────────────── */
+    const PARTICLE_CT = 280;
+    const pPositions  = new Float32Array(PARTICLE_CT * 3);
+    const particleData = [];
+
+    for (let i = 0; i < PARTICLE_CT; i++) {
+      const r     = 1.5 + Math.random() * 3.5;
+      const theta = Math.random() * Math.PI * 2;
+      const phi   = Math.acos(2 * Math.random() - 1);
+      pPositions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+      pPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      pPositions[i * 3 + 2] = r * Math.cos(phi);
+      particleData.push({ r, theta, phi, speed: (Math.random() - 0.5) * 0.004, phase: Math.random() * Math.PI * 2 });
+    }
+
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3).setUsage(THREE.DynamicDrawUsage));
+    const pMat = new THREE.PointsMaterial({
+      color: GOLD, size: 0.028, transparent: true, opacity: 0.55, sizeAttenuation: true,
+    });
+    const particleSystem = new THREE.Points(pGeo, pMat);
+    coreGroup.add(particleSystem);
+
+    /* ── Mouse ─────────────────────────────────────────────── */
+    let mouseX = 0, mouseY = 0, camTX = 0, camTY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    /* ── Animation ─────────────────────────────────────────── */
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      /* Camera parallax */
+      camTX += (mouseX * 0.7 - camTX) * 0.04;
+      camTY += (-mouseY * 0.5 - camTY) * 0.04;
+      camera.position.x = camTX;
+      camera.position.y = camTY;
+      camera.lookAt(0, 0, 0);
+
+      /* Core rotation */
+      coreGroup.rotation.y = t * 0.14 + mouseX * 0.4;
+      coreGroup.rotation.x = Math.sin(t * 0.09) * 0.12 + mouseY * 0.2;
+
+      /* Morph vertices */
+      const pos = morphGeo.attributes.position;
+      for (let i = 0; i < vertCount; i++) {
+        const ox = origPos[i * 3], oy = origPos[i * 3 + 1], oz = origPos[i * 3 + 2];
+        const n  = noiseSeeds[i];
+        const displacement = Math.sin(t * n.freq + n.ax) * Math.cos(t * n.freq * 0.7 + n.ay) * n.amp;
+        const len = Math.sqrt(ox * ox + oy * oy + oz * oz);
+        const nx  = ox / len, ny = oy / len, nz = oz / len;
+        pos.setXYZ(i, ox + nx * displacement, oy + ny * displacement, oz + nz * displacement);
+      }
+      pos.needsUpdate = true;
+      morphGeo.computeVertexNormals();
+
+      /* Emissive pulse */
+      morphMat.emissiveIntensity = 0.04 + Math.sin(t * 1.1) * 0.03;
+
+      /* Orbital shapes */
+      orbitalMeshes.forEach((o) => {
+        o.angle += o.speed * 0.012;
+        o.mesh.position.x = Math.cos(o.angle) * o.r;
+        o.mesh.position.z = Math.sin(o.angle) * o.r;
+        o.mesh.position.y = o.yOff + Math.sin(t * 0.6 + o.angle) * 0.18;
+        o.mesh.rotation.x += 0.018;
+        o.mesh.rotation.y += 0.012;
+        o.mesh.material.emissiveIntensity = 0.5 + Math.sin(t * 1.5 + o.angle) * 0.3;
+      });
+
+      /* Particles drift */
+      const pAttr = pGeo.attributes.position;
+      particleData.forEach((p, i) => {
+        p.theta += p.speed;
+        const x = p.r * Math.sin(p.phi) * Math.cos(p.theta);
+        const y = p.r * Math.sin(p.phi) * Math.sin(p.theta) + Math.sin(t * 0.4 + p.phase) * 0.05;
+        const z = p.r * Math.cos(p.phi);
+        pAttr.setXYZ(i, x, y, z);
+      });
+      pAttr.needsUpdate = true;
+
+      /* Lights orbit */
+      goldPt.position.x = Math.cos(t * 0.32) * 4;
+      goldPt.position.y = Math.sin(t * 0.22) * 2 + 1;
+      bluePt.position.x = Math.cos(t * 0.2 + Math.PI) * 4;
+      bluePt.position.z = Math.sin(t * 0.2 + Math.PI) * 3;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

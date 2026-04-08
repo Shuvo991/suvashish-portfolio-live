@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Education Cannot Wait LMS | Suvashish Chakraborty</title>
   <meta name="description" content="Case study: Building an LMS that brought structured education to 2,000+ crisis-affected students worldwide." />
-  <link rel="canonical" href="https://suvashishchky.pro/ecw-lms" />
+  <link rel="canonical" href="https://suvashishchky.pro/ecw-lms.html" />
+  <meta name="author" content="Suvashish Chakraborty" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Education Cannot Wait LMS | Suvashish Chakraborty" />
+  <meta property="og:description" content="Building an offline-capable LMS for 2,000+ crisis-affected students across 5 countries — product strategy, stakeholder alignment, and a 35% engagement lift in humanitarian EdTech." />
+  <meta property="og:url" content="https://suvashishchky.pro/ecw-lms.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Suvashish Chakraborty — Portfolio" />
+  <meta property="og:image" content="https://suvashishchky.pro/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Education Cannot Wait LMS case study by Suvashish Chakraborty" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Suvashish Chakraborty" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@suvashishc" />
+  <meta name="twitter:creator" content="@suvashishc" />
+  <meta name="twitter:title" content="Education Cannot Wait LMS | Suvashish Chakraborty" />
+  <meta name="twitter:description" content="LMS for 2,000+ crisis-affected students across 5 countries. Offline-first, stakeholder-aligned, 35% engagement lift. Full case study." />
+  <meta name="twitter:image" content="https://suvashishchky.pro/og-preview.png" />
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Education Cannot Wait LMS",
+    "description": "Building an LMS for 2,000+ crisis-affected students across 5 countries with a 35% engagement lift.",
+    "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
+    "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
+    "url": "https://suvashishchky.pro/ecw-lms.html",
+    "dateModified": "2026-04-08",
+    "about": { "@type": "Organization", "name": "Save the Children International", "url": "https://savethechildren.net" }
+  }
+  </script>
+
   <link rel="icon" href="favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -127,6 +166,63 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- THINKING / DECISIONS -->
+<section class="cs-thinking">
+  <div class="container">
+    <div class="cs-section-label">The Thinking</div>
+    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">The technical problem was solvable. The hard part was deciding which constraints were non-negotiable and which were assumptions masquerading as requirements.</p>
+
+    <div class="cs-think-grid">
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="cs-think-title">How I found the real problems</h3>
+        <p class="cs-think-body">Discovery happened through two channels. First, structured interviews with country-level education coordinators — each running their own context with different infrastructure and different definitions of what "accessible" meant. Second, I reviewed the previous tool the team had attempted to use: a generic LMS not designed for low-connectivity environments. Rather than studying what the new tool should do, I mapped precisely where the old one had failed and why. The pattern was consistent: connectivity assumptions and content language rigidity were the two root causes. Every other complaint — slow performance, confusing navigation, lack of parental controls — was downstream of those two. That framing dictated the entire Phase 1 scope.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <h3 class="cs-think-title">Why offline came before everything else</h3>
+        <p class="cs-think-body">The non-negotiable was offline capability. Without it, the platform simply could not function in the majority of deployment contexts — connectivity was intermittent at best in several of the target regions. That single constraint shaped the entire Phase 1 scope: we built around 3 content types that worked offline (text, audio, interactive radio) and deferred video and live sessions to Phase 2. This created friction with some stakeholders who wanted richer media immediately. The argument I made was that a video-enabled platform nobody could access was not better than a text-and-radio platform that worked reliably. Phase 2 could add richness; Phase 1 had to guarantee access.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">The architecture tradeoff no one wanted to have</h3>
+        <p class="cs-think-body">The biggest decision was single platform versus per-country deployments. A per-country architecture would have been faster to ship for each individual country team and allowed far more customization. The case for it was real. But it would have created 5 separate maintenance burdens, 5 different version histories, and — critically — would have made consolidated reporting to donors impossible. Education Cannot Wait required unified impact reporting across all regions. That requirement alone broke the per-country argument. We chose a single platform with a localization layer, accepting meaningfully higher upfront complexity and a longer initial build in exchange for long-term sustainability and the donor reporting capability that kept the program funded.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">How engagement was defined and measured</h3>
+        <p class="cs-think-body">Engagement in this context required a non-standard definition. Login frequency — the default metric — would have been meaningless because students accessed the platform on shared devices in scheduled lab sessions rather than on demand. A high login count could simply mean students were logging in and out of the same session. Instead, engagement was measured through module completion rate (what percentage of students who started a module finished it) and 30-day return rate (whether students came back after their first session). Both metrics were tracked per country cohort, which allowed us to identify which regions had adoption challenges and iterate on content and UX independently rather than treating all 5 countries as a single population.</p>
+      </div>
+
+    </div>
+
+    <div class="cs-retro glass-card">
+      <div class="cs-retro-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+      </div>
+      <div class="cs-retro-body">
+        <div class="cs-section-label">Reflection</div>
+        <h3 class="cs-retro-title">What I'd do differently</h3>
+        <p class="cs-think-body">I would have involved in-country teachers in the design process earlier — before requirements were finalized, not during UAT. The feedback that surfaced during user acceptance testing included real UX issues that cost us a full sprint to address: content navigation patterns that made sense to a product team but were confusing to teachers managing a class of 30 children on shared tablets. Those issues were cheap to fix at the wireframe stage and expensive at the build stage. The constraint was access — coordinating co-design sessions across 5 countries in humanitarian contexts is genuinely difficult. But the lesson was clear: if you can find any way to get field users into the design process before the prototype is baked, the cost is always worth it.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 

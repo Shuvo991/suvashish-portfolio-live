@@ -885,6 +885,18 @@ em { font-style: normal; color: var(--gold); }
 .cs-step-text { font-size: 14.5px; color: var(--t2); line-height: 1.7; }
 .cs-step-text strong { color: var(--t1); font-weight: 600; }
 
+/* ── Case Study: Thinking Section ──────────────────────────────── */
+.cs-thinking { padding: 72px 0; }
+.cs-think-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; margin-bottom: 20px; }
+.cs-think-card { padding: 26px 28px; border-radius: 18px; display: flex; flex-direction: column; gap: 14px; }
+.cs-think-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(240,180,41,.1); border: 1px solid rgba(240,180,41,.2); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
+.cs-think-title { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--t1); letter-spacing: -.02em; margin: 0; line-height: 1.3; }
+.cs-think-body { font-size: 14.5px; color: var(--t2); line-height: 1.8; margin: 0; }
+.cs-retro { padding: 30px 32px; border-radius: 18px; display: flex; gap: 24px; align-items: flex-start; border-color: rgba(167,139,250,.22) !important; background: rgba(167,139,250,.04) !important; }
+.cs-retro-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.28); display: flex; align-items: center; justify-content: center; color: #A78BFA; flex-shrink: 0; margin-top: 2px; }
+.cs-retro-body { flex: 1; }
+.cs-retro-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--t1); margin: 8px 0 12px; letter-spacing: -.02em; line-height: 1.25; }
+
 .cs-screenshots { padding: 64px 0; background: var(--bg-2); }
 .ss-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
 .ss-grid.three { grid-template-columns: repeat(3, 1fr); }
@@ -1178,6 +1190,8 @@ em { font-style: normal; color: var(--gold); }
   .ss-grid { grid-template-columns: 1fr; }
   .ss-grid.three { grid-template-columns: 1fr; }
   .outcomes-grid { grid-template-columns: 1fr; }
+  .cs-think-grid { grid-template-columns: 1fr; }
+  .cs-retro { flex-direction: column; gap: 16px; }
   .timeline { padding-left: 22px; }
   .tl-dot { left: -28px; }
   .cs-nav-inner { flex-direction: column; gap: 20px; text-align: center; }

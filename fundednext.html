@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FundedNext Platform Transformation | Suvashish Chakraborty — Product Manager</title>
   <meta name="description" content="Case study: How Suvashish led a 20-person team to deliver 40%+ efficiency gains, 35% engagement lift, and 18.5% support reduction at FundedNext — a global prop-trading platform." />
-  <link rel="canonical" href="https://suvashishchky.pro/fundednext" />
+  <link rel="canonical" href="https://suvashishchky.pro/fundednext.html" />
+  <meta name="author" content="Suvashish Chakraborty" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FundedNext Platform Transformation | Suvashish Chakraborty" />
+  <meta property="og:description" content="How I led a 20-person team to rebuild a global prop-trading platform — 40%+ efficiency gains, 35% engagement lift, and 18.5% support reduction through 8 targeted product decisions." />
+  <meta property="og:url" content="https://suvashishchky.pro/fundednext.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Suvashish Chakraborty — Portfolio" />
+  <meta property="og:image" content="https://suvashishchky.pro/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="FundedNext Platform Transformation case study by Suvashish Chakraborty" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Suvashish Chakraborty" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@suvashishc" />
+  <meta name="twitter:creator" content="@suvashishc" />
+  <meta name="twitter:title" content="FundedNext Platform Transformation | Suvashish Chakraborty" />
+  <meta name="twitter:description" content="20-person team, 8 product decisions, 40%+ efficiency gains. Full case study on rebuilding a global prop-trading platform." />
+  <meta name="twitter:image" content="https://suvashishchky.pro/og-preview.png" />
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "FundedNext Platform Transformation",
+    "description": "How Suvashish Chakraborty led a 20-person team to deliver 40%+ efficiency gains, 35% engagement lift, and 18.5% support reduction at FundedNext.",
+    "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
+    "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
+    "url": "https://suvashishchky.pro/fundednext.html",
+    "dateModified": "2026-04-08",
+    "about": { "@type": "Organization", "name": "FundedNext", "url": "https://fundednext.com" }
+  }
+  </script>
+
   <link rel="icon" href="favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -141,6 +180,63 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- THINKING / DECISIONS -->
+<section class="cs-thinking">
+  <div class="container">
+    <div class="cs-section-label">The Thinking</div>
+    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">Behind every shipped initiative was a specific signal, a prioritization call, and something that got cut. This is the layer of decision-making that isn't visible in the outcome numbers.</p>
+
+    <div class="cs-think-grid">
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="cs-think-title">How I found the problems</h3>
+        <p class="cs-think-body">Discovery started by building visibility that didn't exist yet. I used n8n to pull all support tickets directly from Intercom, then piped that data into Power BI to tag and categorise tickets by issue type and root cause. Once the pipeline was live and connected to the resolution tracking layer — so tickets could be checked post-closure to confirm the fix actually held — the pattern was immediate: roughly 18% of tickets clustered around a single theme, identity and account access. That single insight, surfaced from structured data rather than intuition, dictated the priority order before I'd written a single PRD. The automation opportunity surfaced differently — through a time audit with the ops team. Mapping 5 high-volume manual workflows revealed that none of them required human judgment; they were just bottlenecks waiting to be eliminated.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <h3 class="cs-think-title">Why this order — not another</h3>
+        <p class="cs-think-body">I used an impact/reversibility matrix rather than pure RICE scoring. The automation work ranked first not because it had the highest user-facing impact, but because it was blocking the whole team's velocity — 20 people were slowed by manual handoffs that could be eliminated. Sequencing it first meant everything else could ship faster. The dashboard revamp, despite being the most visible, was deliberately deprioritized in Phase 1. UI changes without first improving the underlying data and notification layer would have just relocated the friction rather than resolved it. Compliance came mid-sequence because it needed the notification infrastructure to function — you can't enforce trading rules if traders have no visibility into their status.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">The hardest tradeoff</h3>
+        <p class="cs-think-body">The 2FA architecture decision was the clearest example of a tradeoff that required pushing back on a stakeholder default. The compliance team's position was universal 2FA for all users — removing it from free user onboarding looked like a security regression. The argument I made was that 18% of support volume was a measurable business cost of that policy, and that the real security requirement was for funded accounts (where real capital is involved), not free users exploring the platform. The resolution was tiered enforcement: no 2FA until KYC completion or 14 days of activity, at which point it's enforced. This preserved the requirement where it actually mattered while eliminating the friction where it was doing no useful work.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">How success was measured</h3>
+        <p class="cs-think-body">Efficiency was measured by tracking task completion time for the 5 highest-volume manual workflows before and after automation, then calculating aggregate time saved per week across the team. The 40%+ figure is the reduction in time-on-task across those workflows, validated over 4 weeks post-launch. Support volume reduction used the n8n-to-Power BI pipeline I'd built for discovery — the same infrastructure that pulled tickets from Intercom now tracked resolution outcomes, so we could confirm whether a closed ticket on the same root cause reopened within 30 days. That post-resolution tracking is what separated the 18.5% figure from a raw ticket count reduction: it measured durable resolution, not just closure. Engagement was tracked through notification open rates and 30-day session return rate against the equivalent pre-launch window.</p>
+      </div>
+
+    </div>
+
+    <div class="cs-retro glass-card">
+      <div class="cs-retro-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+      </div>
+      <div class="cs-retro-body">
+        <div class="cs-section-label">Reflection</div>
+        <h3 class="cs-retro-title">What I'd do differently</h3>
+        <p class="cs-think-body">I'd have shipped a smaller notification MVP first — just account status events — before building the full notification system. I had strong confidence in the demand signal from user research, and that confidence was justified. But launching all notification categories simultaneously made it genuinely difficult to attribute the 35% engagement lift to specific event types. A phased rollout would have given cleaner data on which notifications were driving returns versus which were noise, and allowed us to tune the system before it reached every active trader. The outcome number would have been the same, but the learning would have been sharper.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 

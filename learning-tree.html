@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Tree Global LMS | Suvashish Chakraborty</title>
   <meta name="description" content="Case study: A multi-country learning platform reaching 1,200+ children across Guatemala, Colombia, Ukraine, Poland, and Pakistan." />
-  <link rel="canonical" href="https://suvashishchky.pro/learning-tree" />
+  <link rel="canonical" href="https://suvashishchky.pro/learning-tree.html" />
+  <meta name="author" content="Suvashish Chakraborty" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Learning Tree Global LMS | Suvashish Chakraborty" />
+  <meta property="og:description" content="Multi-country LMS reaching 1,200+ children across Guatemala, Colombia, Ukraine, Poland, and Pakistan — localization-first architecture, offline modules, 30% engagement lift in early adoption." />
+  <meta property="og:url" content="https://suvashishchky.pro/learning-tree.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Suvashish Chakraborty — Portfolio" />
+  <meta property="og:image" content="https://suvashishchky.pro/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Learning Tree Global LMS case study by Suvashish Chakraborty" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Suvashish Chakraborty" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@suvashishc" />
+  <meta name="twitter:creator" content="@suvashishc" />
+  <meta name="twitter:title" content="Learning Tree Global LMS | Suvashish Chakraborty" />
+  <meta name="twitter:description" content="One LMS, 5 countries, 1,200+ children. Localization strategy, offline-first architecture, 30% engagement lift. Full case study." />
+  <meta name="twitter:image" content="https://suvashishchky.pro/og-preview.png" />
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Learning Tree Global LMS",
+    "description": "Multi-country LMS reaching 1,200+ children across 5 countries with localization-first architecture and 30% engagement lift.",
+    "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
+    "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
+    "url": "https://suvashishchky.pro/learning-tree.html",
+    "dateModified": "2026-04-08",
+    "about": { "@type": "Organization", "name": "Save the Children International", "url": "https://savethechildren.net" }
+  }
+  </script>
+
   <link rel="icon" href="favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -127,6 +166,63 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- THINKING / DECISIONS -->
+<section class="cs-thinking">
+  <div class="container">
+    <div class="cs-section-label">The Thinking</div>
+    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">Five countries meant five different opinions on what the platform should be. The real product work was deciding which differences were legitimate requirements and which were preferences that would fracture the architecture.</p>
+
+    <div class="cs-think-grid">
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="cs-think-title">How I found the real constraints</h3>
+        <p class="cs-think-body">Country coordinator interviews across all 5 regions were the primary input, and the pattern that emerged was a tension between local relevance and platform consistency. Every country team wanted a different product. Guatemala wanted gamification. Ukraine needed offline-first because of power instability. Pakistan required strict content controls. Colombia wanted bilingual support for Spanish and indigenous languages. Poland wanted parent-facing progress reports. The architecture question wasn't "what features to build" — it was "what level of customization can a single platform support without fracturing into 5 unmaintainable deployments?" Framing it that way transformed requirements gathering from a feature wishlist exercise into a structural decision conversation.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <h3 class="cs-think-title">How I cut the feature list</h3>
+        <p class="cs-think-body">I ran a feature matrix evaluating every requested capability against three dimensions: how many countries needed it, how easily it could be built in a localizable way without branching the codebase, and what the expected impact on learning outcomes was based on the coordinator interviews. Offline module support won on all three axes — every country needed it, it was architecturally clean, and coordinators consistently ranked access reliability as the highest priority. Gamification scored high on engagement but low on localizability — different cultures respond to competitive mechanics differently, and building a configurable version in Phase 1 was too expensive. It became a Phase 2 consideration. Parental controls were required in two markets and neutral in the others, so they went into Phase 1 as a configurable option with a sensible default.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">The content governance tradeoff</h3>
+        <p class="cs-think-body">The hardest stakeholder tension was content control. Country teams wanted direct CMS access to self-manage their content — faster for them, less coordination overhead, and a fair request given they knew their local curricula better than anyone at the central level. Giving them that access unmediated created a governance problem: a content error in Pakistan — factually incorrect material or age-inappropriate content — could go live without any review and reach hundreds of children before it was caught. In a humanitarian education context, that was an unacceptable risk to the programme's standing with donors and the communities it served. The resolution was a staged publishing workflow: country-level draft, central review, then publish. Country teams pushed back on the delay. The tradeoff held. One incident of inappropriate content in a crisis education programme would have damaged the programme's credibility with funders and communities far more than the inconvenience of a review step.</p>
+      </div>
+
+      <div class="cs-think-card glass-card">
+        <div class="cs-think-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="cs-think-title">How engagement was tracked per country</h3>
+        <p class="cs-think-body">Measuring engagement across 5 countries required resisting the instinct to aggregate everything into a single number. Each country had a different access model — some students used the platform in supervised lab sessions, others on shared family devices at home. A single global engagement metric would have obscured those differences. Instead, I tracked module completion rate and session return rate per country cohort, which allowed the team to identify quickly that Ukraine's early adoption numbers were lower than other countries — not because of content quality, but because power outages were interrupting sessions at inconsistent points. That country-level signal led directly to a specific UX fix: auto-saving progress every 2 minutes and resuming from the exact point of interruption, which brought Ukraine's completion rate in line with the other cohorts.</p>
+      </div>
+
+    </div>
+
+    <div class="cs-retro glass-card">
+      <div class="cs-retro-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+      </div>
+      <div class="cs-retro-body">
+        <div class="cs-section-label">Reflection</div>
+        <h3 class="cs-retro-title">What I'd do differently</h3>
+        <p class="cs-think-body">I'd invest more time earlier in building async communication rituals with the country teams. The 5-country coordination was challenging throughout, and the root cause wasn't willingness — every country coordinator was engaged and invested. It was rhythm. Each team had a different review cadence, different response windows, and different escalation paths. We lost multiple weeks across the project waiting on feedback that would have arrived faster with clearer agreements at the start: defined turnaround times for reviews, a single channel per decision type, and explicit escalation paths when a response deadline was missed. These aren't product decisions — they're delivery infrastructure. Setting them up in week one instead of discovering the need for them in week six would have been worth more than almost any scope or architecture decision we made.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
