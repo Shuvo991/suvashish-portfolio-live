@@ -800,6 +800,10 @@ em { font-style: normal; color: var(--gold); }
 .tc-info { flex: 1; }
 .tc-role { font-family: var(--display); font-size: 17px; font-weight: 700; color: var(--t1); letter-spacing: -.02em; }
 .tc-company { font-size: 13px; color: var(--t2); margin-top: 2px; }
+.tc-company a, .arc-company a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, opacity .2s; }
+.tc-company a:hover, .arc-company a:hover { border-bottom-color: var(--gold); opacity: .8; }
+.tl-card[data-href] { cursor: pointer; }
+.tl-card[data-href]:hover { transform: translateY(-2px); }
 .tc-period { font-family: var(--mono); font-size: 11px; color: var(--t3); white-space: nowrap; margin-left: auto; }
 .tc-desc { font-size: 14px; color: var(--t2); line-height: 1.7; margin-bottom: 14px; }
 .tc-bullets { display: flex; flex-direction: column; gap: 7px; }

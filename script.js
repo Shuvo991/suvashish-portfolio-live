@@ -518,6 +518,15 @@
         window.location.href = link.href;
       });
     });
+
+    // Timeline org cards — whole card clickable
+    document.querySelectorAll('.tl-card[data-href]').forEach(card => {
+      const url = card.dataset.href;
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('a, button')) return;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    });
   }
 
   function initBackToTop() {
