@@ -481,13 +481,24 @@
     .fn-feature-row { grid-template-columns: 1fr; gap: 32px; }
     .fn-radar-inner { grid-template-columns: 1fr; gap: 40px; }
     .cs-think-cards { grid-template-columns: 1fr; }
+    .fn-flow-node { white-space: normal; word-break: break-word; }
+    .fn-impact { flex-wrap: wrap; }
+    .fn-impact-blue { flex-wrap: wrap; }
   }
 
   @media (max-width: 680px) {
+    .fn-section, .fn-section-alt { padding: 52px 0; }
     .fn-ba-wrap { grid-template-columns: 1fr; gap: 8px; }
     .fn-ba-arrow { display: none; }
     .fn-ba-before { margin-bottom: 8px; }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-comp-split { grid-template-columns: 1fr; }
+    .fn-comp-divider { display: none; }
+    .fn-distrib-split { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .fn-section, .fn-section-alt { padding: 40px 0; }
   }
 
   /* ── Theme Support ──────────────────────────────────────────── */
