@@ -304,55 +304,16 @@
     <div class="eyebrow reveal">About Me</div>
     <div class="about-layout">
 
-      <!-- Left: narrative text -->
+      <!-- Left col, row 1: narrative text only -->
       <div class="about-text reveal">
         <h2 class="section-title">I find the story in the data. <span class="gold-text">Then I ship the solution.</span></h2>
         <p class="body-text">I'm a PM II with 6+ years owning products across fintech, SaaS, and enterprise tech. My background spans software engineering, global humanitarian delivery, and platform-scale product leadership. That range gives me an unusually broad lens for high-stakes, complex problem spaces.</p>
         <p class="body-text">At <span class="gold-text">FundedNext</span>, I lead a 20-person cross-functional team across engineering, design, QA, and compliance. I own the full platform roadmap for a prop-trading system managing 10,000+ funded accounts with real capital at stake, daily payout flows, and multi-jurisdiction compliance requirements. Key results: 40% operational efficiency gain across payout and account processing, 35% trader engagement lift, and 18.5% of support volume eliminated through a single flow redesign.</p>
         <p class="body-text">Before fintech, I spent three years at <span class="gold-text">Save the Children International</span> leading product and delivery for global EdTech programs: LMS platforms and enterprise tools reaching thousands of users across 7+ countries, built for real scale under constrained resources.</p>
-
-        <div class="about-stats">
-          <div class="about-stat glass-card">
-            <span class="as-val" data-count="6" data-suffix="+">6+</span>
-            <span class="as-lbl">Years Experience</span>
-          </div>
-          <div class="about-stat glass-card">
-            <span class="as-val" data-count="14000" data-suffix="+">14,000+</span>
-            <span class="as-lbl">Users Served</span>
-          </div>
-          <div class="about-stat glass-card">
-            <span class="as-val" data-count="7" data-suffix="+">7+</span>
-            <span class="as-lbl">Countries</span>
-          </div>
-        </div>
-
-        <!-- Education + Location row -->
-        <div class="about-info-row">
-          <div class="about-info-card glass-card">
-            <img src="logos/Monash-1.webp" alt="Monash University" class="ai-logo" loading="lazy" />
-            <div>
-              <span class="ai-label">Education</span>
-              <span class="ai-value">B.Sc. Computer Science</span>
-              <span class="ai-sub">Monash University Malaysia · 2015–2019</span>
-            </div>
-          </div>
-          <div class="about-info-card glass-card">
-            <div class="ai-pin" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <span class="ai-label">Based In</span>
-              <span class="ai-value">Dhaka, Bangladesh</span>
-              <span class="ai-sub">Open to remote &amp; relocation</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Right: photo stacked above bento stats -->
+      <!-- Right col, row 1: photo only -->
       <div class="about-right-col">
-
         <div class="about-photo reveal">
           <div class="about-photo-glow" aria-hidden="true"></div>
           <div class="about-photo-frame">
@@ -365,21 +326,76 @@
             />
           </div>
         </div>
+      </div><!-- /about-right-col -->
 
-        <!-- Current Role — full-width card, prominent -->
-        <div class="about-role-card glass-card reveal">
-          <div class="arc-top">
-            <img src="logos/nextventures_logo.webp" alt="Next Ventures" class="arc-logo" loading="lazy" />
-            <span class="arc-eyebrow">Current Position</span>
+      <!-- Left col, row 2: Education + Location bento cards -->
+      <div class="about-info-row">
+
+        <!-- Education card -->
+        <div class="about-info-card glass-card">
+          <div class="ai-world-map" aria-hidden="true">
+            <svg viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <polygon points="16,8 38,5 58,8 72,18 78,30 76,44 68,56 52,62 36,58 22,46 14,30 14,16" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="42,66 58,64 68,70 72,82 66,96 52,100 40,92 36,78" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="106,8 122,6 130,12 128,24 118,28 106,26 100,18" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="106,30 132,28 140,40 138,60 128,78 114,84 102,76 96,58 100,40" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="128,6 200,4 218,12 220,28 212,46 200,58 178,62 158,58 140,50 128,36 124,20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="186,68 212,66 220,76 218,90 202,96 184,92 178,80" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <!-- Malaysia pin (4.2°N, 101.9°E) → x≈203, y≈48 -->
+              <circle cx="203" cy="48" r="10" fill="rgba(240,180,41,0.12)"/>
+              <circle cx="203" cy="48" r="5" fill="rgba(240,180,41,0.25)"/>
+              <circle cx="203" cy="48" r="2.5" fill="rgba(240,180,41,0.95)"/>
+            </svg>
+            <div class="ai-map-fade"></div>
           </div>
-          <p class="arc-title">Product Manager II</p>
-          <p class="arc-company"><a href="https://nextventures.io" target="_blank" rel="noopener noreferrer">Next Ventures</a> · FundedNext</p>
-          <div class="arc-pulse">
-            <span class="pulse-wrap"><span class="pulse-ring"></span><span class="pulse-core"></span></span>
-            <span class="arc-status">Active</span>
+          <div class="ai-card-body">
+            <img src="logos/Monash-1.webp" alt="Monash University" class="ai-logo" loading="lazy" />
+            <span class="ai-label">Education</span>
+            <span class="ai-value">B.Sc. Computer Science</span>
+            <span class="ai-sub">Monash University Malaysia · 2015–2019</span>
           </div>
         </div>
-      </div><!-- /about-right-col -->
+
+        <!-- Based In card -->
+        <div class="about-info-card glass-card">
+          <div class="ai-world-map" aria-hidden="true">
+            <svg viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <polygon points="16,8 38,5 58,8 72,18 78,30 76,44 68,56 52,62 36,58 22,46 14,30 14,16" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="42,66 58,64 68,70 72,82 66,96 52,100 40,92 36,78" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="106,8 122,6 130,12 128,24 118,28 106,26 100,18" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="106,30 132,28 140,40 138,60 128,78 114,84 102,76 96,58 100,40" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="128,6 200,4 218,12 220,28 212,46 200,58 178,62 158,58 140,50 128,36 124,20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <polygon points="186,68 212,66 220,76 218,90 202,96 184,92 178,80" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
+              <!-- Dhaka pin (23.7°N, 90.4°E) → x≈195, y≈37 -->
+              <circle cx="195" cy="37" r="10" fill="rgba(240,180,41,0.12)"/>
+              <circle cx="195" cy="37" r="5" fill="rgba(240,180,41,0.25)"/>
+              <circle cx="195" cy="37" r="2.5" fill="rgba(240,180,41,0.95)"/>
+            </svg>
+            <div class="ai-map-fade"></div>
+          </div>
+          <div class="ai-card-body">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="ai-label">Based In</span>
+            <span class="ai-value">Dhaka, Bangladesh</span>
+            <span class="ai-sub">Open to remote &amp; relocation</span>
+          </div>
+        </div>
+
+      </div><!-- /about-info-row -->
+
+      <!-- Right col, row 2: Current role card — aligns with bento row above -->
+      <div class="about-role-card glass-card reveal">
+        <div class="arc-top">
+          <img src="logos/nextventures_logo.webp" alt="Next Ventures" class="arc-logo" loading="lazy" />
+          <span class="arc-eyebrow">Current Position</span>
+        </div>
+        <p class="arc-title">Product Manager II</p>
+        <p class="arc-company"><a href="https://nextventures.io" target="_blank" rel="noopener noreferrer">Next Ventures</a> · FundedNext</p>
+        <div class="arc-pulse">
+          <span class="pulse-wrap"><span class="pulse-ring"></span><span class="pulse-core"></span></span>
+          <span class="arc-status">Active</span>
+        </div>
+      </div><!-- /about-role-card -->
 
     </div><!-- /about-layout -->
   </div>
