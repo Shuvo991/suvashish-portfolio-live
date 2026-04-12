@@ -40,7 +40,7 @@
     "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
     "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
     "url": "https://suvashishchky.pro/fundednext.html",
-    "dateModified": "2026-04-08",
+    "dateModified": "2026-04-12",
     "about": { "@type": "Organization", "name": "FundedNext", "url": "https://fundednext.com" }
   }
   </script>
@@ -49,7 +49,6 @@
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-  <!-- Security -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -60,10 +59,651 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
-  <!-- Theme: prevent flash of wrong theme -->
   <script>(function(){var t=localStorage.getItem('sc-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}})()</script>
-
   <link rel="stylesheet" href="styles.css?v=2" />
+
+  <style>
+  /* ================================================================
+     FundedNext Case Study — Enhanced Visual Layer
+     All new classes are prefixed fn- to avoid conflicts with styles.css
+     ================================================================ */
+
+  /* ── Shared Section Spacing ─────────────────────────────── */
+  .fn-section  { padding: 76px 0; }
+  .fn-section-alt { padding: 76px 0; background: var(--bg-2); }
+
+  /* ── Feature Item (each shipped thing) ──────────────────── */
+  .fn-feature-item {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .fn-feature-item:last-child { border-bottom: none; }
+
+  .fn-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .fn-feature-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--t1);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+
+  .fn-feature-row {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 52px;
+    align-items: start;
+  }
+
+  /* ── Status Tags ─────────────────────────────────────────── */
+  .fn-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .fn-tag::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fn-tag-shipped {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    color: var(--emerald);
+  }
+  .fn-tag-shipped::before { background: var(--emerald); }
+
+  .fn-tag-progress {
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    color: var(--blue);
+  }
+  .fn-tag-progress::before {
+    background: var(--blue);
+    animation: fn-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes fn-blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+  /* ── Before / After Boxes ────────────────────────────────── */
+  .fn-ba-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .fn-ba-box { padding: 14px 16px; border-radius: 12px; }
+  .fn-ba-before {
+    background: rgba(251, 113, 133, 0.05);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+  }
+  .fn-ba-after {
+    background: rgba(52, 211, 153, 0.05);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+  .fn-ba-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .fn-ba-label-before { color: var(--rose); }
+  .fn-ba-label-after  { color: var(--emerald); }
+  .fn-ba-text { font-size: 13.5px; color: var(--t2); line-height: 1.6; }
+  .fn-ba-arrow { font-size: 18px; color: var(--gold); text-align: center; flex-shrink: 0; }
+
+  /* ── Impact Pill ─────────────────────────────────────────── */
+  .fn-impact {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(240, 180, 41, 0.22);
+    border-radius: 10px;
+    margin-top: 16px;
+  }
+  .fn-impact-num {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .fn-impact-text { font-size: 13px; color: var(--t2); }
+
+  .fn-impact-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 10px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ── Radar Chart Section ─────────────────────────────────── */
+  .fn-radar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .fn-radar-canvas-wrap { position: relative; }
+  .fn-radar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .fn-radar-legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .fn-radar-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .fn-radar-legend-label { font-size: 14px; color: var(--t2); line-height: 1.55; }
+  .fn-radar-legend-label strong { display: block; color: var(--t1); font-size: 15px; margin-bottom: 2px; }
+
+  .fn-radar-axes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .fn-radar-axis-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+  }
+  .fn-radar-axis-name { font-size: 12px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
+  .fn-radar-axis-bar { height: 4px; border-radius: 4px; background: var(--bg-3); margin-bottom: 3px; position: relative; overflow: hidden; }
+  .fn-radar-axis-fill-before {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(251, 113, 133, 0.7);
+  }
+  .fn-radar-axis-fill-after {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(240, 180, 41, 0.85);
+  }
+  .fn-radar-axis-vals { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; }
+  .fn-radar-axis-val-before { color: var(--rose); }
+  .fn-radar-axis-val-after  { color: var(--gold); }
+
+  /* ── Inline Visual: Flow Diagram ─────────────────────────── */
+  .fn-flow {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-flow-section-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-flow-section-label-red   { color: var(--rose); }
+  .fn-flow-section-label-green { color: var(--emerald); }
+  .fn-flow-divider { height: 1px; background: var(--glass-border); margin: 12px 0; }
+  .fn-flow-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .fn-flow-node {
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .fn-fn-red   { background: rgba(251,113,133,0.1); border: 1px solid rgba(251,113,133,0.22); color: var(--rose); }
+  .fn-fn-green { background: rgba(52,211,153,0.1);  border: 1px solid rgba(52,211,153,0.22);  color: var(--emerald); }
+  .fn-fn-gold  { background: var(--gold-dim);       border: 1px solid rgba(240,180,41,0.22);  color: var(--gold); }
+  .fn-fn-blue  { background: var(--blue-dim);       border: 1px solid rgba(96,165,250,0.22);  color: var(--blue); }
+  .fn-fn-muted { background: var(--glass-bg-2);     border: 1px solid var(--glass-border);    color: var(--t2); }
+  .fn-flow-arrow { color: var(--t3); font-size: 11px; flex-shrink: 0; }
+
+  /* ── Inline Visual: Notification Grid ───────────────────── */
+  .fn-notif-wrap {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-notif-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 12px;
+  }
+  .fn-notif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fn-notif-item {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+  }
+  .fn-notif-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+  .fn-notif-name { font-size: 12px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+  .fn-notif-desc { font-size: 11px; color: var(--t3); line-height: 1.4; }
+
+  /* ── Inline Visual: Risk Card ────────────────────────────── */
+  .fn-risk-card {
+    padding: 16px 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-risk-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .fn-risk-header-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+  }
+  .fn-risk-badge {
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    background: rgba(251,113,133,0.1);
+    border: 1px solid rgba(251,113,133,0.22);
+    color: var(--rose);
+  }
+  .fn-risk-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 12.5px;
+  }
+  .fn-risk-row:last-of-type { border-bottom: none; }
+  .fn-risk-param { color: var(--t2); }
+  .fn-risk-val { font-family: var(--mono); font-weight: 500; }
+  .fn-risk-warn { color: var(--rose); }
+  .fn-risk-ok   { color: var(--emerald); }
+  .fn-risk-caution { color: var(--gold); }
+  .fn-risk-note {
+    margin-top: 12px;
+    padding: 9px 12px;
+    background: rgba(251,113,133,0.05);
+    border: 1px solid rgba(251,113,133,0.15);
+    border-radius: 8px;
+    font-size: 11.5px;
+    color: var(--t2);
+    line-height: 1.55;
+  }
+
+  /* ── Inline Visual: Pipeline ─────────────────────────────── */
+  .fn-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-pipeline-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 4px;
+  }
+  .fn-pipeline-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+  .fn-pipeline-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .fn-pipeline-content { flex: 1; }
+  .fn-pipeline-step-title { font-size: 12.5px; font-weight: 600; color: var(--t1); margin-bottom: 1px; }
+  .fn-pipeline-step-desc  { font-size: 11.5px; color: var(--t3); line-height: 1.4; }
+  .fn-ps-1 { background: rgba(251,113,133,0.07); border: 1px solid rgba(251,113,133,0.15); }
+  .fn-ps-2 { background: rgba(240,180,41,0.07);  border: 1px solid rgba(240,180,41,0.15); }
+  .fn-ps-3 { background: rgba(96,165,250,0.07);  border: 1px solid rgba(96,165,250,0.15); }
+  .fn-ps-4 { background: rgba(52,211,153,0.07);  border: 1px solid rgba(52,211,153,0.15); }
+  .fn-psn-1 { background: rgba(251,113,133,0.18); color: var(--rose); }
+  .fn-psn-2 { background: rgba(240,180,41,0.18);  color: var(--gold); }
+  .fn-psn-3 { background: rgba(96,165,250,0.18);  color: var(--blue); }
+  .fn-psn-4 { background: rgba(52,211,153,0.18);  color: var(--emerald); }
+
+  /* ── Inline Visual: Password Timeline ───────────────────── */
+  .fn-pwd-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-pwd-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 16px;
+  }
+  .fn-pwd-track-wrap { position: relative; padding-bottom: 36px; }
+  .fn-pwd-track {
+    height: 5px;
+    background: var(--bg-3);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fn-pwd-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--emerald) 0%, var(--gold) 55%, var(--rose) 100%);
+  }
+  .fn-pwd-markers { display: flex; justify-content: space-between; position: absolute; bottom: 0; left: 0; right: 0; }
+  .fn-pwd-marker { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .fn-pwd-marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: var(--bg);
+    margin-top: -18px;
+  }
+  .fn-pwd-marker-label { font-size: 10px; color: var(--t3); text-align: center; max-width: 64px; line-height: 1.3; }
+  .fn-pwd-events { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+  .fn-pwd-event {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--t2);
+  }
+  .fn-pwd-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── Inline Visual: Calculator ───────────────────────────── */
+  .fn-calc {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-calc-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 14px;
+  }
+  .fn-calc-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .fn-calc-tab {
+    padding: 5px 12px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: default;
+  }
+  .fn-calc-tab-active { background: var(--gold-dim); border: 1px solid rgba(240,180,41,0.25); color: var(--gold); }
+  .fn-calc-tab-inactive { background: var(--glass-bg-2); border: 1px solid var(--glass-border); color: var(--t3); }
+  .fn-calc-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 12.5px;
+  }
+  .fn-calc-field:last-of-type { border-bottom: none; }
+  .fn-calc-label { color: var(--t2); }
+  .fn-calc-input-mock {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--t1);
+    min-width: 90px;
+    text-align: right;
+  }
+  .fn-calc-result {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(240,180,41,0.22);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .fn-calc-result-label { color: var(--t2); }
+  .fn-calc-result-val { font-family: var(--mono); font-weight: 700; color: var(--gold); font-size: 15px; }
+
+  /* ── Inline Visual: Automation ───────────────────────────── */
+  .fn-auto-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-auto-col-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-auto-col-label-red   { color: var(--rose); }
+  .fn-auto-col-label-green { color: var(--emerald); }
+  .fn-auto-split { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 14px; }
+  .fn-auto-divider-line { background: var(--glass-border); }
+  .fn-auto-task {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    color: var(--t2);
+    margin-bottom: 6px;
+  }
+  .fn-auto-task-bad { background: rgba(251,113,133,0.07); border: 1px solid rgba(251,113,133,0.15); }
+  .fn-auto-task-good { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.15); }
+
+  /* ── FNHunt visual ───────────────────────────────────────── */
+  .fn-hunt-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-hunt-heading {
+    font-size: 9.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--t3); margin-bottom: 14px;
+  }
+  .fn-hunt-steps { display: flex; flex-direction: column; gap: 8px; }
+  .fn-hunt-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    color: var(--t2);
+  }
+  .fn-hunt-step-icon { flex-shrink: 0; font-size: 16px; line-height: 1.2; }
+  .fn-hunt-step-text { line-height: 1.5; }
+  .fn-hunt-step-text strong { color: var(--t1); font-size: 12px; display: block; margin-bottom: 1px; }
+  .fn-hs-1 { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.18); }
+  .fn-hs-2 { background: rgba(240,180,41,0.07);  border: 1px solid rgba(240,180,41,0.18); }
+  .fn-hs-3 { background: rgba(52,211,153,0.07);  border: 1px solid rgba(52,211,153,0.18); }
+
+  /* ── Upcoming Projects ───────────────────────────────────── */
+  .fn-upcoming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+  .fn-upcoming-card { padding: 32px 30px; border-radius: 20px; }
+  .fn-upcoming-tag-row { margin-bottom: 14px; }
+  .fn-upcoming-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.2vw, 24px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--t1);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .fn-upcoming-body {
+    font-size: 14.5px;
+    color: var(--t2);
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+  .fn-hypothesis {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(96,165,250,0.05);
+    border: 1px solid rgba(96,165,250,0.18);
+    margin-bottom: 16px;
+  }
+  .fn-hypothesis-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .fn-hypothesis-text { font-size: 13.5px; color: var(--t2); line-height: 1.65; }
+  .fn-target-metric {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(167,139,250,0.07);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--violet);
+    font-weight: 500;
+  }
+
+  /* ── Problem cards in challenge section ──────────────────── */
+  .fn-problem-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .fn-problem-card {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(251,113,133,0.04);
+    border: 1px solid rgba(251,113,133,0.15);
+  }
+  .fn-problem-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--rose);
+    background: rgba(251,113,133,0.12);
+    border: 1px solid rgba(251,113,133,0.22);
+    border-radius: 6px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .fn-problem-text { font-size: 14px; color: var(--t2); line-height: 1.65; }
+  .fn-problem-text strong { color: var(--t1); }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .fn-feature-row,
+    .fn-radar-inner,
+    .fn-upcoming-grid { grid-template-columns: 1fr; gap: 28px; }
+    .fn-ba-wrap { grid-template-columns: 1fr; }
+    .fn-ba-arrow { display: block; text-align: center; transform: rotate(90deg); }
+    .fn-auto-split { grid-template-columns: 1fr; }
+    .fn-auto-divider-line { display: none; }
+    .fn-notif-grid { grid-template-columns: 1fr; }
+    .fn-radar-axes { grid-template-columns: 1fr; }
+  }
+
+  /* ── Light mode overrides ────────────────────────────────── */
+  [data-theme="light"] .fn-flow,
+  [data-theme="light"] .fn-notif-wrap,
+  [data-theme="light"] .fn-risk-card,
+  [data-theme="light"] .fn-pipeline,
+  [data-theme="light"] .fn-pwd-visual,
+  [data-theme="light"] .fn-calc,
+  [data-theme="light"] .fn-auto-visual,
+  [data-theme="light"] .fn-hunt-visual { background: rgba(255,255,255,0.75); }
+  [data-theme="light"] .fn-notif-item { background: rgba(255,255,255,0.55); }
+  [data-theme="light"] .fn-radar-axis-item { background: rgba(255,255,255,0.55); }
+  </style>
 </head>
 <body class="cs-page">
 <div class="noise" aria-hidden="true"></div>
@@ -130,52 +770,112 @@
   </div>
 </section>
 
-<!-- CHALLENGE + APPROACH -->
-<section class="cs-content">
+<!-- THE CHALLENGE -->
+<section class="fn-section">
   <div class="container">
     <div class="cs-two-col">
       <div>
         <div class="cs-section-label">The Challenge</div>
-        <h2 class="cs-section-title">A fragmented platform creating real business risk</h2>
-        <p class="cs-para">FundedNext had three compounding problems: an outdated dashboard driving user frustration, zero real-time risk transparency for traders, and compliance gaps that exposed the platform to regulatory and financial risk.</p>
-        <p class="cs-para">Friction-heavy flows around KYC, payouts, and a forced 2FA onboarding were generating avoidable support volume and damaging early user retention. There was also no behavioral incentive layer — traders weren't engaging with key platform resources or features beyond their core account activity.</p>
-        <p class="cs-para">The challenge was systemic. This wasn't a list of features to ship — it required a unified product strategy that addressed compliance, UX, automation, and user motivation simultaneously.</p>
+        <h2 class="cs-section-title">Three problems that were quietly costing the business</h2>
+        <p class="cs-para">When I joined FundedNext, the platform was holding traders back rather than helping them succeed. Three things needed to change urgently.</p>
+        <div class="fn-problem-stack">
+          <div class="fn-problem-card">
+            <span class="fn-problem-num">01</span>
+            <p class="fn-problem-text"><strong>Traders had no visibility into their own account.</strong> There were no notifications, no real-time risk data, and no way to know what was happening between logins. People found out about KYC deadlines and payout issues only when things had already gone wrong.</p>
+          </div>
+          <div class="fn-problem-card">
+            <span class="fn-problem-num">02</span>
+            <p class="fn-problem-text"><strong>The platform had compliance gaps that created financial and regulatory exposure.</strong> Abusive trading patterns were going undetected. Account security had no enforcement layer. The team had no tooling to catch bad actors before they caused damage.</p>
+          </div>
+          <div class="fn-problem-card">
+            <span class="fn-problem-num">03</span>
+            <p class="fn-problem-text"><strong>The internal team was blocked by manual work.</strong> Five repetitive workflows were consuming hours every day across 20 people. None of them required any human judgment — they were just processes nobody had automated yet.</p>
+          </div>
+        </div>
       </div>
       <div>
-        <div class="cs-section-label">My Approach</div>
-        <h2 class="cs-section-title">Eight decisions that moved the platform forward</h2>
-        <div class="cs-steps">
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">01</span>
-            <p class="cs-step-text">Operational workflows were entirely manual, creating bottlenecks across the team. Architected a full automation agent in n8n with a <strong>20-person cross-functional team</strong> — delivering a <strong>40%+ gain in workflow efficiency</strong>.</p>
+        <div class="cs-section-label">The Approach</div>
+        <h2 class="cs-section-title">One strategy, eight decisions</h2>
+        <p class="cs-para">These weren't three separate problems. They were one: a platform that hadn't kept up with the product it was supposed to support. The strategy was to fix the foundation first — compliance and visibility — then build engagement and efficiency on top.</p>
+        <p class="cs-para">Every decision was sequenced deliberately. Notifications before the dashboard revamp. Compliance before enforcement. Automation before anything else, so the team had the capacity to execute everything that followed.</p>
+        <p class="cs-para">The eight things I shipped over the course of this project are documented below — each one with the problem it solved, the change it made, and the result it produced.</p>
+        <div class="fn-impact" style="margin-top:24px">
+          <span class="fn-impact-num">8</span>
+          <span class="fn-impact-text">features shipped across a 20-person cross-functional team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM HEALTH: BEFORE VS AFTER -->
+<section class="fn-section-alt">
+  <div class="container">
+    <div class="cs-section-label">Platform Health</div>
+    <h2 class="cs-section-title" style="max-width:520px">How far the platform has moved across six dimensions</h2>
+    <p class="cs-para" style="max-width:560px">These six areas capture the full scope of the work. The numbers represent a rough score out of 10, based on capability and coverage at each stage.</p>
+
+    <div class="fn-radar-inner" style="margin-top:44px">
+      <!-- Radar Chart -->
+      <div class="fn-radar-canvas-wrap reveal">
+        <canvas id="platformRadar" width="440" height="380" aria-label="Radar chart showing platform health before and after the transformation" role="img"></canvas>
+      </div>
+
+      <!-- Legend + Axis breakdown -->
+      <div>
+        <div class="fn-radar-legend" style="margin-bottom:28px">
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background:rgba(251,113,133,0.75)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>When I joined</strong>
+              Fragmented dashboard, no notifications, no compliance tooling, manual workflows eating team capacity.
+            </div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">02</span>
-            <p class="cs-step-text">The platform had no structured notification layer, leaving traders disconnected from key account events. Shipped a full <strong>notification system</strong> (backend and frontend) across both CFD and Futures products — lifting <strong>user engagement by 35%</strong>.</p>
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background:rgba(240,180,41,0.9)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>Today</strong>
+              Notifications live, risk cards deployed, compliance framework in place, automation running, password policy enforced, calculators built.
+            </div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">03</span>
-            <p class="cs-step-text">An outdated dashboard was creating friction at every critical touchpoint — KYC verification, payouts, and account management. Leading the <strong>full dashboard revamp</strong>, modernizing flows to reduce drop-off and lower support contact at key stages.</p>
+        </div>
+
+        <div class="fn-radar-axes">
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Trader Transparency</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:90%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 9</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">04</span>
-            <p class="cs-step-text">Traders had no visibility into their real-time risk exposure, making it impossible to self-correct before breaching limits. Introduced <strong>Risk Cards</strong> on the Account Overview — giving traders a live view of their risk profile and the direct impact of their trading behavior.</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Platform Security</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:80%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:30%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 3</span><span class="fn-radar-axis-val-after">After: 8</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">05</span>
-            <p class="cs-step-text">Abusive trading behavior was going undetected, creating platform integrity and financial exposure. Built a <strong>compliance regulations framework</strong> with active monitoring of flagged accounts and enforcement protocols for non-compliant traders.</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Workflow Speed</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:90%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:30%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 3</span><span class="fn-radar-axis-val-after">After: 9</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">06</span>
-            <p class="cs-step-text">FAQ engagement was passive and plan purchases weren't being driven by in-product moments. Created <strong>FNHunt</strong> — a gamified coupon-code hunt embedded in the FAQ, turning passive browsing into an active discovery mechanism that directly drove plan purchases.</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">User Engagement</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:80%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:40%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 4</span><span class="fn-radar-axis-val-after">After: 8</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">07</span>
-            <p class="cs-step-text">Customer pain points were distributed across the journey with no single owner accountable for the full experience. Built and led the <strong>Identity &amp; Investigation Squad</strong> — a dedicated cross-functional unit owning end-to-end customer journey diagnosis and continuous improvement.</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Support Health</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:85%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 8.5</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">08</span>
-            <p class="cs-step-text">Forcing all users into 2FA at signup was creating onboarding friction and flooding support with avoidable tickets. Redesigned the <strong>2FA flow</strong>: removed it from free user onboarding entirely, enforced it for paid users post-KYC or after 14 days — <strong>resolving 18.5% of all support tickets</strong>.</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Compliance Coverage</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:80%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 8</span></div>
           </div>
         </div>
       </div>
@@ -183,16 +883,563 @@
   </div>
 </section>
 
-<!-- THINKING / DECISIONS -->
-<section class="cs-thinking">
+<!-- WHAT I SHIPPED: FEATURE DEEP-DIVES -->
+<section class="fn-section">
+  <div class="container">
+    <div class="cs-section-label">What I Shipped</div>
+    <h2 class="cs-section-title">Eight features, and why each one mattered</h2>
+    <p class="cs-para" style="max-width:600px">Each section below shows the problem as it stood, the change I made, and the result. Numbers are based on measured outcomes tracked over 4 weeks post-launch.</p>
+
+    <!-- ── FEATURE 01: WORKFLOW AUTOMATION ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 01</span>
+      </div>
+      <h3 class="fn-feature-title">Workflow Automation — freeing 20 people from repeated manual work</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Five manual workflows were running every day — ticket tagging, account status updates, payout checks, report generation, and notification dispatch. None of them required any judgment. They just consumed time from 20 people who had more important things to do.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Built a full automation pipeline in n8n covering all five workflows. Each one now runs on a trigger without human input. The team gets the output — not the process of producing it.</p>
+            </div>
+          </div>
+          <p class="cs-para">The decision to do this first wasn't just about efficiency. Every other initiative on the roadmap depended on the team having bandwidth. Clearing these five workflows was the thing that made everything else possible to ship on time.</p>
+          <p class="cs-para">I mapped each workflow with the ops team first — task by task, person by person — to identify every decision point. Only one step across all five workflows actually needed human input. Everything else was just moving data from one place to another.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">40%+</span>
+            <span class="fn-impact-text">reduction in operational task time across the team</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-auto-visual">
+            <div class="fn-auto-split">
+              <div>
+                <div class="fn-auto-col-label fn-auto-col-label-red">Manual (Before)</div>
+                <div class="fn-auto-task fn-auto-task-bad">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Ticket tagging
+                </div>
+                <div class="fn-auto-task fn-auto-task-bad">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Account status checks
+                </div>
+                <div class="fn-auto-task fn-auto-task-bad">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Payout reconciliation
+                </div>
+                <div class="fn-auto-task fn-auto-task-bad">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Daily reports
+                </div>
+                <div class="fn-auto-task fn-auto-task-bad">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Alert dispatching
+                </div>
+              </div>
+              <div class="fn-auto-divider-line"></div>
+              <div>
+                <div class="fn-auto-col-label fn-auto-col-label-green">Automated (After)</div>
+                <div class="fn-auto-task fn-auto-task-good">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  n8n trigger pipeline
+                </div>
+                <div class="fn-auto-task fn-auto-task-good">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Event-driven updates
+                </div>
+                <div class="fn-auto-task fn-auto-task-good">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Auto reconciliation
+                </div>
+                <div class="fn-auto-task fn-auto-task-good">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Scheduled reports
+                </div>
+                <div class="fn-auto-task fn-auto-task-good">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Rule-based alerts
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 02: NOTIFICATION SYSTEM ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 02</span>
+      </div>
+      <h3 class="fn-feature-title">Notification System — traders stop finding out about problems too late</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">The platform had no notification layer. Traders found out about KYC deadlines, payout status, and account alerts only when they logged in — sometimes days after something had changed. Most would then contact support.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Shipped a full backend and frontend notification system covering 8 event categories across both CFD and Futures products. Traders get notified the moment something relevant happens to their account.</p>
+            </div>
+          </div>
+          <p class="cs-para">This was also a retention mechanism. Traders who feel connected to their account are more likely to stay active. A notification at the right moment — "your payout has been processed" or "your KYC needs attention" — is the difference between a trader who feels looked after and one who churns quietly.</p>
+          <p class="cs-para">The notification categories were chosen based on what was generating the most support tickets. KYC and payout alerts alone covered 60% of the ticket types we saw before launch.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">35%</span>
+            <span class="fn-impact-text">lift in user engagement (30-day session return rate)</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-notif-wrap">
+            <div class="fn-notif-heading">8 Notification Categories · CFD &amp; Futures</div>
+            <div class="fn-notif-grid">
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.2);color:var(--gold)">KYC</span></div>
+                <div class="fn-notif-name">KYC Status</div>
+                <div class="fn-notif-desc">Verification required or approved</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);color:var(--emerald)">Payout</span></div>
+                <div class="fn-notif-name">Payout Updates</div>
+                <div class="fn-notif-desc">Submitted, processing, paid</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(251,113,133,0.1);border:1px solid rgba(251,113,133,0.2);color:var(--rose)">Risk</span></div>
+                <div class="fn-notif-name">Risk Alerts</div>
+                <div class="fn-notif-desc">Drawdown thresholds approached</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.2);color:var(--blue)">Account</span></div>
+                <div class="fn-notif-name">Account Events</div>
+                <div class="fn-notif-desc">Challenge pass, fail, reset</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:var(--violet)">Security</span></div>
+                <div class="fn-notif-name">Security Alerts</div>
+                <div class="fn-notif-desc">Login from new device or location</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.2);color:var(--gold)">Trade</span></div>
+                <div class="fn-notif-name">Trading Alerts</div>
+                <div class="fn-notif-desc">Positions flagged or auto-closed</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);color:var(--emerald)">Promo</span></div>
+                <div class="fn-notif-name">Promotions</div>
+                <div class="fn-notif-desc">Discounts and plan offers</div>
+              </div>
+              <div class="fn-notif-item">
+                <div><span class="fn-notif-pill" style="background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.2);color:var(--blue)">System</span></div>
+                <div class="fn-notif-name">System Updates</div>
+                <div class="fn-notif-desc">Downtime, rule changes, news</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 03: 2FA FLOW REDESIGN ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 03</span>
+      </div>
+      <h3 class="fn-feature-title">2FA Flow Redesign — removing friction from users who hadn't even traded yet</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Every new user — including free users just exploring the platform — was forced to set up two-factor authentication during signup. This blocked a significant number of early users and generated 18.5% of all support tickets.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">2FA now triggers only when an account has real value worth protecting — after KYC completion or after 14 days of activity. Free explorers get a smooth start. Funded traders are still protected.</p>
+            </div>
+          </div>
+          <p class="cs-para">This was the hardest decision to push through internally. Compliance wanted universal 2FA for all users — which sounds like the safe choice, but the data told a different story. 18% of support volume was coming from users who had never made a deposit and never placed a trade. They were not at risk. The platform was.</p>
+          <p class="cs-para">Security should scale with exposure. An account that holds $0 doesn't need the same protection as an account that holds $5,000. Once that framing landed, the decision was straightforward.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">18.5%</span>
+            <span class="fn-impact-text">of all support tickets resolved — a single flow change</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-flow">
+            <div class="fn-flow-section-label fn-flow-section-label-red">Old flow — everyone hit 2FA</div>
+            <div class="fn-flow-row">
+              <span class="fn-flow-node fn-fn-muted">Sign up</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-red">Forced 2FA</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-red">18.5% abandoned</span>
+            </div>
+            <div class="fn-flow-row" style="margin-top:4px">
+              <span class="fn-flow-node fn-fn-muted"></span>
+              <span class="fn-flow-arrow" style="visibility:hidden">→</span>
+              <span class="fn-flow-node fn-fn-red">→ support ticket</span>
+            </div>
+            <div class="fn-flow-divider"></div>
+            <div class="fn-flow-section-label fn-flow-section-label-green">New flow — 2FA when it matters</div>
+            <div class="fn-flow-row">
+              <span class="fn-flow-node fn-fn-muted">Sign up</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-green">Explore freely</span>
+            </div>
+            <div class="fn-flow-row" style="margin-top:8px">
+              <span class="fn-flow-node fn-fn-muted">KYC done</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-gold">2FA triggered</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-green">Protected</span>
+            </div>
+            <div class="fn-flow-row" style="margin-top:4px">
+              <span class="fn-flow-node fn-fn-muted">Day 14</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-gold">2FA triggered</span>
+              <span class="fn-flow-arrow">→</span>
+              <span class="fn-flow-node fn-fn-green">Protected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 04: RISK PARAMETER CARDS ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 04</span>
+      </div>
+      <h3 class="fn-feature-title">Risk Parameter Cards — traders can see the cost of a bad trade before it's too late</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Traders had no live view of their risk exposure. They could be silently eating through their drawdown buffer with no warning — and only found out they'd breached a rule when they lost access to their account.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Risk Cards now sit in the Account Overview and show real-time drawdown usage, profit target progress, and exactly how much an open trade would cost in potential payout deductions — with email and in-app alerts as thresholds are approached.</p>
+            </div>
+          </div>
+          <p class="cs-para">This matters because prop trading rules are strict, and a lot of traders lose their accounts not because they're bad at trading — but because they don't have the information they need in the moment. A card that says "your daily drawdown is at 80% — this open trade will push it to 92%" is the kind of feedback that changes a decision before damage is done.</p>
+          <p class="cs-para">The cards also show the full breakdown of potential payout deductions from active trades, so traders aren't surprised at payout time. Transparency at the right moment builds trust.</p>
+          <div class="fn-impact-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Traders now see risk exposure before they breach rules — not after
+          </div>
+        </div>
+        <div>
+          <div class="fn-risk-card">
+            <div class="fn-risk-header">
+              <span class="fn-risk-header-title">Risk Overview · Live</span>
+              <span class="fn-risk-badge">Caution</span>
+            </div>
+            <div class="fn-risk-row">
+              <span class="fn-risk-param">Daily Drawdown Used</span>
+              <span class="fn-risk-val fn-risk-warn">3.8% / 5%</span>
+            </div>
+            <div class="fn-risk-row">
+              <span class="fn-risk-param">Max Drawdown Used</span>
+              <span class="fn-risk-val fn-risk-caution">6.1% / 10%</span>
+            </div>
+            <div class="fn-risk-row">
+              <span class="fn-risk-param">Profit Target Progress</span>
+              <span class="fn-risk-val fn-risk-ok">7.2% / 10%</span>
+            </div>
+            <div class="fn-risk-row">
+              <span class="fn-risk-param">Open Position Impact</span>
+              <span class="fn-risk-val fn-risk-warn">-$142 if closed now</span>
+            </div>
+            <div class="fn-risk-row">
+              <span class="fn-risk-param">Payout Deduction Risk</span>
+              <span class="fn-risk-val fn-risk-caution">$68 at current exposure</span>
+            </div>
+            <div class="fn-risk-note">
+              ⚠ Your daily drawdown is approaching the limit. Closing the current XAUUSD position would bring it to 4.2%.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 05: COMPLIANCE & BAN-PREVENTION ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 05</span>
+      </div>
+      <h3 class="fn-feature-title">Compliance Framework &amp; Ban-Prevention — catching abusive patterns before they cause damage</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Abusive trading — exploiting platform rules, using banned strategies, or manipulating the evaluation environment — was going undetected. The team had no monitoring system, and by the time issues were caught, the financial exposure had already happened.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Built a monitoring framework with automated pattern detection for suspicious activity. Flagged accounts go through a defined review pipeline with clear enforcement protocols — from warning to restriction to ban — based on severity and evidence.</p>
+            </div>
+          </div>
+          <p class="cs-para">This was as much a fairness problem as a financial one. Legitimate traders following the rules were competing in an environment where some people weren't. The compliance framework makes the playing field more honest.</p>
+          <p class="cs-para">The enforcement process is structured deliberately — it escalates in stages rather than jumping straight to bans. That protects both the platform and the traders, since some flagged patterns turn out to be mistakes rather than intent.</p>
+          <div class="fn-impact-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Platform integrity protected — abusive accounts handled before financial damage
+          </div>
+        </div>
+        <div>
+          <div class="fn-pipeline">
+            <div class="fn-pipeline-heading">Compliance Pipeline — flagged account flow</div>
+            <div class="fn-pipeline-step fn-ps-1">
+              <div class="fn-pipeline-num fn-psn-1">1</div>
+              <div class="fn-pipeline-content">
+                <div class="fn-pipeline-step-title">Pattern Detection</div>
+                <div class="fn-pipeline-step-desc">Automated monitoring flags suspicious trading patterns across all accounts</div>
+              </div>
+            </div>
+            <div class="fn-pipeline-step fn-ps-2">
+              <div class="fn-pipeline-num fn-psn-2">2</div>
+              <div class="fn-pipeline-content">
+                <div class="fn-pipeline-step-title">Manual Review</div>
+                <div class="fn-pipeline-step-desc">Flagged accounts reviewed by the Identity &amp; Investigation Squad for context</div>
+              </div>
+            </div>
+            <div class="fn-pipeline-step fn-ps-3">
+              <div class="fn-pipeline-num fn-psn-3">3</div>
+              <div class="fn-pipeline-content">
+                <div class="fn-pipeline-step-title">Escalation Decision</div>
+                <div class="fn-pipeline-step-desc">Three tiers: warning, account restriction, or permanent ban — based on severity</div>
+              </div>
+            </div>
+            <div class="fn-pipeline-step fn-ps-4">
+              <div class="fn-pipeline-num fn-psn-4">4</div>
+              <div class="fn-pipeline-content">
+                <div class="fn-pipeline-step-title">Enforcement &amp; Record</div>
+                <div class="fn-pipeline-step-desc">Action taken, account status updated, case documented for future reference</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 06: ADVANCED PASSWORD POLICY ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 06</span>
+      </div>
+      <h3 class="fn-feature-title">Advanced Password Policy — 90-day reset cycle with enough warning to not be annoying</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Accounts had no password lifecycle enforcement. A trader who signed up two years ago could still be using the same credentials — potentially compromised, potentially shared — with no prompt to change them.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Mandatory password reset every 90 days, with in-app and email reminders at 15 days and 3 days before expiry. Traders get enough notice that it's not a surprise — they're never locked out without warning.</p>
+            </div>
+          </div>
+          <p class="cs-para">For a platform that holds people's funded trading accounts, security hygiene isn't optional. This is especially true for traders whose accounts have passed evaluation and hold real capital. A compromised account is not just a support problem — it's a financial and reputational one.</p>
+          <p class="cs-para">The reminder timing was deliberate. 15 days is enough time to plan. 3 days creates urgency without panic. No reminders meant no preparation, which meant a locked account and a support ticket. That pattern is now gone.</p>
+          <div class="fn-impact-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Account security hygiene enforced at scale across 10,000+ traders
+          </div>
+        </div>
+        <div>
+          <div class="fn-pwd-visual">
+            <div class="fn-pwd-heading">90-Day Password Lifecycle</div>
+            <div class="fn-pwd-track-wrap">
+              <div class="fn-pwd-track"><div class="fn-pwd-fill"></div></div>
+              <div class="fn-pwd-markers">
+                <div class="fn-pwd-marker">
+                  <div class="fn-pwd-marker-dot" style="border-color:var(--emerald);margin-top:-7px"></div>
+                  <div class="fn-pwd-marker-label">Day 0 — Password set</div>
+                </div>
+                <div class="fn-pwd-marker">
+                  <div class="fn-pwd-marker-dot" style="border-color:var(--gold);margin-top:-7px"></div>
+                  <div class="fn-pwd-marker-label">Day 75 — First reminder</div>
+                </div>
+                <div class="fn-pwd-marker">
+                  <div class="fn-pwd-marker-dot" style="border-color:var(--gold);margin-top:-7px"></div>
+                  <div class="fn-pwd-marker-label">Day 87 — Final reminder</div>
+                </div>
+                <div class="fn-pwd-marker">
+                  <div class="fn-pwd-marker-dot" style="border-color:var(--rose);margin-top:-7px"></div>
+                  <div class="fn-pwd-marker-label">Day 90 — Reset required</div>
+                </div>
+              </div>
+            </div>
+            <div class="fn-pwd-events">
+              <div class="fn-pwd-event" style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.15)">
+                <div class="fn-pwd-event-dot" style="background:var(--emerald)"></div>
+                Day 75: In-app banner + email — "Your password expires in 15 days"
+              </div>
+              <div class="fn-pwd-event" style="background:rgba(240,180,41,0.07);border:1px solid rgba(240,180,41,0.15)">
+                <div class="fn-pwd-event-dot" style="background:var(--gold)"></div>
+                Day 87: In-app notification + email — "Expires in 3 days"
+              </div>
+              <div class="fn-pwd-event" style="background:rgba(251,113,133,0.07);border:1px solid rgba(251,113,133,0.15)">
+                <div class="fn-pwd-event-dot" style="background:var(--rose)"></div>
+                Day 90: Mandatory reset prompt on next login
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 07: MARGIN & SWAP CALCULATORS ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 07</span>
+      </div>
+      <h3 class="fn-feature-title">Margin &amp; Swap Calculators — CFD traders stop leaving the platform to do the maths</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">CFD traders needed to know their margin requirement and overnight swap costs before entering a trade — but had to calculate these outside the platform, using spreadsheets or third-party tools. This broke the trading workflow and sometimes led to trades placed with the wrong numbers.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Native margin and swap calculators built directly into the platform. Traders enter their lot size, instrument, and account currency — and get the exact margin required and daily/weekly swap cost without leaving the page.</p>
+            </div>
+          </div>
+          <p class="cs-para">This feels like a small feature. In practice it removes one of the most common reasons CFD traders interrupted their own workflow. Every time a trader had to open a new tab to calculate margin, there was a chance they'd get distracted, misread a number, or just not place the trade at all.</p>
+          <p class="cs-para">Fewer interruptions and fewer calculation errors also means fewer "why was my trade closed" support contacts — which were regularly caused by traders not accounting for margin correctly before entering a position.</p>
+          <div class="fn-impact-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Calculation errors reduced — traders stay in the platform to make decisions
+          </div>
+        </div>
+        <div>
+          <div class="fn-calc">
+            <div class="fn-calc-heading">CFD Calculators</div>
+            <div class="fn-calc-tabs">
+              <span class="fn-calc-tab fn-calc-tab-active">Margin</span>
+              <span class="fn-calc-tab fn-calc-tab-inactive">Swap</span>
+            </div>
+            <div class="fn-calc-field">
+              <span class="fn-calc-label">Instrument</span>
+              <span class="fn-calc-input-mock">XAUUSD</span>
+            </div>
+            <div class="fn-calc-field">
+              <span class="fn-calc-label">Lot Size</span>
+              <span class="fn-calc-input-mock">0.50</span>
+            </div>
+            <div class="fn-calc-field">
+              <span class="fn-calc-label">Account Currency</span>
+              <span class="fn-calc-input-mock">USD</span>
+            </div>
+            <div class="fn-calc-field">
+              <span class="fn-calc-label">Leverage</span>
+              <span class="fn-calc-input-mock">1:100</span>
+            </div>
+            <div class="fn-calc-result">
+              <span class="fn-calc-result-label">Margin Required</span>
+              <span class="fn-calc-result-val">$1,197.50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 08: FNHUNT ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 08</span>
+      </div>
+      <h3 class="fn-feature-title">FNHunt — turning passive FAQ readers into active plan buyers</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">The FAQ page was purely informational. Traders would read a question, get an answer, and leave. There was no mechanism to turn that engagement into a purchasing decision, even though visitors were clearly in a research mindset.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">FNHunt hides a discount coupon code inside a specific FAQ answer. Traders who read enough to find it earn a discount on their next plan purchase. Passive browsing becomes a small reward loop that directly drives conversions.</p>
+            </div>
+          </div>
+          <p class="cs-para">The insight behind this was simple: anyone reading the FAQ is already interested enough to learn about the product. They're one nudge away from buying. Rather than just answering their question and letting them leave, FNHunt gives them a reason to keep reading and a reason to come back.</p>
+          <p class="cs-para">It also doubled as a product education mechanism. Traders who find the coupon have read enough of the FAQ to be well-informed about the rules — which reduces the "I didn't know" support tickets that often follow first purchases.</p>
+          <div class="fn-impact-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            FAQ converted from static reference into active conversion driver
+          </div>
+        </div>
+        <div>
+          <div class="fn-hunt-visual">
+            <div class="fn-hunt-heading">FNHunt — How it works</div>
+            <div class="fn-hunt-steps">
+              <div class="fn-hunt-step fn-hs-1">
+                <span class="fn-hunt-step-icon">📖</span>
+                <div class="fn-hunt-step-text">
+                  <strong>Step 1 — Read the FAQ</strong>
+                  Trader arrives with a question. They start reading through answers.
+                </div>
+              </div>
+              <div class="fn-hunt-step fn-hs-2">
+                <span class="fn-hunt-step-icon">🔍</span>
+                <div class="fn-hunt-step-text">
+                  <strong>Step 2 — Find the code</strong>
+                  A coupon code is hidden inside one of the answers. Finding it means actually reading the content.
+                </div>
+              </div>
+              <div class="fn-hunt-step fn-hs-3">
+                <span class="fn-hunt-step-icon">🎁</span>
+                <div class="fn-hunt-step-text">
+                  <strong>Step 3 — Redeem the discount</strong>
+                  The code gives a plan discount. A well-informed trader converts — and already knows the rules.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THINKING SECTION -->
+<section class="cs-thinking fn-section-alt">
   <div class="container">
     <div class="cs-section-label">The Thinking</div>
     <h2 class="cs-section-title">How I decided what to build and what to skip</h2>
-    <p class="cs-para" style="max-width:660px;">The outcome numbers are visible. Here is what went into deciding each one.</p>
+    <p class="cs-para" style="max-width:660px">The outcome numbers are visible. Here is what went into deciding each one.</p>
 
     <div class="cs-think-grid">
-
-      <div class="cs-think-card glass-card">
+      <div class="cs-think-card glass-card reveal">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
@@ -200,12 +1447,12 @@
         <ul class="cs-think-list">
           <li>Built an n8n pipeline to pull all Intercom support tickets into Power BI</li>
           <li>Tagged every ticket by issue type and root cause</li>
-          <li>18% of tickets were about identity and account access. That set the priority order before any PRD was written</li>
-          <li>A separate time audit with the ops team mapped 5 manual workflows. None required human judgment, just repeated steps blocking 20 people</li>
+          <li>18% of tickets were about identity and account access — that set the priority order before any PRD was written</li>
+          <li>A time audit with the ops team mapped 5 manual workflows. None required human judgment — just repeated steps that blocked 20 people</li>
         </ul>
       </div>
 
-      <div class="cs-think-card glass-card">
+      <div class="cs-think-card glass-card reveal">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
@@ -213,25 +1460,25 @@
         <ul class="cs-think-list">
           <li>Used an impact/reversibility matrix, not pure RICE scoring</li>
           <li>Automation came first because it was slowing the entire team. Every other initiative would ship faster once that bottleneck was cleared</li>
-          <li>The dashboard revamp was held back in Phase 1. Changing the UI before fixing the notification layer would just move the friction somewhere else</li>
+          <li>The dashboard revamp was held back in Phase 1 — changing the UI before fixing the notification layer would just move the friction somewhere else</li>
           <li>Compliance was sequenced after notifications. You cannot enforce trading rules if traders have no visibility into their own account status</li>
         </ul>
       </div>
 
-      <div class="cs-think-card glass-card">
+      <div class="cs-think-card glass-card reveal">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
         <h3 class="cs-think-title">The hardest tradeoff</h3>
         <ul class="cs-think-list">
           <li>Compliance wanted universal 2FA for all users. Removing it from free user onboarding looked like a security step backwards</li>
-          <li>The real cost of that policy: 18% of support volume, mostly from users who had not yet traded</li>
-          <li>The security requirement only applied meaningfully to funded accounts, not free users exploring the platform</li>
-          <li>Resolution: no 2FA until KYC completion or 14 days of activity, then enforced. Free users get a smooth start. Funded accounts stay protected</li>
+          <li>The real cost of that policy: 18% of support volume, mostly from users who had never traded</li>
+          <li>The security requirement only applied meaningfully to funded accounts — not free users exploring the platform</li>
+          <li>Resolution: no 2FA until KYC completion or 14 days of activity. Free users get a smooth start. Funded accounts stay protected</li>
         </ul>
       </div>
 
-      <div class="cs-think-card glass-card">
+      <div class="cs-think-card glass-card reveal">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
@@ -242,10 +1489,9 @@
           <li>Engagement: notification open rates and 30-day session return rate compared to the same window before launch</li>
         </ul>
       </div>
-
     </div>
 
-    <div class="cs-retro glass-card">
+    <div class="cs-retro glass-card reveal">
       <div class="cs-retro-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
       </div>
@@ -259,7 +1505,57 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- WHAT'S COMING NEXT -->
+<section class="fn-section">
+  <div class="container">
+    <div class="cs-section-label">What's Coming Next</div>
+    <h2 class="cs-section-title">Two projects currently in progress</h2>
+    <p class="cs-para" style="max-width:600px">These aren't ideas on a backlog. They are live projects with teams assigned, scopes defined, and hypotheses being tested. Here's why they matter and what success looks like.</p>
+
+    <div class="fn-upcoming-grid">
+      <!-- Dashboard Revamp -->
+      <div class="fn-upcoming-card glass-card reveal">
+        <div class="fn-upcoming-tag-row">
+          <span class="fn-tag fn-tag-progress">In Progress</span>
+        </div>
+        <h3 class="fn-upcoming-title">Full Dashboard Revamp</h3>
+        <p class="fn-upcoming-body">The current dashboard was designed for an earlier version of the product. Since then, Risk Cards, notifications, compliance alerts, KYC flows, and payout management have all been added on top of an old structure that was never meant to carry all of this.</p>
+        <p class="fn-upcoming-body">The revamp rebuilds the dashboard from the ground up around how traders actually use it today: account overview first, risk exposure visible at all times, payout and KYC status one click away. The goal is to cut the number of support contacts at key stages — payouts and KYC specifically — by reducing the amount of confusion that the current layout creates.</p>
+        <div class="fn-hypothesis">
+          <div class="fn-hypothesis-label">The hypothesis</div>
+          <p class="fn-hypothesis-text">If traders can see their account status, risk profile, and next required action in one view without navigating to different pages, the number of "how do I do X" support contacts at payout and KYC stages will drop by at least 20%.</p>
+        </div>
+        <div style="margin-top:14px">
+          <span class="fn-target-metric">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Target: 20% reduction in support contacts at payout and KYC stages
+          </span>
+        </div>
+      </div>
+
+      <!-- App Build -->
+      <div class="fn-upcoming-card glass-card reveal">
+        <div class="fn-upcoming-tag-row">
+          <span class="fn-tag fn-tag-progress">In Progress</span>
+        </div>
+        <h3 class="fn-upcoming-title">Native Mobile App</h3>
+        <p class="fn-upcoming-body">10,000+ traders are managing funded accounts from their phones. The current experience is a web app running in a mobile browser — and it shows. The actions traders need most when they're away from their desk (checking risk exposure, reading notifications, monitoring drawdown, responding to alerts) are clunky on mobile.</p>
+        <p class="fn-upcoming-body">The app is being built to make the most time-sensitive parts of the trading experience fast and native: real-time risk cards, notification center, account status, and payout status — all accessible with the kind of speed and clarity that a mobile-first experience needs.</p>
+        <div class="fn-hypothesis">
+          <div class="fn-hypothesis-label">The hypothesis</div>
+          <p class="fn-hypothesis-text">If traders can check their risk metrics and respond to account alerts from their phone in under 10 seconds, trader retention in the first 30 days after challenge completion will improve — because the period of highest disengagement risk is when traders are between sessions, not in front of their desk.</p>
+        </div>
+        <div style="margin-top:14px">
+          <span class="fn-target-metric">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Target: improved 30-day retention post-challenge completion
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -296,17 +1592,17 @@
   <div class="container">
     <div class="cs-section-label">The Outcome</div>
     <h2 class="cs-section-title">Results — measured, not estimated</h2>
-    <p class="cs-para" style="max-width:600px;">Every initiative was shipped against a specific target. These numbers validate the strategy — not vanity metrics, but platform-level outcomes tied directly to product decisions.</p>
+    <p class="cs-para" style="max-width:600px">Every initiative was shipped against a specific target. These numbers validate the strategy — not vanity metrics, but platform-level outcomes tied directly to product decisions.</p>
     <div class="outcomes-grid">
-      <div class="outcome-card glass-card">
+      <div class="outcome-card glass-card reveal">
         <div class="outcome-val">40%+</div>
         <div class="outcome-lbl">Operational efficiency gained — end-to-end automation replacing manual workflows across the platform</div>
       </div>
-      <div class="outcome-card glass-card">
+      <div class="outcome-card glass-card reveal">
         <div class="outcome-val">18.5%</div>
         <div class="outcome-lbl">Support volume eliminated — a single flow redesign targeting the root cause of onboarding friction</div>
       </div>
-      <div class="outcome-card glass-card">
+      <div class="outcome-card glass-card reveal">
         <div class="outcome-val">35%</div>
         <div class="outcome-lbl">User engagement lifted — platform-wide notification system shipping across CFD and Futures product lines</div>
       </div>
@@ -333,6 +1629,116 @@
 <button class="btt" id="btt" aria-label="Back to top">
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
+
+<!-- Chart.js Radar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous"></script>
+<script>
+(function() {
+  var canvas = document.getElementById('platformRadar');
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') !== 'light';
+  }
+
+  function getChartColors() {
+    var dark = isDark();
+    return {
+      grid:   dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)',
+      label:  dark ? '#9898A8' : '#505060',
+      legend: dark ? '#9898A8' : '#505060',
+    };
+  }
+
+  var c = getChartColors();
+
+  var chart = new Chart(canvas, {
+    type: 'radar',
+    data: {
+      labels: [
+        'Trader Transparency',
+        'Platform Security',
+        'Workflow Speed',
+        'User Engagement',
+        'Support Health',
+        'Compliance Coverage'
+      ],
+      datasets: [
+        {
+          label: 'When I joined',
+          data: [2, 3, 3, 4, 2, 2],
+          borderColor: 'rgba(251, 113, 133, 0.75)',
+          backgroundColor: 'rgba(251, 113, 133, 0.08)',
+          pointBackgroundColor: 'rgba(251, 113, 133, 0.85)',
+          pointBorderColor: 'transparent',
+          pointRadius: 4,
+          borderWidth: 2,
+        },
+        {
+          label: 'Today',
+          data: [9, 8, 9, 8, 8.5, 8],
+          borderColor: 'rgba(240, 180, 41, 0.9)',
+          backgroundColor: 'rgba(240, 180, 41, 0.1)',
+          pointBackgroundColor: 'rgba(240, 180, 41, 0.95)',
+          pointBorderColor: 'transparent',
+          pointRadius: 4,
+          borderWidth: 2,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        r: {
+          min: 0,
+          max: 10,
+          ticks: { display: false, stepSize: 2 },
+          grid: { color: c.grid },
+          angleLines: { color: c.grid },
+          pointLabels: {
+            color: c.label,
+            font: { size: 12, family: "'Inter', sans-serif", weight: '500' }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(10,10,14,0.92)',
+          titleColor: '#EEEEF5',
+          bodyColor: '#9898A8',
+          borderColor: 'rgba(255,255,255,0.08)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(ctx) {
+              return ' ' + ctx.dataset.label + ': ' + ctx.raw + '/10';
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Update chart colors on theme toggle
+  var toggleBtn = document.getElementById('themeToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      // Wait for theme to flip
+      setTimeout(function() {
+        var nc = getChartColors();
+        chart.options.scales.r.grid.color = nc.grid;
+        chart.options.scales.r.angleLines.color = nc.grid;
+        chart.options.scales.r.pointLabels.color = nc.label;
+        chart.update();
+      }, 50);
+    });
+  }
+})();
+</script>
 
 <script src="script.js?v=2"></script>
 </body>

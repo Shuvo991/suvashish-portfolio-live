@@ -896,6 +896,9 @@ em { font-style: normal; color: var(--gold); }
 .cs-retro-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.28); display: flex; align-items: center; justify-content: center; color: #A78BFA; flex-shrink: 0; margin-top: 2px; }
 .cs-retro-body { flex: 1; }
 .cs-retro-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--t1); margin: 8px 0 12px; letter-spacing: -.02em; line-height: 1.25; }
+.cs-think-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.cs-think-list li { font-size: 14.5px; color: var(--t2); line-height: 1.65; padding-left: 18px; position: relative; }
+.cs-think-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.55; flex-shrink: 0; }
 
 .cs-screenshots { padding: 64px 0; background: var(--bg-2); }
 .ss-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
