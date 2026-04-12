@@ -336,6 +336,44 @@ em { font-style: normal; color: var(--gold); }
   box-sizing: border-box;
 }
 
+.hero-mini-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 612px;
+  padding: 16px 6px 0;
+  box-sizing: border-box;
+}
+.hms-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 3px;
+}
+.hms-val {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hms-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--t3);
+}
+.hms-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--glass-border);
+  flex-shrink: 0;
+}
+
 /* "View Case Studies" — identical gold to LinkedIn btn-primary */
 .btn-canvas {
   flex: 1;
@@ -648,7 +686,7 @@ em { font-style: normal; color: var(--gold); }
 .process-step.ps-active .ps-icon { background: rgba(240,180,41,.18); border-color: rgba(240,180,41,.3); box-shadow: 0 0 16px rgba(240,180,41,.2); }
 .process-step.ps-active .ps-num { color: rgba(240,180,41,0.14); }
 
-.ps-num { position: absolute; top: 8px; right: 12px; font-family: var(--display); font-size: 72px; font-weight: 800; color: rgba(240,180,41,0.06); letter-spacing: -.04em; line-height: 1; margin-bottom: 0; z-index: 0; transition: color 0.4s ease; pointer-events: none; }
+.ps-num { position: absolute; top: 8px; right: 12px; font-family: var(--display); font-size: 52px; font-weight: 800; color: rgba(240,180,41,0.06); letter-spacing: -.04em; line-height: 1; margin-bottom: 0; z-index: 0; transition: color 0.4s ease; pointer-events: none; }
 .ps-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--gold-dim); border: 1px solid rgba(240,180,41,.2); border-radius: 12px; color: var(--gold); margin-bottom: 16px; transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
 .ps-title { font-family: var(--display); font-size: 19px; font-weight: 700; color: var(--t1); margin-bottom: 10px; letter-spacing: -.02em; position: relative; z-index: 1; }
 .ps-desc { font-size: 13.5px; color: var(--t2); line-height: 1.65; position: relative; z-index: 1; flex: 1; }
@@ -1486,6 +1524,8 @@ em { font-style: normal; color: var(--gold); }
     inset 0 1px 0 rgba(100,160,255,0.30),
     inset 0 -1px 0 rgba(10,40,140,0.15);
 }
+
+[data-theme="light"] .hms-lbl { color: var(--t2); }
 
 /* Section alt background */
 [data-theme="light"] .section-alt { background: var(--bg-2); }
