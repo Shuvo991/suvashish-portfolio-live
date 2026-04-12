@@ -20,35 +20,14 @@ jobs:
 
           git clone https://x-access-token:${{ secrets.PORTFOLIO_DEPLOY }}@github.com/Shuvo991/suvashish-portfolio-live.git deploy
 
-          cd deploy
-          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} +
-          cd ..
-
-          # Core files
-          cp index.html deploy/
-          cp styles.css deploy/
-          cp script.js deploy/
-
-          # Case study pages
-          cp fundednext.html deploy/
-          cp ecw-lms.html deploy/
-          cp learning-tree.html deploy/
-          cp ondesk.html deploy/
-          cp cskc.html deploy/
-
-          # Assets
-          cp Suvashish_Chakraborty_CV.pdf deploy/
-          cp -r logos/ deploy/
-          cp "Profile Picture.png" deploy/
-          cp favicon.ico deploy/ 2>/dev/null || true
-          cp favicon.png deploy/ 2>/dev/null || true
-          cp favicon-192.png deploy/ 2>/dev/null || true
-          cp apple-touch-icon.png deploy/ 2>/dev/null || true
-          cp og-image.png deploy/ 2>/dev/null || true
-          cp robots.txt deploy/ 2>/dev/null || true
-          cp sitemap.xml deploy/ 2>/dev/null || true
-          cp CNAME deploy/ 2>/dev/null || true
-          cp .nojekyll deploy/ 2>/dev/null || true
+          # Sync everything except files that should not be public
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='animation-test' \
+            --exclude='README.md' \
+            --exclude='LICENSE' \
+            ./ deploy/
 
           cd deploy
           git add -A

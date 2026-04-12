@@ -173,8 +173,8 @@
 <section class="cs-thinking">
   <div class="container">
     <div class="cs-section-label">The Thinking</div>
-    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
-    <p class="cs-para" style="max-width:660px;">Consolidating four systems sounds like a scope problem. The real challenge was deciding which problems justified the consolidation in the first place, and what the right unification point was.</p>
+    <h2 class="cs-section-title">How I decided what to build and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">Consolidating four systems sounds like a scope problem. The real work was figuring out which problems justified doing it at all.</p>
 
     <div class="cs-think-grid">
 
@@ -183,31 +183,50 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
         <h3 class="cs-think-title">How I found the problems</h3>
-        <p class="cs-think-body">The discovery process was unusual because the feedback already existed — it had just never been consolidated into a product brief. I started by pulling 3 months of IT support ticket data and tagging each ticket by system of origin and issue type. The distribution was revealing: over 60% of tickets were procedural in nature ("how do I submit a leave request", "where do I book travel") rather than technical failures. The tools weren't broken — they were inaccessible in the moments people needed them. Field staff interviews confirmed the pattern: employees weren't using the systems because opening a laptop felt like disproportionate effort for a 2-minute administrative task. That insight — friction, not functionality — defined the entire product brief.</p>
+        <ul class="cs-think-list">
+          <li>Pulled 3 months of IT support tickets and tagged each one by system origin and issue type</li>
+          <li>Over 60% were procedural questions, not technical failures. "How do I submit leave." "Where do I book travel."</li>
+          <li>The tools were not broken. They were inaccessible when people actually needed them</li>
+          <li>Field staff interviews confirmed it: opening a laptop felt like too much effort for a 2-minute task</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
-        <h3 class="cs-think-title">Why IT support got prioritized within the app</h3>
-        <p class="cs-think-body">Once the decision to consolidate was made, the question became: which system matters most to get right first? I mapped each of the four systems by usage frequency and pain severity on a simple 2x2. Leave management was high frequency and low pain — the existing system worked, people just wanted it on their phone. IT support was lower frequency but asymmetrically high pain. A broken laptop in the field during an active programme meant days of lost work, not hours. That asymmetry drove the decision to prioritize IT support resolution first within the unified experience, and specifically to invest in the AI Voice Chat capability for exactly that use case — field staff with a device problem, standing, not at a desk, needing to resolve it now.</p>
+        <h3 class="cs-think-title">Why IT support was prioritized first</h3>
+        <ul class="cs-think-list">
+          <li>Mapped all 4 systems by usage frequency and pain severity</li>
+          <li>Leave management: high frequency, low pain. The existing system worked, people just wanted it on mobile</li>
+          <li>IT support: lower frequency, but a broken laptop in the field meant days of lost work, not hours</li>
+          <li>That gap drove the decision to invest in AI Voice Chat specifically for IT support first</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
-        <h3 class="cs-think-title">Why voice instead of text chat</h3>
-        <p class="cs-think-body">The initial proposal was a text-based chatbot — simpler to build, faster to ship, less testing surface. I pushed for voice because the primary use case scenario made text the wrong choice. When someone's laptop has failed in the field, they are typically standing, often outdoors, managing other work simultaneously. A text interface requires both hands and full attention. Voice allows hands-free interaction. The counter-argument was build complexity and a 3-week timeline extension. The case I made to leadership was that a text chatbot optimized for the wrong context would get low adoption — it would feel like another tool that doesn't work for how people actually work. Voice was harder to build but meaningfully better for the actual use case. Leadership approved a scoped pilot for IT support use cases only, which is the right call — prove it in one context before expanding.</p>
+        <h3 class="cs-think-title">Why voice and not text chat</h3>
+        <ul class="cs-think-list">
+          <li>The initial proposal was a text chatbot. Simpler to build, faster to ship</li>
+          <li>The primary use case is a field worker outdoors, dealing with a device problem, not sitting at a desk</li>
+          <li>Voice is hands-free. Text requires full attention and both hands</li>
+          <li>Made the case to leadership: a text chatbot built for the wrong context would get low adoption. They approved a scoped pilot for IT support only</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3 class="cs-think-title">How success was defined without a revenue metric</h3>
-        <p class="cs-think-body">Internal tools have no revenue metric, which means success requires explicit agreement on what a "good outcome" looks like before you launch — not after. I defined three success criteria upfront: reduction in IT support tickets categorized as procedural (baseline from the ticket audit), time-to-resolution for the 5 most common IT issues (measured pre and post), and adoption rate within 90 days of launch across the employee base. The paperless outcome was binary — the paper-based systems were formally retired on the go-live date. With those three signals agreed before build began, post-launch evaluation had a clear frame rather than a post-hoc search for numbers that looked good.</p>
+        <h3 class="cs-think-title">How success was defined</h3>
+        <ul class="cs-think-list">
+          <li>No revenue metric exists for internal tools, so success criteria were agreed before build began</li>
+          <li>Three signals: reduction in procedural IT tickets, time-to-resolution for the 5 most common issues, and adoption rate within 90 days</li>
+          <li>The paperless outcome was binary. The paper-based systems were retired on go-live day</li>
+        </ul>
       </div>
 
     </div>
@@ -218,8 +237,12 @@
       </div>
       <div class="cs-retro-body">
         <div class="cs-section-label">Reflection</div>
-        <h3 class="cs-retro-title">What I'd do differently</h3>
-        <p class="cs-think-body">The AI Voice Chat should have launched as a single-use-case pilot first — just leave request queries — before expanding to IT support. My reasoning for starting with IT support was that it had the highest pain severity. That was correct. But IT support also has the widest variety of edge cases, which required significantly more intent training and testing than we had scoped. A focused leave-request pilot would have given us a functioning, adoptable product 4 weeks earlier while we continued building out the IT support capability. Users who had experienced the voice feature in a simple context would have arrived at the IT support launch with higher trust in the capability. Scope discipline on AI features in particular — start with the narrow win, expand from adoption.</p>
+        <h3 class="cs-retro-title">What I would do differently</h3>
+        <ul class="cs-think-list">
+          <li>The AI Voice Chat should have launched on a single use case first, just leave requests, before expanding to IT support</li>
+          <li>IT support has a much wider range of edge cases, which needed more training data and testing than scoped</li>
+          <li>A focused pilot would have shipped faster and built user trust before tackling the harder use case</li>
+        </ul>
       </div>
     </div>
 

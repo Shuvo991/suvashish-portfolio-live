@@ -173,8 +173,8 @@
 <section class="cs-thinking">
   <div class="container">
     <div class="cs-section-label">The Thinking</div>
-    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
-    <p class="cs-para" style="max-width:660px;">The technical problem was solvable. The hard part was deciding which constraints were non-negotiable and which were assumptions masquerading as requirements.</p>
+    <h2 class="cs-section-title">How I decided what to build and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">The technical problem was solvable. The hard part was deciding which constraints were real and which were assumptions.</p>
 
     <div class="cs-think-grid">
 
@@ -183,7 +183,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
         <h3 class="cs-think-title">How I found the real problems</h3>
-        <p class="cs-think-body">Discovery happened through two channels. First, structured interviews with country-level education coordinators — each running their own context with different infrastructure and different definitions of what "accessible" meant. Second, I reviewed the previous tool the team had attempted to use: a generic LMS not designed for low-connectivity environments. Rather than studying what the new tool should do, I mapped precisely where the old one had failed and why. The pattern was consistent: connectivity assumptions and content language rigidity were the two root causes. Every other complaint — slow performance, confusing navigation, lack of parental controls — was downstream of those two. That framing dictated the entire Phase 1 scope.</p>
+        <ul class="cs-think-list">
+          <li>Ran structured interviews with education coordinators in each deployment region</li>
+          <li>Instead of asking what the new tool should do, mapped exactly where the previous LMS had failed and why</li>
+          <li>Two root causes came up in every conversation: connectivity assumptions and content language rigidity</li>
+          <li>Everything else on the complaint list was a symptom of those two</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
@@ -191,23 +196,37 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
         <h3 class="cs-think-title">Why offline came before everything else</h3>
-        <p class="cs-think-body">The non-negotiable was offline capability. Without it, the platform simply could not function in the majority of deployment contexts — connectivity was intermittent at best in several of the target regions. That single constraint shaped the entire Phase 1 scope: we built around 3 content types that worked offline (text, audio, interactive radio) and deferred video and live sessions to Phase 2. This created friction with some stakeholders who wanted richer media immediately. The argument I made was that a video-enabled platform nobody could access was not better than a text-and-radio platform that worked reliably. Phase 2 could add richness; Phase 1 had to guarantee access.</p>
+        <ul class="cs-think-list">
+          <li>Offline capability was non-negotiable. Without it, the platform could not function in most deployment contexts</li>
+          <li>Phase 1 scoped to 3 content types that worked offline: text, audio, and interactive radio</li>
+          <li>Video and live sessions moved to Phase 2</li>
+          <li>Some stakeholders pushed for richer media in Phase 1. The response: a video-enabled platform nobody can access is not better than a reliable one that works</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
-        <h3 class="cs-think-title">The architecture tradeoff no one wanted to have</h3>
-        <p class="cs-think-body">The biggest decision was single platform versus per-country deployments. A per-country architecture would have been faster to ship for each individual country team and allowed far more customization. The case for it was real. But it would have created 5 separate maintenance burdens, 5 different version histories, and — critically — would have made consolidated reporting to donors impossible. Education Cannot Wait required unified impact reporting across all regions. That requirement alone broke the per-country argument. We chose a single platform with a localization layer, accepting meaningfully higher upfront complexity and a longer initial build in exchange for long-term sustainability and the donor reporting capability that kept the program funded.</p>
+        <h3 class="cs-think-title">The architecture tradeoff</h3>
+        <ul class="cs-think-list">
+          <li>The choice was a single platform with a localization layer versus separate per-country deployments</li>
+          <li>Per-country would have been faster for each team and allowed more customization</li>
+          <li>But it would have created 5 separate maintenance burdens and made consolidated donor reporting impossible. ECW required unified impact data across all regions</li>
+          <li>Chose the single platform, accepting higher build complexity upfront for long-term sustainability</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3 class="cs-think-title">How engagement was defined and measured</h3>
-        <p class="cs-think-body">Engagement in this context required a non-standard definition. Login frequency — the default metric — would have been meaningless because students accessed the platform on shared devices in scheduled lab sessions rather than on demand. A high login count could simply mean students were logging in and out of the same session. Instead, engagement was measured through module completion rate (what percentage of students who started a module finished it) and 30-day return rate (whether students came back after their first session). Both metrics were tracked per country cohort, which allowed us to identify which regions had adoption challenges and iterate on content and UX independently rather than treating all 5 countries as a single population.</p>
+        <h3 class="cs-think-title">How engagement was measured</h3>
+        <ul class="cs-think-list">
+          <li>Login frequency was the wrong metric. Students used shared devices in scheduled lab sessions, not on demand</li>
+          <li>Tracked module completion rate (did students finish what they started?) and 30-day return rate (did they come back?)</li>
+          <li>Both tracked per country, not aggregated, so issues in one region could be diagnosed on their own</li>
+        </ul>
       </div>
 
     </div>
@@ -218,8 +237,12 @@
       </div>
       <div class="cs-retro-body">
         <div class="cs-section-label">Reflection</div>
-        <h3 class="cs-retro-title">What I'd do differently</h3>
-        <p class="cs-think-body">I would have involved in-country teachers in the design process earlier — before requirements were finalized, not during UAT. The feedback that surfaced during user acceptance testing included real UX issues that cost us a full sprint to address: content navigation patterns that made sense to a product team but were confusing to teachers managing a class of 30 children on shared tablets. Those issues were cheap to fix at the wireframe stage and expensive at the build stage. The constraint was access — coordinating co-design sessions across 5 countries in humanitarian contexts is genuinely difficult. But the lesson was clear: if you can find any way to get field users into the design process before the prototype is baked, the cost is always worth it.</p>
+        <h3 class="cs-retro-title">What I would do differently</h3>
+        <ul class="cs-think-list">
+          <li>Would have involved in-country teachers earlier, before requirements were locked, not during UAT</li>
+          <li>Teacher feedback during UAT surfaced UX issues that cost a full sprint to fix</li>
+          <li>Those same issues would have taken an hour to catch at the wireframe stage</li>
+        </ul>
       </div>
     </div>
 

@@ -173,8 +173,8 @@
 <section class="cs-thinking">
   <div class="container">
     <div class="cs-section-label">The Thinking</div>
-    <h2 class="cs-section-title">How I decided what to build — and what to skip</h2>
-    <p class="cs-para" style="max-width:660px;">Five countries meant five different opinions on what the platform should be. The real product work was deciding which differences were legitimate requirements and which were preferences that would fracture the architecture.</p>
+    <h2 class="cs-section-title">How I decided what to build and what to skip</h2>
+    <p class="cs-para" style="max-width:660px;">Five countries meant five different opinions on what the platform should be. The work was deciding which differences were real requirements and which would fracture the architecture.</p>
 
     <div class="cs-think-grid">
 
@@ -183,7 +183,11 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
         <h3 class="cs-think-title">How I found the real constraints</h3>
-        <p class="cs-think-body">Country coordinator interviews across all 5 regions were the primary input, and the pattern that emerged was a tension between local relevance and platform consistency. Every country team wanted a different product. Guatemala wanted gamification. Ukraine needed offline-first because of power instability. Pakistan required strict content controls. Colombia wanted bilingual support for Spanish and indigenous languages. Poland wanted parent-facing progress reports. The architecture question wasn't "what features to build" — it was "what level of customization can a single platform support without fracturing into 5 unmaintainable deployments?" Framing it that way transformed requirements gathering from a feature wishlist exercise into a structural decision conversation.</p>
+        <ul class="cs-think-list">
+          <li>Interviewed country coordinators across all 5 deployment regions</li>
+          <li>Every team wanted something different: Guatemala wanted gamification, Ukraine needed offline-first due to power cuts, Pakistan needed content controls, Colombia wanted bilingual support</li>
+          <li>The question shifted from "what features to build" to "how much customization can one platform support before it splits into 5 separate codebases"</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
@@ -191,7 +195,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
         <h3 class="cs-think-title">How I cut the feature list</h3>
-        <p class="cs-think-body">I ran a feature matrix evaluating every requested capability against three dimensions: how many countries needed it, how easily it could be built in a localizable way without branching the codebase, and what the expected impact on learning outcomes was based on the coordinator interviews. Offline module support won on all three axes — every country needed it, it was architecturally clean, and coordinators consistently ranked access reliability as the highest priority. Gamification scored high on engagement but low on localizability — different cultures respond to competitive mechanics differently, and building a configurable version in Phase 1 was too expensive. It became a Phase 2 consideration. Parental controls were required in two markets and neutral in the others, so they went into Phase 1 as a configurable option with a sensible default.</p>
+        <ul class="cs-think-list">
+          <li>Built a feature matrix scoring each request on 3 dimensions: how many countries need it, how easily it localizes without branching the code, and expected impact on learning outcomes</li>
+          <li>Offline module support scored highest. Every country needed it, it was architecturally clean, and coordinators ranked access reliability first</li>
+          <li>Gamification scored high on engagement but was hard to localize. Different cultures respond to competition differently. Moved to Phase 2</li>
+          <li>Parental controls were required in two markets, neutral in others. Added as a configurable option in Phase 1</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
@@ -199,15 +208,25 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
         <h3 class="cs-think-title">The content governance tradeoff</h3>
-        <p class="cs-think-body">The hardest stakeholder tension was content control. Country teams wanted direct CMS access to self-manage their content — faster for them, less coordination overhead, and a fair request given they knew their local curricula better than anyone at the central level. Giving them that access unmediated created a governance problem: a content error in Pakistan — factually incorrect material or age-inappropriate content — could go live without any review and reach hundreds of children before it was caught. In a humanitarian education context, that was an unacceptable risk to the programme's standing with donors and the communities it served. The resolution was a staged publishing workflow: country-level draft, central review, then publish. Country teams pushed back on the delay. The tradeoff held. One incident of inappropriate content in a crisis education programme would have damaged the programme's credibility with funders and communities far more than the inconvenience of a review step.</p>
+        <ul class="cs-think-list">
+          <li>Country teams wanted direct CMS access to manage their own content. A fair request as they knew local curricula better than anyone centrally</li>
+          <li>The risk: a content error in Pakistan could go live unreviewed and reach hundreds of children before anyone caught it</li>
+          <li>In a humanitarian context, that was not acceptable</li>
+          <li>Resolution: staged publishing. Country-level draft, central review, then publish. Teams pushed back on the added step. The tradeoff held</li>
+        </ul>
       </div>
 
       <div class="cs-think-card glass-card">
         <div class="cs-think-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3 class="cs-think-title">How engagement was tracked per country</h3>
-        <p class="cs-think-body">Measuring engagement across 5 countries required resisting the instinct to aggregate everything into a single number. Each country had a different access model — some students used the platform in supervised lab sessions, others on shared family devices at home. A single global engagement metric would have obscured those differences. Instead, I tracked module completion rate and session return rate per country cohort, which allowed the team to identify quickly that Ukraine's early adoption numbers were lower than other countries — not because of content quality, but because power outages were interrupting sessions at inconsistent points. That country-level signal led directly to a specific UX fix: auto-saving progress every 2 minutes and resuming from the exact point of interruption, which brought Ukraine's completion rate in line with the other cohorts.</p>
+        <h3 class="cs-think-title">How engagement was tracked</h3>
+        <ul class="cs-think-list">
+          <li>Did not aggregate into a single global number. Each country had a different access model</li>
+          <li>Tracked module completion rate and session return rate per country cohort</li>
+          <li>Ukraine scored lower than others early on. Not because of content quality but because power cuts were interrupting sessions mid-module</li>
+          <li>Fix: auto-save every 2 minutes, resume from the exact point. Ukraine completion rate came in line with the other cohorts after that</li>
+        </ul>
       </div>
 
     </div>
@@ -218,8 +237,12 @@
       </div>
       <div class="cs-retro-body">
         <div class="cs-section-label">Reflection</div>
-        <h3 class="cs-retro-title">What I'd do differently</h3>
-        <p class="cs-think-body">I'd invest more time earlier in building async communication rituals with the country teams. The 5-country coordination was challenging throughout, and the root cause wasn't willingness — every country coordinator was engaged and invested. It was rhythm. Each team had a different review cadence, different response windows, and different escalation paths. We lost multiple weeks across the project waiting on feedback that would have arrived faster with clearer agreements at the start: defined turnaround times for reviews, a single channel per decision type, and explicit escalation paths when a response deadline was missed. These aren't product decisions — they're delivery infrastructure. Setting them up in week one instead of discovering the need for them in week six would have been worth more than almost any scope or architecture decision we made.</p>
+        <h3 class="cs-retro-title">What I would do differently</h3>
+        <ul class="cs-think-list">
+          <li>Would invest more time upfront setting communication rhythms with the country teams</li>
+          <li>Each team had a different review cadence. We lost weeks waiting on feedback that clearer agreements would have surfaced faster</li>
+          <li>Defining turnaround windows, one channel per decision type, and a clear escalation path in week 1 would have been worth more than most scope decisions made later</li>
+        </ul>
       </div>
     </div>
 
