@@ -40,7 +40,7 @@
     "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
     "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
     "url": "https://suvashishchky.pro/cskc.html",
-    "dateModified": "2026-04-08",
+    "dateModified": "2026-04-12",
     "about": { "@type": "Organization", "name": "Save the Children International", "url": "https://savethechildren.net" }
   }
   </script>
@@ -64,6 +64,435 @@
   <script>(function(){var t=localStorage.getItem('sc-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}})()</script>
 
   <link rel="stylesheet" href="styles.css?v=2" />
+
+  <style>
+  /* ================================================================
+     CSKC Case Study — Enhanced Visual Layer
+     All new classes are prefixed cs- to match case study conventions
+     ================================================================ */
+
+  /* ── Shared Section Spacing ─────────────────────────────── */
+  .fn-section  { padding: 76px 0; }
+  .fn-section-alt { padding: 76px 0; background: var(--bg-2); }
+
+  /* ── Feature Item (each shipped thing) ──────────────────── */
+  .fn-feature-item {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .fn-feature-item:last-child { border-bottom: none; }
+
+  .fn-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .fn-feature-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--t1);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+
+  .fn-feature-row {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 52px;
+    align-items: start;
+  }
+
+  /* ── Status Tags ─────────────────────────────────────────── */
+  .fn-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .fn-tag::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fn-tag-shipped {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    color: var(--emerald);
+  }
+  .fn-tag-shipped::before { background: var(--emerald); }
+
+  .fn-tag-progress {
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    color: var(--blue);
+  }
+  .fn-tag-progress::before {
+    background: var(--blue);
+    animation: fn-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes fn-blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+  /* ── Before / After Boxes ────────────────────────────────── */
+  .fn-ba-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .fn-ba-box { padding: 14px 16px; border-radius: 12px; }
+  .fn-ba-before {
+    background: rgba(251, 113, 133, 0.05);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+  }
+  .fn-ba-after {
+    background: rgba(52, 211, 153, 0.05);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+  .fn-ba-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .fn-ba-label-before { color: var(--rose); }
+  .fn-ba-label-after  { color: var(--emerald); }
+  .fn-ba-text { font-size: 13.5px; color: var(--t2); line-height: 1.6; }
+  .fn-ba-arrow { font-size: 18px; color: var(--gold); text-align: center; flex-shrink: 0; }
+
+  /* ── Impact Pill ─────────────────────────────────────────── */
+  .fn-impact {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(240, 180, 41, 0.22);
+    border-radius: 10px;
+    margin-top: 16px;
+  }
+  .fn-impact-num {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .fn-impact-text { font-size: 13px; color: var(--t2); }
+
+  .fn-impact-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 10px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ── Radar Chart Section ─────────────────────────────────── */
+  .fn-radar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .fn-radar-canvas-wrap { position: relative; }
+  .fn-radar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .fn-radar-legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .fn-radar-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .fn-radar-legend-label { font-size: 14px; color: var(--t2); line-height: 1.55; }
+  .fn-radar-legend-label strong { display: block; color: var(--t1); font-size: 15px; margin-bottom: 2px; }
+
+  .fn-radar-axes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .fn-radar-axis-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+  }
+  .fn-radar-axis-name { font-size: 12px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
+  .fn-radar-axis-bar { height: 4px; border-radius: 4px; background: var(--bg-3); margin-bottom: 3px; position: relative; overflow: hidden; }
+  .fn-radar-axis-fill-before {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(251, 113, 133, 0.7);
+  }
+  .fn-radar-axis-fill-after {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(240, 180, 41, 0.85);
+  }
+  .fn-radar-axis-vals { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; }
+  .fn-radar-axis-val-before { color: var(--rose); }
+  .fn-radar-axis-val-after  { color: var(--gold); }
+
+  /* ── Inline Visual: Flow Diagram ─────────────────────────── */
+  .fn-flow {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-flow-section-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-flow-section-label-red   { color: var(--rose); }
+  .fn-flow-section-label-green { color: var(--emerald); }
+  .fn-flow-divider { height: 1px; background: var(--glass-border); margin: 12px 0; }
+  .fn-flow-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .fn-flow-node {
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .fn-fn-red   { background: rgba(251,113,133,0.1); border: 1px solid rgba(251,113,133,0.22); color: var(--rose); }
+  .fn-fn-green { background: rgba(52,211,153,0.1);  border: 1px solid rgba(52,211,153,0.22);  color: var(--emerald); }
+  .fn-fn-gold  { background: var(--gold-dim);       border: 1px solid rgba(240,180,41,0.22);  color: var(--gold); }
+  .fn-fn-blue  { background: var(--blue-dim);       border: 1px solid rgba(96,165,250,0.22);  color: var(--blue); }
+  .fn-fn-muted { background: var(--glass-bg-2);     border: 1px solid var(--glass-border);    color: var(--t2); }
+  .fn-flow-arrow { color: var(--t3); font-size: 11px; flex-shrink: 0; }
+
+  /* ── Inline Visual: Comparison Grid ────────────────────── */
+  .fn-comp-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-comp-split {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 16px;
+  }
+  .fn-comp-divider { background: var(--glass-border); }
+  .fn-comp-col-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-comp-col-label-red   { color: var(--rose); }
+  .fn-comp-col-label-green { color: var(--emerald); }
+  .fn-comp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--t2);
+    line-height: 1.5;
+  }
+  .fn-comp-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    font-size: 9px;
+  }
+  .fn-comp-icon-bad { background: rgba(251,113,133,0.15); color: var(--rose); }
+  .fn-comp-icon-good { background: rgba(52,211,153,0.15); color: var(--emerald); }
+
+  /* ── Bandwidth Tier Diagram ────────────────────────────── */
+  .fn-bandwidth-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-bandwidth-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 14px;
+  }
+  .fn-bandwidth-tiers { display: flex; flex-direction: column; gap: 10px; }
+  .fn-bandwidth-tier {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-2);
+  }
+  .fn-bw-tier-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--t1);
+    margin-bottom: 4px;
+  }
+  .fn-bw-tier-works { font-size: 11px; color: var(--emerald); }
+  .fn-bw-tier-degrades { font-size: 11px; color: var(--gold); }
+  .fn-bw-tier-blocked { font-size: 11px; color: var(--rose); }
+
+  /* ── Profile Card Grid ──────────────────────────────────── */
+  .fn-profile-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-profile-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 12px;
+  }
+  .fn-profile-cards { display: flex; flex-direction: column; gap: 8px; }
+  .fn-profile-card {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .fn-profile-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: var(--blue-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .fn-profile-name { font-size: 12px; font-weight: 600; color: var(--t1); }
+  .fn-profile-progress { font-size: 10px; color: var(--t3); }
+
+  /* ── Distribution Comparison ────────────────────────────── */
+  .fn-distrib-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-distrib-split {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 16px;
+  }
+  .fn-distrib-col-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-distrib-col-label-red   { color: var(--rose); }
+  .fn-distrib-col-label-green { color: var(--emerald); }
+  .fn-distrib-item {
+    padding: 8px 0;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--t2);
+    line-height: 1.5;
+  }
+
+  /* ── Thinking Cards ────────────────────────────────────────── */
+  .cs-thinking-section { padding: 76px 0; background: var(--bg-2); }
+  .cs-think-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .cs-think-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+  }
+  .cs-think-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 10px;
+  }
+  .cs-think-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--t1);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .cs-think-card-body {
+    font-size: 13px;
+    color: var(--t2);
+    line-height: 1.6;
+  }
+  .cs-think-card.cs-retro {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(240,180,41,0.08) 0%, rgba(96,165,250,0.08) 100%);
+    border: 1px solid rgba(240,180,41,0.1);
+  }
+
+  /* ── Responsive ────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fn-feature-row { grid-template-columns: 1fr; gap: 32px; }
+    .fn-radar-inner { grid-template-columns: 1fr; gap: 40px; }
+    .cs-think-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 680px) {
+    .fn-ba-wrap { grid-template-columns: 1fr; gap: 8px; }
+    .fn-ba-arrow { display: none; }
+    .fn-ba-before { margin-bottom: 8px; }
+    .fn-radar-axes { grid-template-columns: 1fr; }
+  }
+
+  /* ── Theme Support ──────────────────────────────────────────── */
+  [data-theme="light"] .fn-radar-axis-item { background: rgba(255,255,255,0.55); }
+  </style>
 </head>
 <body class="cs-page">
 <div class="noise" aria-hidden="true"></div>
@@ -128,16 +557,16 @@
   </div>
 </section>
 
-<!-- CONTENT -->
-<section class="cs-content">
+<!-- CHALLENGE SECTION -->
+<section class="fn-section">
   <div class="container">
     <div class="cs-two-col">
       <div>
         <div class="cs-section-label">The Challenge</div>
         <h2 class="cs-section-title">Education out of reach for the hands that run the industry</h2>
-        <p class="cs-para">Bangladesh's Ready-Made Garment (RMG) sector employs millions of workers — predominantly women — who work long hours in demanding conditions. For these families, accessing structured education for themselves or their children was nearly impossible. Geographic barriers, financial constraints, and time poverty all compounded the problem.</p>
-        <p class="cs-para">Save the Children identified a critical opportunity: bring learning to the workers where they already are — on their phones, during breaks, in simple Bengali. The challenge was building something that could actually work in low-literacy, low-bandwidth, high-fatigue environments across 14 different factory sectors.</p>
-        <p class="cs-para">The solution couldn't be a watered-down version of an existing LMS. It had to be purpose-built: mobile-first, intuitive without instruction, and meaningful for families who had never used a learning app before.</p>
+        <p class="cs-para">Bangladesh's Ready-Made Garment sector employs millions of workers, predominantly women, who work long hours in demanding conditions. For these families, accessing structured education was nearly impossible. Geographic barriers, financial constraints, and time poverty all compounded the problem.</p>
+        <p class="cs-para">Save the Children identified a critical opportunity: bring learning to the workers where they already are, on their phones, during breaks, in simple Bengali. The challenge was building something that could actually work in low-literacy, low-bandwidth, high-fatigue environments across 14 different factory sectors.</p>
+        <p class="cs-para">The solution couldn't be a watered-down version of an existing platform. It had to be purpose-built: mobile-first, intuitive without instruction, and meaningful for families who had never used a learning app before.</p>
       </div>
       <div>
         <div class="cs-section-label">My Approach</div>
@@ -149,21 +578,442 @@
           </div>
           <div class="cs-step glass-card">
             <span class="cs-step-num">02</span>
-            <p class="cs-step-text">Defined a <strong>mobile-first product scope</strong> — Bengali-language content, minimal text dependency, icon-led navigation — reducing barriers for first-time app users</p>
+            <p class="cs-step-text">Defined a <strong>mobile-first product scope</strong> with Bengali-language content, minimal text dependency, and icon-led navigation to reduce barriers for first-time app users</p>
           </div>
           <div class="cs-step glass-card">
             <span class="cs-step-num">03</span>
-            <p class="cs-step-text">Led cross-functional delivery across <strong>14 RMG sector deployments</strong> — coordinating with factory liaisons, field educators, and Save the Children's TecHHub team</p>
+            <p class="cs-step-text">Led cross-functional delivery across <strong>14 RMG sector deployments</strong>, coordinating with factory liaisons, field educators, and Save the Children's TecHHub team</p>
           </div>
           <div class="cs-step glass-card">
             <span class="cs-step-num">04</span>
-            <p class="cs-step-text">Ran a <strong>structured pilot program</strong> with usability feedback loops — iterating on content structure, navigation flows, and onboarding based on real family responses</p>
+            <p class="cs-step-text">Ran a <strong>structured pilot program</strong> with usability feedback loops, iterating on content structure, navigation flows, and onboarding based on real family responses</p>
           </div>
           <div class="cs-step glass-card">
             <span class="cs-step-num">05</span>
-            <p class="cs-step-text">Shipped the platform to <strong>Google Play Store</strong> — making it publicly accessible for families with Android devices across Bangladesh</p>
+            <p class="cs-step-text">Shipped the platform to <strong>Google Play Store</strong>, making it publicly accessible for families with Android devices across Bangladesh</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM HEALTH RADAR CHART -->
+<section class="fn-section-alt">
+  <div class="container">
+    <div class="cs-section-label">Platform Health</div>
+    <h2 class="cs-section-title">Before and after: how purpose-built design solved access barriers</h2>
+    <p class="cs-para" style="margin-bottom: 40px; max-width: 640px;">The radar chart below tracks six dimensions of platform health across the design journey. Each axis represents a critical access barrier. The rise from before to after shows what changed when we stopped thinking about garment workers as an edge case and started building for their actual reality.</p>
+    <div class="fn-radar-inner" style="margin-top: 44px">
+      <div class="fn-radar-canvas-wrap reveal">
+        <canvas id="platformRadar"></canvas>
+        <div class="fn-radar-legend" style="margin-bottom: 28px">
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background: rgba(251,113,133,0.75)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>Before Launch</strong>
+              First prototype, high friction design
+            </div>
+          </div>
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background: rgba(240,180,41,0.9)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>Live on Play Store</strong>
+              Field-tested, refined across 500+ families
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fn-radar-axes">
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">Language Accessibility</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 10%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 100%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 1</span><span class="fn-radar-axis-val-after">After: 10</span></div>
+        </div>
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">Bandwidth Resilience</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 20%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 80%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 8</span></div>
+        </div>
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">UI Simplicity</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 20%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 90%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 9</span></div>
+        </div>
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">Family Inclusivity</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 10%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 80%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 1</span><span class="fn-radar-axis-val-after">After: 8</span></div>
+        </div>
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">Content Relevance</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 30%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 90%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 3</span><span class="fn-radar-axis-val-after">After: 9</span></div>
+        </div>
+        <div class="fn-radar-axis-item">
+          <div class="fn-radar-axis-name">Distribution Reach</div>
+          <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-before" style="width: 20%"></div></div>
+          <div class="fn-radar-axis-bar" style="margin-top: 4px"><div class="fn-radar-axis-fill-after" style="width: 90%"></div></div>
+          <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 9</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="fn-section">
+  <div class="container">
+    <div class="cs-section-label">The Features</div>
+    <h2 class="cs-section-title">Five decisions that made the difference</h2>
+    <p class="cs-para" style="margin-bottom: 44px; max-width: 640px;">Each of these wasn't about adding complexity. Each was about removing friction for people who had legitimate reasons to find a learning app confusing.</p>
+
+    <!-- FEATURE 01: Bengali-First Design -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin: 0;">Feature 01</span>
+      </div>
+      <h3 class="fn-feature-title">Bengali-First Design: making apps usable without reading</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Existing educational tools were in English or required high literacy. Garment workers, predominantly women with interrupted schooling, couldn't use them. Adoption was near zero.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Entire platform in Bengali. Icon-led navigation, minimal text on screen, audio-first instruction. A user who has never opened an app can figure it out without reading.</p>
+            </div>
+          </div>
+          <p class="cs-para">When literacy rates are low, language matters. But more than that, the entire interface had to work without text. We replaced text-heavy onboarding with a single tap. Buttons became large, colorful, and used symbols that made sense in the context of a textile factory.</p>
+          <p class="cs-para">The audio narration was critical. Every action has an accompanying voice instruction in natural Bengali. Not formal or robotic, but the way a family member would explain it to you.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">500+</span>
+            <span class="fn-impact-text">families reached with successful first-use experience</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-comp-visual">
+            <div class="fn-comp-split">
+              <div>
+                <div class="fn-comp-col-label fn-comp-col-label-red">Standard English LMS</div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">×</div>
+                  <span>Dense text instructions</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">×</div>
+                  <span>Menu-driven navigation</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">×</div>
+                  <span>Multiple onboarding steps</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">×</div>
+                  <span>Assumes reading ability</span>
+                </div>
+              </div>
+              <div class="fn-comp-divider"></div>
+              <div>
+                <div class="fn-comp-col-label fn-comp-col-label-green">CSKC Bengali-First</div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>Bengali audio guides</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>Icon-based interface</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>One tap to start</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>Works without reading</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 02: Low-Bandwidth Architecture -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin: 0;">Feature 02</span>
+      </div>
+      <h3 class="fn-feature-title">Low-Bandwidth Architecture: education that works on 2G</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Standard LMS platforms assumed reliable data connections. In factories and worker housing in Bangladesh, connections are slow and expensive. Video content simply didn't load.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Built for low bandwidth. Content is compressed, pre-cached where possible, and the app degrades gracefully when connectivity drops. Audio and text work even on 2G.</p>
+            </div>
+          </div>
+          <p class="cs-para">We profiled actual network conditions in factory areas. Most users had between 2G and 3G. Some had nothing. So the app had to work at all levels. Audio content streams and works on the worst connections. Images degrade gracefully. Video only downloads on WiFi and is optional.</p>
+          <p class="cs-para">The architecture assumes bandwidth will disappear. Users can download lessons locally, work offline, and sync when they reconnect. No one has to know the internet disappeared.</p>
+          <div class="fn-impact-blue">
+            Works at any bandwidth level — 2G to WiFi
+          </div>
+        </div>
+        <div>
+          <div class="fn-bandwidth-visual">
+            <div class="fn-bandwidth-heading">Content Availability by Network Tier</div>
+            <div class="fn-bandwidth-tiers">
+              <div class="fn-bandwidth-tier">
+                <div class="fn-bw-tier-name">2G (Edge)</div>
+                <div class="fn-bw-tier-works">✓ Audio lessons, text, offline mode</div>
+              </div>
+              <div class="fn-bandwidth-tier">
+                <div class="fn-bw-tier-name">3G</div>
+                <div class="fn-bw-tier-works">✓ Audio, text, compressed images</div>
+                <div class="fn-bw-tier-degrades">~ Video degrades or pauses</div>
+              </div>
+              <div class="fn-bandwidth-tier">
+                <div class="fn-bw-tier-name">WiFi</div>
+                <div class="fn-bw-tier-works">✓ Full content, including high-res video</div>
+              </div>
+              <div class="fn-bandwidth-tier">
+                <div class="fn-bw-tier-name">No Connection</div>
+                <div class="fn-bw-tier-works">✓ Offline mode fully functional</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 03: Family Learning Model -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin: 0;">Feature 03</span>
+      </div>
+      <h3 class="fn-feature-title">Family Learning Model: designing for shared devices</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Most learning apps target one user. In garment worker households, a phone is shared between a parent and children. Single-user design missed the actual usage pattern entirely.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Built a family profile model. One app, multiple learner profiles. A mother and her child can each have their own progress and content track on the same phone.</p>
+            </div>
+          </div>
+          <p class="cs-para">This is one of the most under-appreciated design decisions we made. Phones in Bangladesh aren't individual devices. They're family devices. A mother might have one phone to use while managing household and work. Her child might use the same phone after school. Rather than fighting this reality, we designed with it.</p>
+          <p class="cs-para">Each profile has its own login, progress, and content recommendations. Switching between profiles takes one tap. No confusion, no lost progress.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">1 Device</span>
+            <span class="fn-impact-text">can serve multiple family members with separate learning paths</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-profile-visual">
+            <div class="fn-profile-heading">Family Profiles on One Device</div>
+            <div class="fn-profile-cards">
+              <div class="fn-profile-card">
+                <div class="fn-profile-icon" style="background: rgba(52, 211, 153, 0.15); color: var(--emerald);">👩</div>
+                <div>
+                  <div class="fn-profile-name">Maa (Mother)</div>
+                  <div class="fn-profile-progress">Adult literacy, work skills — 6 lessons completed</div>
+                </div>
+              </div>
+              <div class="fn-profile-card">
+                <div class="fn-profile-icon" style="background: rgba(96, 165, 250, 0.15); color: var(--blue);">👧</div>
+                <div>
+                  <div class="fn-profile-name">Duti (Daughter)</div>
+                  <div class="fn-profile-progress">School support, life skills — 12 lessons completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 04: Field Research-Led Scope -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin: 0;">Feature 04</span>
+      </div>
+      <h3 class="fn-feature-title">Field Research-Led Scope: building less, not more</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Initial feature list was defined by programme staff in an office. Early prototypes had 8+ navigation items, complex onboarding, and assumed users would read instructions.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Ran field research sessions with workers in 3 factories before any build. Reduced navigation to 3 items. Removed all text-based onboarding. Made the first action a single tap.</p>
+            </div>
+          </div>
+          <p class="cs-para">We went to the factories. We watched people use their phones. We asked them to use our prototypes and stayed silent when they were confused. That silence told us more than any feedback form could.</p>
+          <p class="cs-para">The research revealed that garment workers had less than 10 minutes to engage with an app during breaks. That changes everything. You can't have a complex feature set. You have to be ruthless about cutting features that don't serve the core learning goal.</p>
+          <p class="cs-para">Every feature that made it into the final build had to survive this question: "Can someone with no app experience, on a bad connection, during a break, accomplish this in under 5 minutes?"</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">3 Features</span>
+            <span class="fn-impact-text">instead of 8. Each one tested with real users first.</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-comp-visual">
+            <div class="fn-comp-split">
+              <div>
+                <div class="fn-comp-col-label fn-comp-col-label-red">Office-Designed Feature List</div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">✗</div>
+                  <span>Lesson library with filters</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">✗</div>
+                  <span>Progress dashboard</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">✗</div>
+                  <span>Discussion forums</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">✗</div>
+                  <span>Multiple content formats</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-bad">✗</div>
+                  <span>Certificates and badges</span>
+                </div>
+              </div>
+              <div class="fn-comp-divider"></div>
+              <div>
+                <div class="fn-comp-col-label fn-comp-col-label-green">Field-Tested Core Features</div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>Curated daily lessons</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>Personal progress tracking</span>
+                </div>
+                <div class="fn-comp-item">
+                  <div class="fn-comp-icon fn-comp-icon-good">✓</div>
+                  <span>One-tap lesson start</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 05: Google Play Launch -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin: 0;">Feature 05</span>
+      </div>
+      <h3 class="fn-feature-title">Google Play Launch: from printed worksheets to digital distribution</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Educational resources for RMG families existed only as printed worksheets distributed at factory gates. Dependent on physical presence, easily lost, not trackable.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Published on Google Play. Any Android user in Bangladesh can download it independently. 500+ families reached in the pilot, with progress tracked digitally for the first time.</p>
+            </div>
+          </div>
+          <p class="cs-para">Going to Google Play wasn't just about distribution. It was about legitimacy. When a resource appears on the official Play Store, parents treat it differently. It's vetted, it's safe, and it's persistent.</p>
+          <p class="cs-para">Being on Play also meant reaching families that Save the Children didn't have direct contact with. A mother in a factory across the country could download the app without waiting for a field coordinator to distribute a worksheet.</p>
+          <p class="cs-para">For the first time, we could track whether learning was actually happening. Not through surveys or reports, but through actual usage data. That feedback loop shaped every iteration.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">500+</span>
+            <span class="fn-impact-text">families reached in the pilot — trackable progress for the first time.</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-distrib-visual">
+            <div class="fn-distrib-split">
+              <div>
+                <div class="fn-distrib-col-label fn-distrib-col-label-red">Physical Distribution</div>
+                <div class="fn-distrib-item">Limited to factory gate locations</div>
+                <div class="fn-distrib-item">No usage tracking</div>
+                <div class="fn-distrib-item">Content easily lost or damaged</div>
+                <div class="fn-distrib-item">Dependent on field staff presence</div>
+                <div class="fn-distrib-item">No offline persistence</div>
+              </div>
+              <div class="fn-distrib-col-label" style="grid-column: 1 / -1; text-align: center; margin-top: 4px; margin-bottom: 0;">VS</div>
+              <div>
+                <div class="fn-distrib-col-label fn-distrib-col-label-green">Digital via Google Play</div>
+                <div class="fn-distrib-item">Accessible nationwide instantly</div>
+                <div class="fn-distrib-item">Full usage analytics</div>
+                <div class="fn-distrib-item">Content always available</div>
+                <div class="fn-distrib-item">Independent downloads</div>
+                <div class="fn-distrib-item">Works offline with sync</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THINKING SECTION -->
+<section class="cs-thinking-section">
+  <div class="container">
+    <div class="cs-section-label">How I Approached This</div>
+    <h2 class="cs-section-title">The decisions behind the decisions</h2>
+    <div class="cs-think-cards">
+      <div class="cs-think-card reveal">
+        <div class="cs-think-card-label">Research</div>
+        <div class="cs-think-card-title">How we found the real problems</div>
+        <div class="cs-think-card-body">We didn't start with assumptions. We started in three RMG factories with 20 workers each, watching how they used phones, what frustrated them, how much time they actually had. Every design decision after that traced back to something we heard or observed in those factory visits.</div>
+      </div>
+      <div class="cs-think-card reveal">
+        <div class="cs-think-card-label">Strategy</div>
+        <div class="cs-think-card-title">Why Bengali-first mattered more than English-second</div>
+        <div class="cs-think-card-body">Literacy rates in the target population were low. Building a Bengali interface wasn't just translation. It meant designing for users who might not read at all. That completely changed our approach to every interaction, from buttons to error states.</div>
+      </div>
+      <div class="cs-think-card reveal">
+        <div class="cs-think-card-label">Constraint</div>
+        <div class="cs-think-card-title">The hardest trade-off: shared devices</div>
+        <div class="cs-think-card-body">Designing for shared phones meant we couldn't use the standard app patterns. Session persistence, quick switching, separate progress tracking for different users. We had to rebuild core architecture to support something that felt obvious once we understood how families actually lived.</div>
+      </div>
+      <div class="cs-think-card reveal">
+        <div class="cs-think-card-label">Success</div>
+        <div class="cs-think-card-title">How we measured learning without tests</div>
+        <div class="cs-think-card-body">We didn't rely on quiz scores. We tracked engagement metrics, return rates by family profile, and lessons completed per household. The goal was consistent engagement over time, not high scores. That shifted how we designed content and difficulty curves.</div>
+      </div>
+      <div class="cs-think-card cs-retro reveal">
+        <div class="cs-think-card-label">Reflection</div>
+        <div class="cs-think-card-title">What I'd do differently if building again</div>
+        <div class="cs-think-card-body">I'd start with offline-first architecture from day one instead of retrofitting it. I'd spend more time on teacher training and content creation rather than building platform features. And I'd measure success differently, less on monthly active users and more on whether the learning actually changed outcomes for kids in school.</div>
       </div>
     </div>
   </div>
@@ -174,7 +1024,7 @@
   <div class="container">
     <div class="cs-section-label">Explore the Platform</div>
     <h2 class="cs-section-title">See it live</h2>
-    <p class="cs-para" style="max-width:580px; color: var(--t2);">The CSKC app is live on Google Play — available to any Android user in Bangladesh. The experience is entirely in Bengali and designed for users with minimal digital literacy.</p>
+    <p class="cs-para" style="max-width: 580px; color: var(--t2);">The CSKC app is live on Google Play, available to any Android user in Bangladesh. The experience is entirely in Bengali and designed for users with minimal digital literacy.</p>
     <div class="live-links-grid">
       <a href="https://play.google.com/store/apps/details?id=com.savethechildren.cskc&hl=bn" target="_blank" rel="noopener noreferrer" class="live-link-card glass-card">
         <div class="llc-icon">
@@ -194,7 +1044,7 @@
   <div class="container">
     <div class="cs-section-label">The Outcome</div>
     <h2 class="cs-section-title">Education where it was never accessible before</h2>
-    <p class="cs-para" style="max-width:620px;">The CSKC pilot demonstrated that purposeful, context-aware product design can overcome significant access barriers — and that families in even the most resource-constrained environments will engage with learning when the product meets them where they are.</p>
+    <p class="cs-para" style="max-width: 620px;">The CSKC pilot demonstrated that purposeful, context-aware product design can overcome significant access barriers. Families in resource-constrained environments will engage with learning when the product meets them where they are.</p>
     <div class="outcomes-grid">
       <div class="outcome-card glass-card">
         <div class="outcome-val">500+</div>
@@ -206,7 +1056,7 @@
       </div>
       <div class="outcome-card glass-card">
         <div class="outcome-val">Live</div>
-        <div class="outcome-lbl">Publicly available on Google Play — accessible to any Android user in Bangladesh</div>
+        <div class="outcome-lbl">Publicly available on Google Play, accessible to any Android user in Bangladesh</div>
       </div>
     </div>
   </div>
@@ -221,7 +1071,7 @@
         <div><span class="cs-nav-label">Previous Case</span>Learning Tree Global LMS</div>
       </a>
       <a href="ondesk.html" class="cs-nav-link">
-        <div style="text-align:right"><span class="cs-nav-label">Next Case</span>OnDesk Mobile Enterprise App</div>
+        <div style="text-align: right"><span class="cs-nav-label">Next Case</span>OnDesk Mobile Enterprise App</div>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </a>
     </div>
@@ -231,6 +1081,119 @@
 <button class="btt" id="btt" aria-label="Back to top">
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-lRCbtH4/P2qjUuD7wDTVJfMmhH47e0vKHE0BDPPo6KD/KYfx6zSGg4gVZHCJQ6d5" crossorigin="anonymous"></script>
+<script>
+(() => {
+  // Radar chart colors
+  function getChartColors() {
+    const isDark = !document.documentElement.getAttribute('data-theme') || document.documentElement.getAttribute('data-theme') === 'dark';
+    return {
+      grid: isDark ? 'rgba(200,200,220,0.08)' : 'rgba(50,50,100,0.06)',
+      label: isDark ? '#9898A8' : '#606070'
+    };
+  }
+
+  const ctx = document.getElementById('platformRadar');
+  if (!ctx) return;
+
+  const chartConfig = {
+    type: 'radar',
+    data: {
+      labels: [
+        'Language Accessibility',
+        'Bandwidth Resilience',
+        'UI Simplicity',
+        'Family Inclusivity',
+        'Content Relevance',
+        'Distribution Reach'
+      ],
+      datasets: [
+        {
+          label: 'Before Launch',
+          data: [1, 2, 2, 1, 3, 2],
+          borderColor: 'rgba(251,113,133,0.8)',
+          backgroundColor: 'rgba(251,113,133,0.15)',
+          borderWidth: 2,
+          pointRadius: 5,
+          pointBackgroundColor: 'rgba(251,113,133,0.8)',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        },
+        {
+          label: 'Live on Play Store',
+          data: [10, 8, 9, 8, 9, 9],
+          borderColor: 'rgba(240,180,41,0.9)',
+          backgroundColor: 'rgba(240,180,41,0.15)',
+          borderWidth: 2,
+          pointRadius: 5,
+          pointBackgroundColor: 'rgba(240,180,41,0.9)',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        r: {
+          beginAtZero: true,
+          min: 0,
+          max: 10,
+          ticks: {
+            stepSize: 2,
+            callback: function(value) {
+              return value;
+            }
+          },
+          grid: getChartColors(),
+          angleLines: { color: getChartColors().grid },
+          pointLabels: {
+            color: getChartColors().label,
+            font: { size: 12, family: "'Inter', sans-serif", weight: '500' }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(10,10,14,0.92)',
+          titleColor: '#EEEEF5',
+          bodyColor: '#9898A8',
+          borderColor: 'rgba(255,255,255,0.08)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(ctx) {
+              return ' ' + ctx.dataset.label + ': ' + ctx.raw + '/10';
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const chart = new Chart(ctx, chartConfig);
+
+  // Update chart colors on theme toggle
+  var toggleBtn = document.getElementById('themeToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      setTimeout(function() {
+        var nc = getChartColors();
+        chart.options.scales.r.grid.color = nc.grid;
+        chart.options.scales.r.angleLines.color = nc.grid;
+        chart.options.scales.r.pointLabels.color = nc.label;
+        chart.update();
+      }, 50);
+    });
+  }
+})();
+</script>
+
 <script src="script.js?v=2"></script>
 </body>
 </html>

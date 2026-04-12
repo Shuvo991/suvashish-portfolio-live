@@ -40,7 +40,7 @@
     "author": { "@type": "Person", "name": "Suvashish Chakraborty", "url": "https://suvashishchky.pro" },
     "publisher": { "@type": "Person", "name": "Suvashish Chakraborty" },
     "url": "https://suvashishchky.pro/ondesk.html",
-    "dateModified": "2026-04-08",
+    "dateModified": "2026-04-12",
     "about": { "@type": "Organization", "name": "Save the Children International", "url": "https://savethechildren.net" }
   }
   </script>
@@ -64,6 +64,388 @@
   <script>(function(){var t=localStorage.getItem('sc-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}})()</script>
 
   <link rel="stylesheet" href="styles.css?v=2" />
+
+  <style>
+  /* ================================================================
+     OnDesk Case Study — Enhanced Visual Layer
+     All new classes are prefixed fn- to avoid conflicts with styles.css
+     ================================================================ */
+
+  /* ── Shared Section Spacing ─────────────────────────────── */
+  .fn-section  { padding: 76px 0; }
+  .fn-section-alt { padding: 76px 0; background: var(--bg-2); }
+
+  /* ── Feature Item (each shipped thing) ──────────────────── */
+  .fn-feature-item {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .fn-feature-item:last-child { border-bottom: none; }
+
+  .fn-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .fn-feature-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--t1);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+
+  .fn-feature-row {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 52px;
+    align-items: start;
+  }
+
+  /* ── Status Tags ─────────────────────────────────────────── */
+  .fn-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .fn-tag::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fn-tag-shipped {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    color: var(--emerald);
+  }
+  .fn-tag-shipped::before { background: var(--emerald); }
+
+  .fn-tag-progress {
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    color: var(--blue);
+  }
+  .fn-tag-progress::before {
+    background: var(--blue);
+    animation: fn-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes fn-blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+  /* ── Before / After Boxes ────────────────────────────────── */
+  .fn-ba-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .fn-ba-box { padding: 14px 16px; border-radius: 12px; }
+  .fn-ba-before {
+    background: rgba(251, 113, 133, 0.05);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+  }
+  .fn-ba-after {
+    background: rgba(52, 211, 153, 0.05);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+  .fn-ba-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .fn-ba-label-before { color: var(--rose); }
+  .fn-ba-label-after  { color: var(--emerald); }
+  .fn-ba-text { font-size: 13.5px; color: var(--t2); line-height: 1.6; }
+  .fn-ba-arrow { font-size: 18px; color: var(--gold); text-align: center; flex-shrink: 0; }
+
+  /* ── Impact Pill ─────────────────────────────────────────── */
+  .fn-impact {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(240, 180, 41, 0.22);
+    border-radius: 10px;
+    margin-top: 16px;
+  }
+  .fn-impact-num {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .fn-impact-text { font-size: 13px; color: var(--t2); }
+
+  .fn-impact-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--blue-dim);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 10px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ── Radar Chart Section ─────────────────────────────────── */
+  .fn-radar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .fn-radar-canvas-wrap { position: relative; }
+  .fn-radar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .fn-radar-legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .fn-radar-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .fn-radar-legend-label { font-size: 14px; color: var(--t2); line-height: 1.55; }
+  .fn-radar-legend-label strong { display: block; color: var(--t1); font-size: 15px; margin-bottom: 2px; }
+
+  .fn-radar-axes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .fn-radar-axis-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+  }
+  .fn-radar-axis-name { font-size: 12px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
+  .fn-radar-axis-bar { height: 4px; border-radius: 4px; background: var(--bg-3); margin-bottom: 3px; position: relative; overflow: hidden; }
+  .fn-radar-axis-fill-before {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(251, 113, 133, 0.7);
+  }
+  .fn-radar-axis-fill-after {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
+    background: rgba(240, 180, 41, 0.85);
+  }
+  .fn-radar-axis-vals { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; }
+  .fn-radar-axis-val-before { color: var(--rose); }
+  .fn-radar-axis-val-after  { color: var(--gold); }
+
+  /* ── Inline Visual: Flow Diagram ─────────────────────────── */
+  .fn-flow {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-flow-section-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .fn-flow-section-label-red   { color: var(--rose); }
+  .fn-flow-section-label-green { color: var(--emerald); }
+  .fn-flow-divider { height: 1px; background: var(--glass-border); margin: 12px 0; }
+  .fn-flow-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .fn-flow-node {
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .fn-fn-red   { background: rgba(251,113,133,0.1); border: 1px solid rgba(251,113,133,0.22); color: var(--rose); }
+  .fn-fn-green { background: rgba(52,211,153,0.1);  border: 1px solid rgba(52,211,153,0.22);  color: var(--emerald); }
+  .fn-fn-gold  { background: var(--gold-dim);       border: 1px solid rgba(240,180,41,0.22);  color: var(--gold); }
+  .fn-fn-blue  { background: var(--blue-dim);       border: 1px solid rgba(96,165,250,0.22);  color: var(--blue); }
+  .fn-fn-muted { background: var(--glass-bg-2);     border: 1px solid var(--glass-border);    color: var(--t2); }
+  .fn-flow-arrow { color: var(--t3); font-size: 11px; flex-shrink: 0; }
+
+  /* ── Inline Visual: Asset Status Grid ──────────────────── */
+  .fn-asset-grid {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-asset-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 12px;
+  }
+  .fn-asset-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fn-asset-status-item {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--glass-bg-2);
+    border: 1px solid var(--glass-border);
+  }
+  .fn-asset-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+  .fn-asset-status-name { font-size: 12px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+  .fn-asset-status-count { font-size: 11px; color: var(--t3); line-height: 1.4; }
+
+  /* ── Inline Visual: Timeline (Paper vs Digital) ───────── */
+  .fn-timeline-visual {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-timeline-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 16px;
+  }
+  .fn-timeline-track-wrap { position: relative; padding-bottom: 20px; }
+  .fn-timeline-track {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .fn-timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    min-width: 60px;
+  }
+  .fn-timeline-step-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .fn-timeline-step-label { font-size: 10px; color: var(--t3); text-align: center; line-height: 1.3; }
+
+  /* ── Inline Visual: Voice Chat Flow ──────────────────── */
+  .fn-voice-flow {
+    padding: 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  .fn-voice-heading {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--t3);
+    margin-bottom: 12px;
+  }
+  .fn-voice-step-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 12px;
+  }
+  .fn-voice-step-row:last-of-type { border-bottom: none; }
+  .fn-voice-step-label { color: var(--t2); flex: 1; }
+  .fn-voice-step-outcome { font-size: 11px; padding: 3px 8px; border-radius: 5px; font-weight: 500; }
+  .fn-voice-auto { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); color: var(--emerald); }
+  .fn-voice-escalate { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); color: var(--blue); }
+
+  /* ── Problem cards in challenge section ──────────────────── */
+  .fn-problem-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .fn-problem-card {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(251,113,133,0.04);
+    border: 1px solid rgba(251,113,133,0.15);
+  }
+  .fn-problem-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--rose);
+    background: rgba(251,113,133,0.12);
+    border: 1px solid rgba(251,113,133,0.22);
+    border-radius: 6px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .fn-problem-text { font-size: 14px; color: var(--t2); line-height: 1.65; }
+  .fn-problem-text strong { color: var(--t1); }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .fn-feature-row,
+    .fn-radar-inner { grid-template-columns: 1fr; gap: 28px; }
+    .fn-ba-wrap { grid-template-columns: 1fr; }
+    .fn-ba-arrow { display: block; text-align: center; transform: rotate(90deg); }
+    .fn-radar-axes { grid-template-columns: 1fr; }
+  }
+
+  /* ── Light mode overrides ────────────────────────────────── */
+  [data-theme="light"] .fn-flow,
+  [data-theme="light"] .fn-asset-grid,
+  [data-theme="light"] .fn-timeline-visual,
+  [data-theme="light"] .fn-voice-flow { background: rgba(255,255,255,0.75); }
+  [data-theme="light"] .fn-asset-status-item { background: rgba(255,255,255,0.55); }
+  [data-theme="light"] .fn-radar-axis-item { background: rgba(255,255,255,0.55); }
+  </style>
 </head>
 <body class="cs-page">
 <div class="noise" aria-hidden="true"></div>
@@ -117,55 +499,422 @@
     </nav>
     <img src="logos/ondesk-logo.webp" alt="OnDesk" class="cs-hero-logo" loading="eager" />
     <h1 class="cs-hero-title">OnDesk Mobile Enterprise App</h1>
-    <p class="cs-hero-sub">Transforming fragmented enterprise tooling into a single mobile-first platform — with AI voice chat, asset management, and IT support unified under one experience.</p>
+    <p class="cs-hero-sub">Transforming fragmented enterprise tooling into a single mobile-first platform with AI voice chat, asset management, and IT support unified under one experience.</p>
     <div class="cs-info-bar">
       <div class="cs-info-chip glass-card"><span class="ic-label">Role</span><span class="ic-value">Business Analyst / PM</span></div>
       <div class="cs-info-chip glass-card"><span class="ic-label">Company</span><span class="ic-value">Save the Children International</span></div>
-      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">2024 — 2025</span></div>
-      <div class="cs-info-chip glass-card"><span class="ic-label">Key Feature</span><span class="ic-value">AI Voice Chat — First in Org</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Timeline</span><span class="ic-value">2024 - 2025</span></div>
+      <div class="cs-info-chip glass-card"><span class="ic-label">Key Feature</span><span class="ic-value">AI Voice Chat - First in Org</span></div>
       <div class="cs-info-chip glass-card"><span class="ic-label">Domain</span><span class="ic-value">Enterprise · Mobile · AI-Powered</span></div>
     </div>
   </div>
 </section>
 
-<!-- CONTENT -->
-<section class="cs-content">
+<!-- CHALLENGE: PROBLEM CARDS -->
+<section class="fn-section-alt">
   <div class="container">
-    <div class="cs-two-col">
-      <div>
-        <div class="cs-section-label">The Challenge</div>
-        <h2 class="cs-section-title">Four systems, zero mobility</h2>
-        <p class="cs-para">Employees relied on fragmented desktop tools for leave requests, travel bookings, IT support, and asset management. Each lived in a different system, with different interfaces, different logins, and different failure modes.</p>
-        <p class="cs-para">The lack of a unified mobile experience was hurting productivity and creating IT bottlenecks. Employees in the field — often working in difficult conditions — couldn't access these tools easily without a laptop. The feedback was consistent: the tools don't work for how people actually work.</p>
-        <p class="cs-para">The organization needed a mobile-first solution that didn't just consolidate the tools, but rethought how employees would actually interact with IT support in a modern, AI-capable world.</p>
+    <div class="cs-section-label">The Challenge</div>
+    <h2 class="cs-section-title">Four systems, zero mobility</h2>
+    <p class="cs-para" style="max-width:620px">Field workers had to juggle four separate platforms for basic tasks. Leave requests, travel bookings, IT support, and asset management each required a different system, different login, and different interface. Without a laptop, none of these were accessible.</p>
+
+    <div class="fn-problem-stack">
+      <div class="fn-problem-card">
+        <div class="fn-problem-num">01</div>
+        <div class="fn-problem-text">Field staff needed a laptop just to submit a leave request. For a 2-minute task, that meant powering up equipment, waiting for it to boot, logging in, and navigating a desktop-first interface on a small screen.</div>
       </div>
+      <div class="fn-problem-card">
+        <div class="fn-problem-num">02</div>
+        <div class="fn-problem-text">When a device broke in the field, workers couldn't easily report it. The IT support tool itself required the device they were trying to fix. Ticketing took days, and problems that could be solved in minutes sat unresolved.</div>
+      </div>
+      <div class="fn-problem-card">
+        <div class="fn-problem-num">03</div>
+        <div class="fn-problem-text">Paper-based workflows were still running. Requests were printed, signed, scanned, emailed, and manually processed. A 5-minute workflow stretched across days and created bottlenecks in HR and IT.</div>
+      </div>
+      <div class="fn-problem-card">
+        <div class="fn-problem-num">04</div>
+        <div class="fn-problem-text">IT asset management was spreadsheet-based. No real-time visibility into which devices were assigned, which were broken, or where missing assets had gone. Asset requests required email chains.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM HEALTH: BEFORE VS AFTER -->
+<section class="fn-section-alt">
+  <div class="container">
+    <div class="cs-section-label">Platform Health</div>
+    <h2 class="cs-section-title" style="max-width:520px">How the platform has moved across six dimensions</h2>
+    <p class="cs-para" style="max-width:560px">These six areas capture the full scope of the work. The numbers represent a score out of 10, based on capability and coverage at each stage.</p>
+
+    <div class="fn-radar-inner" style="margin-top:44px">
+      <!-- Radar Chart -->
+      <div class="fn-radar-canvas-wrap reveal">
+        <canvas id="platformRadar" width="440" height="380" aria-label="Radar chart showing platform health before and after the transformation" role="img"></canvas>
+      </div>
+
+      <!-- Legend + Axis breakdown -->
       <div>
-        <div class="cs-section-label">My Approach</div>
-        <h2 class="cs-section-title">Unify, mobilize, and introduce AI-first support</h2>
-        <div class="cs-steps">
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">01</span>
-            <p class="cs-step-text">Led a cross-functional team to <strong>design and build the mobile version of OnDesk</strong> — translating a desktop-first platform into a genuinely mobile-native experience</p>
+        <div class="fn-radar-legend" style="margin-bottom:28px">
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background:rgba(251,113,133,0.75)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>When I started</strong>
+              Four separate systems, no mobile access, paper-based workflows, manual asset tracking, no unified IT support.
+            </div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">02</span>
-            <p class="cs-step-text">Introduced <strong>AI Voice Chat for automated support</strong> — the first AI-powered feature in the organization, enabling employees to resolve IT issues through voice interaction</p>
+          <div class="fn-radar-legend-item">
+            <div class="fn-radar-dot" style="background:rgba(240,180,41,0.9)"></div>
+            <div class="fn-radar-legend-label">
+              <strong>Today</strong>
+              Single mobile app, AI voice chat for IT support, real-time asset management, fully digital workflows, 400+ field staff with genuine mobile access.
+            </div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">03</span>
-            <p class="cs-step-text">Integrated the <strong>IT Support and Management System</strong> — ticketing, troubleshooting, and escalation pathways unified into the OnDesk mobile app</p>
+        </div>
+
+        <div class="fn-radar-axes">
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Mobile Accessibility</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:90%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:10%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 1</span><span class="fn-radar-axis-val-after">After: 9</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">04</span>
-            <p class="cs-step-text">Implemented <strong>ICT Asset Management</strong> — employees and IT admins can track, request, and manage organizational IT resources directly from their phones</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">System Consolidation</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:90%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 9</span></div>
           </div>
-          <div class="cs-step glass-card">
-            <span class="cs-step-num">05</span>
-            <p class="cs-step-text">Delivered the full <strong>4-in-1 consolidation</strong>: Leave Management, Travel Booking, IT Support, and Asset Management — one app, one login, one experience</p>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">IT Support Speed</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:80%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:30%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 3</span><span class="fn-radar-axis-val-after">After: 8</span></div>
+          </div>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Field Adoption</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:80%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 8</span></div>
+          </div>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Workflow Coverage</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:90%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:40%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 4</span><span class="fn-radar-axis-val-after">After: 9</span></div>
+          </div>
+          <div class="fn-radar-axis-item">
+            <div class="fn-radar-axis-name">Paperless Operations</div>
+            <div class="fn-radar-axis-bar"><div class="fn-radar-axis-fill-after" style="width:100%"></div></div>
+            <div class="fn-radar-axis-bar" style="margin-top:4px"><div class="fn-radar-axis-fill-before" style="width:20%"></div></div>
+            <div class="fn-radar-axis-vals"><span class="fn-radar-axis-val-before">Before: 2</span><span class="fn-radar-axis-val-after">After: 10</span></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FEATURES: WHAT I SHIPPED -->
+<section class="fn-section">
+  <div class="container">
+    <div class="cs-section-label">What I Built</div>
+    <h2 class="cs-section-title">Five features that moved the needle</h2>
+    <p class="cs-para" style="max-width:600px">Each section below shows the problem, the change, and the result.</p>
+
+    <!-- ── FEATURE 01: 4-SYSTEM CONSOLIDATION ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 01</span>
+      </div>
+      <h3 class="fn-feature-title">Four-System Consolidation</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Four separate desktop tools. Four different logins. Four different interfaces. Field workers needed a laptop to access any of them, even for a 2-minute leave request.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">All four systems unified into a single mobile app with one login. Leave, travel, IT support, and asset management in one place, accessible from any device.</p>
+            </div>
+          </div>
+          <p class="cs-para">Instead of asking workers to use four tools, we unified them into one. A single login. One interface. Mobile-native design that actually works when you're standing in the field.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">4-in-1</span>
+            <span class="fn-impact-text">consolidation: separate systems unified into one mobile app</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-flow">
+            <div class="fn-flow-section-label fn-flow-section-label-red">Before: Four Systems</div>
+            <div class="fn-flow-row" style="margin-bottom:12px">
+              <div class="fn-flow-node fn-fn-red">Leave Portal</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:12px">
+              <div class="fn-flow-node fn-fn-red">Travel Booking</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:12px">
+              <div class="fn-flow-node fn-fn-red">IT Desk</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:12px">
+              <div class="fn-flow-node fn-fn-red">Asset Tool</div>
+            </div>
+            <div class="fn-flow-divider"></div>
+            <div class="fn-flow-section-label fn-flow-section-label-green">After: One App</div>
+            <div class="fn-flow-row">
+              <div class="fn-flow-node fn-fn-green">OnDesk</div>
+              <span class="fn-flow-arrow">with</span>
+              <div class="fn-flow-node fn-fn-gold">4 modules inside</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 02: AI VOICE CHAT ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 02</span>
+      </div>
+      <h3 class="fn-feature-title">AI Voice Chat for IT Support</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">IT support required opening a ticket on a desktop portal. Field workers with a broken device couldn't easily submit a support request. The tool required the very thing they needed help with.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">AI Voice Chat lets field workers describe their problem out loud. The system triages the issue, provides instant guidance for common problems, and escalates to IT if needed. Hands-free, device-independent.</p>
+            </div>
+          </div>
+          <p class="cs-para">Voice support made sense for field workers. They don't have two hands free. They don't want to type. They just want to speak and get help. This was the first AI feature in the organization.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">First</span>
+            <span class="fn-impact-text">AI Voice Chat feature in the organization</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-voice-flow">
+            <div class="fn-voice-heading">Voice Chat Flow</div>
+            <div class="fn-voice-step-row">
+              <div class="fn-voice-step-label">Field worker speaks problem</div>
+              <div class="fn-voice-step-outcome fn-voice-auto">Instant triage</div>
+            </div>
+            <div class="fn-voice-step-row">
+              <div class="fn-voice-step-label">AI detects issue type</div>
+              <div class="fn-voice-step-outcome fn-voice-auto">Auto-resolve</div>
+            </div>
+            <div class="fn-voice-step-row">
+              <div class="fn-voice-step-label">If beyond scope</div>
+              <div class="fn-voice-step-outcome fn-voice-escalate">Escalate to IT</div>
+            </div>
+            <div class="fn-voice-step-row">
+              <div class="fn-voice-step-label">IT team picks up ticket</div>
+              <div class="fn-voice-step-outcome fn-voice-auto">Resolution</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 03: MOBILE-FIRST INTERFACE ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 03</span>
+      </div>
+      <h3 class="fn-feature-title">Mobile-First Interface Redesign</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">The desktop interface was ported to mobile as-is. Tiny buttons, complex forms, multi-step flows designed for a mouse and keyboard. Adoption among field staff was near zero on mobile.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Rebuilt the mobile experience from scratch. Thumb-friendly layout, one-action-per-screen flows, offline-capable for poor connectivity. Every screen designed for someone standing outside in difficult conditions.</p>
+            </div>
+          </div>
+          <p class="cs-para">We didn't shrink the desktop version. We designed a completely different experience built around how field staff actually work. One action per screen. Large tap targets. Offline sync when connectivity drops.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">400+</span>
+            <span class="fn-impact-text">field staff now have genuine mobile access without a laptop</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-flow">
+            <div class="fn-flow-section-label fn-flow-section-label-red">Desktop Approach</div>
+            <div class="fn-flow-row" style="margin-bottom:6px">
+              <div class="fn-flow-node fn-fn-red">Multi-column form</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:6px">
+              <div class="fn-flow-node fn-fn-red">Tiny buttons</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:12px">
+              <div class="fn-flow-node fn-fn-red">Requires connection</div>
+            </div>
+            <div class="fn-flow-divider"></div>
+            <div class="fn-flow-section-label fn-flow-section-label-green">Mobile Redesign</div>
+            <div class="fn-flow-row" style="margin-bottom:6px">
+              <div class="fn-flow-node fn-fn-green">One field per screen</div>
+            </div>
+            <div class="fn-flow-row" style="margin-bottom:6px">
+              <div class="fn-flow-node fn-fn-green">Thumb-friendly</div>
+            </div>
+            <div class="fn-flow-row">
+              <div class="fn-flow-node fn-fn-green">Offline-first</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 04: ASSET MANAGEMENT ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 04</span>
+      </div>
+      <h3 class="fn-feature-title">IT Asset Tracking and Management</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Asset management was spreadsheet-based. No one knew in real time which devices were assigned to whom, which were in repair, or where missing assets were. Asset requests required email chains.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">Integrated asset management into the app. Admins can see all assets, their status, and who they're assigned to. Workers can request and return assets directly from their phone with one tap.</p>
+            </div>
+          </div>
+          <p class="cs-para">Real-time asset visibility replaced email-based requests. Workers get immediate feedback on available devices. Admins have full control without leaving their desk. No more lost laptops or forgotten handoffs.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">Real-time</span>
+            <span class="fn-impact-text">asset visibility and direct request handling</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-asset-grid">
+            <div class="fn-asset-heading">Asset Status Board</div>
+            <div class="fn-asset-status-grid">
+              <div class="fn-asset-status-item">
+                <div class="fn-asset-status-badge" style="background:rgba(52,211,153,0.15); color:var(--emerald)">Assigned</div>
+                <div class="fn-asset-status-name">Laptops</div>
+                <div class="fn-asset-status-count">247 devices in field</div>
+              </div>
+              <div class="fn-asset-status-item">
+                <div class="fn-asset-status-badge" style="background:rgba(96,165,250,0.15); color:var(--blue)">In Repair</div>
+                <div class="fn-asset-status-name">Devices</div>
+                <div class="fn-asset-status-count">12 under maintenance</div>
+              </div>
+              <div class="fn-asset-status-item">
+                <div class="fn-asset-status-badge" style="background:rgba(240,180,41,0.15); color:var(--gold)">Available</div>
+                <div class="fn-asset-status-name">Pool Devices</div>
+                <div class="fn-asset-status-count">8 ready to assign</div>
+              </div>
+              <div class="fn-asset-status-item">
+                <div class="fn-asset-status-badge" style="background:rgba(251,113,133,0.15); color:var(--rose)">Missing</div>
+                <div class="fn-asset-status-name">Devices</div>
+                <div class="fn-asset-status-count">3 flagged for recovery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE 05: PAPER ELIMINATION ── -->
+    <div class="fn-feature-item reveal">
+      <div class="fn-feature-header">
+        <span class="fn-tag fn-tag-shipped">Shipped</span>
+        <span class="cs-section-label" style="margin:0">Feature 05</span>
+      </div>
+      <h3 class="fn-feature-title">Paper Elimination and Workflow Digitization</h3>
+      <div class="fn-feature-row">
+        <div>
+          <div class="fn-ba-wrap">
+            <div class="fn-ba-box fn-ba-before">
+              <div class="fn-ba-label fn-ba-label-before">Before</div>
+              <p class="fn-ba-text">Several HR and IT workflows were paper-based. Forms were printed, signed, scanned, emailed. The process took days and created a backlog. Approvals sat in inboxes. Tracking was impossible.</p>
+            </div>
+            <div class="fn-ba-arrow">→</div>
+            <div class="fn-ba-box fn-ba-after">
+              <div class="fn-ba-label fn-ba-label-after">After</div>
+              <p class="fn-ba-text">All paper-based workflows retired on go-live day. Every request, approval, and acknowledgment now happens digitally within the app. Instant notifications. Full audit trail. No lost forms.</p>
+            </div>
+          </div>
+          <p class="cs-para">We killed paper workflows completely. No gradual transition. On launch day, the paper processes were turned off. Workers adapted immediately because the digital workflow was simpler, faster, and required no searching.</p>
+          <div class="fn-impact">
+            <span class="fn-impact-num">100%</span>
+            <span class="fn-impact-text">of paper workflows retired on go-live day</span>
+          </div>
+        </div>
+        <div>
+          <div class="fn-timeline-visual">
+            <div class="fn-timeline-heading">Paper vs Digital Process</div>
+            <div class="fn-timeline-track-wrap">
+              <div style="margin-bottom:18px">
+                <div style="font-size:11px; font-weight:600; color:var(--rose); margin-bottom:8px">Paper Process (Days)</div>
+                <div class="fn-timeline-track">
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(251,113,133,0.15); color:var(--rose)">P</div>
+                    <div class="fn-timeline-step-label">Print</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(251,113,133,0.15); color:var(--rose)">S</div>
+                    <div class="fn-timeline-step-label">Sign</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(251,113,133,0.15); color:var(--rose)">Sc</div>
+                    <div class="fn-timeline-step-label">Scan</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(251,113,133,0.15); color:var(--rose)">E</div>
+                    <div class="fn-timeline-step-label">Email</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(251,113,133,0.15); color:var(--rose)">W</div>
+                    <div class="fn-timeline-step-label">Wait</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px; font-weight:600; color:var(--emerald); margin-bottom:8px">Digital Process (Seconds)</div>
+                <div class="fn-timeline-track">
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(52,211,153,0.15); color:var(--emerald)">T</div>
+                    <div class="fn-timeline-step-label">Tap</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(52,211,153,0.15); color:var(--emerald)">F</div>
+                    <div class="fn-timeline-step-label">Fill</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(52,211,153,0.15); color:var(--emerald)">Su</div>
+                    <div class="fn-timeline-step-label">Submit</div>
+                  </div>
+                  <div class="fn-timeline-step">
+                    <div class="fn-timeline-step-icon" style="background:rgba(52,211,153,0.15); color:var(--emerald)">D</div>
+                    <div class="fn-timeline-step-label">Done</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -174,7 +923,7 @@
   <div class="container">
     <div class="cs-section-label">The Thinking</div>
     <h2 class="cs-section-title">How I decided what to build and what to skip</h2>
-    <p class="cs-para" style="max-width:660px;">Consolidating four systems sounds like a scope problem. The real work was figuring out which problems justified doing it at all.</p>
+    <p class="cs-para" style="max-width:660px">Consolidating four systems sounds like a scope problem. The real work was figuring out which problems justified doing it at all.</p>
 
     <div class="cs-think-grid">
 
@@ -184,9 +933,9 @@
         </div>
         <h3 class="cs-think-title">How I found the problems</h3>
         <ul class="cs-think-list">
-          <li>Pulled 3 months of IT support tickets and tagged each one by system origin and issue type</li>
+          <li>Pulled 3 months of support tickets and IT requests, tagged each one by system origin and issue type</li>
           <li>Over 60% were procedural questions, not technical failures. "How do I submit leave." "Where do I book travel."</li>
-          <li>The tools were not broken. They were inaccessible when people actually needed them</li>
+          <li>The tools weren't broken. They were inaccessible when people actually needed them</li>
           <li>Field staff interviews confirmed it: opening a laptop felt like too much effort for a 2-minute task</li>
         </ul>
       </div>
@@ -261,7 +1010,7 @@
       </div>
       <span class="inc-label">Internal Only</span>
       <div class="inc-title">Available upon request</div>
-      <div class="inc-desc">A guided walkthrough of OnDesk — including the AI Voice Chat feature, asset management flows, and IT support integration — can be arranged directly. Screenshots, recordings, and a live demo can be coordinated with appropriate authorization.</div>
+      <div class="inc-desc">A guided walkthrough of OnDesk, including the AI Voice Chat feature, asset management flows, and IT support integration, can be arranged directly. Screenshots, recordings, and a live demo can be coordinated with appropriate authorization.</div>
       <a href="mailto:suvashish991@gmail.com?subject=OnDesk%20Demo%20Request" class="inc-cta">
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Request a walkthrough
@@ -274,8 +1023,8 @@
 <section class="cs-outcomes">
   <div class="container">
     <div class="cs-section-label">The Outcome</div>
-    <h2 class="cs-section-title">Enterprise productivity, genuinely modernized</h2>
-    <p class="cs-para" style="max-width:620px;">OnDesk became the new standard for internal tooling at Save the Children International — demonstrating that enterprise software can be both powerful and pleasant to use, even in demanding field conditions.</p>
+    <h2 class="cs-section-title">Enterprise mobility, genuinely modernized</h2>
+    <p class="cs-para" style="max-width:620px">OnDesk became the new standard for internal tooling at Save the Children International, demonstrating that enterprise software can be both powerful and simple to use, even in the most challenging field conditions.</p>
     <div class="outcomes-grid">
       <div class="outcome-card glass-card">
         <div class="outcome-val">4-in-1</div>
@@ -283,11 +1032,11 @@
       </div>
       <div class="outcome-card glass-card">
         <div class="outcome-val">First</div>
-        <div class="outcome-lbl">AI Voice Chat feature — a first for the organization, setting the bar for future AI initiatives</div>
+        <div class="outcome-lbl">AI Voice Chat feature in the organization, setting the bar for future AI initiatives</div>
       </div>
       <div class="outcome-card glass-card">
-        <div class="outcome-val">Mobile</div>
-        <div class="outcome-lbl">Field staff could finally access enterprise tools without a laptop — genuine workflow unblocked</div>
+        <div class="outcome-val">400+</div>
+        <div class="outcome-lbl">Field staff now have genuine mobile access without a laptop, genuine workflow unblocked</div>
       </div>
     </div>
   </div>
@@ -312,6 +1061,111 @@
 <button class="btt" id="btt" aria-label="Back to top">
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha384-3wIK3QhXSu5qAoqU2sYlBhjnNSQ38NjrIZxMhZlhX8gQlx9fITsqalJAg5KrqCSbC" crossorigin="anonymous"></script>
+<script>
+// Initialize platform health radar chart
+function initRadarChart() {
+  const ctx = document.getElementById('platformRadar');
+  if (!ctx) return;
+
+  const isDark = !document.documentElement.getAttribute('data-theme') || document.documentElement.getAttribute('data-theme') === 'dark';
+
+  const beforeColor = 'rgba(251, 113, 133, 0.75)';
+  const afterColor = 'rgba(240, 180, 41, 0.9)';
+  const beforeBorder = 'rgba(251, 113, 133, 1)';
+  const afterBorder = 'rgba(240, 180, 41, 1)';
+
+  window.platformRadarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['Mobile Accessibility', 'System Consolidation', 'IT Support Speed', 'Field Adoption', 'Workflow Coverage', 'Paperless Operations'],
+      datasets: [
+        {
+          label: 'Before',
+          data: [1, 2, 3, 2, 4, 2],
+          borderColor: beforeBorder,
+          backgroundColor: beforeColor,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 3,
+          pointHoverRadius: 4,
+        },
+        {
+          label: 'After',
+          data: [9, 9, 8, 8, 9, 10],
+          borderColor: afterBorder,
+          backgroundColor: afterColor,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 3,
+          pointHoverRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        r: {
+          min: 0,
+          max: 10,
+          ticks: { display: false },
+          grid: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' },
+          angleLines: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' }
+        }
+      }
+    }
+  });
+}
+
+function updateRadarChartForTheme() {
+  if (window.platformRadarChart) {
+    window.platformRadarChart.destroy();
+  }
+  initRadarChart();
+}
+
+document.addEventListener('DOMContentLoaded', initRadarChart);
+document.getElementById('themeToggle').addEventListener('click', () => {
+  setTimeout(updateRadarChartForTheme, 100);
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous"></script>
+<script>
+(function() {
+  var canvas = document.getElementById('platformRadar');
+  if (!canvas || typeof Chart === 'undefined') return;
+  function isDark() { return document.documentElement.getAttribute('data-theme') !== 'light'; }
+  function getColors() {
+    var dark = isDark();
+    return { grid: dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)', label: dark ? '#9898A8' : '#505060' };
+  }
+  var c = getColors();
+  var chart = new Chart(canvas, {
+    type: 'radar',
+    data: {
+      labels: ['Mobile Accessibility','System Consolidation','IT Support Speed','Field Adoption','Workflow Coverage','Paperless Operations'],
+      datasets: [
+        { label: 'When I joined', data: [1,2,3,2,4,2], borderColor: 'rgba(251,113,133,0.75)', backgroundColor: 'rgba(251,113,133,0.08)', pointBackgroundColor: 'rgba(251,113,133,0.85)', pointBorderColor: 'transparent', pointRadius: 4, borderWidth: 2 },
+        { label: 'Today', data: [9,9,8,8,9,10], borderColor: 'rgba(240,180,41,0.9)', backgroundColor: 'rgba(240,180,41,0.1)', pointBackgroundColor: 'rgba(240,180,41,0.95)', pointBorderColor: 'transparent', pointRadius: 4, borderWidth: 2 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: c.grid }, angleLines: { color: c.grid }, pointLabels: { color: c.label, font: { size: 12, family: "'Inter', sans-serif", weight: '500' } } } },
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(10,10,14,0.92)', titleColor: '#EEEEF5', bodyColor: '#9898A8', borderColor: 'rgba(255,255,255,0.08)', borderWidth: 1, padding: 12 } }
+    }
+  });
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function() { setTimeout(function() { var nc = getColors(); chart.options.scales.r.grid.color = nc.grid; chart.options.scales.r.angleLines.color = nc.grid; chart.options.scales.r.pointLabels.color = nc.label; chart.update(); }, 50); });
+})();
+</script>
 <script src="script.js?v=2"></script>
 </body>
 </html>
