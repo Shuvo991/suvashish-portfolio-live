@@ -477,13 +477,22 @@
   }
 
   /* ── Responsive ────────────────────────────────────────────── */
+  /* Always hide empty flow nodes */
+  .fn-flow-node:empty { display: none !important; }
+
   @media (max-width: 1024px) {
     .fn-feature-row { grid-template-columns: 1fr; gap: 32px; }
-    .fn-radar-inner { grid-template-columns: 1fr; gap: 40px; }
+    .fn-radar-inner { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+    .fn-radar-inner > * { width: 100%; box-sizing: border-box; }
     .cs-think-cards { grid-template-columns: 1fr; }
     .fn-flow-node { white-space: normal; word-break: break-word; }
-    .fn-impact { flex-wrap: wrap; }
+    .fn-flow-arrow { display: none; }
+    .fn-flow-row { gap: 5px; }
+    .fn-impact { flex-wrap: wrap; align-items: flex-start; }
     .fn-impact-blue { flex-wrap: wrap; }
+    /* guard all inline visual containers from child overflow */
+    .fn-flow, .fn-comp-visual, .fn-bandwidth-visual,
+    .fn-profile-visual, .fn-distrib-visual { overflow-x: hidden; }
   }
 
   @media (max-width: 680px) {
@@ -491,7 +500,9 @@
     .fn-ba-wrap { grid-template-columns: 1fr; gap: 8px; }
     .fn-ba-arrow { display: none; }
     .fn-ba-before { margin-bottom: 8px; }
+    .fn-radar-canvas-wrap { height: 320px; max-width: 380px; margin-left: auto; margin-right: auto; }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
     .fn-comp-split { grid-template-columns: 1fr; }
     .fn-comp-divider { display: none; }
     .fn-distrib-split { grid-template-columns: 1fr; }
@@ -499,6 +510,8 @@
 
   @media (max-width: 480px) {
     .fn-section, .fn-section-alt { padding: 40px 0; }
+    .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
   }
 
   /* ── Theme Support ──────────────────────────────────────────── */
@@ -616,9 +629,11 @@
     <h2 class="cs-section-title">Before and after: how purpose-built design solved access barriers</h2>
     <p class="cs-para" style="margin-bottom: 40px; max-width: 640px;">The radar chart below tracks six dimensions of platform health across the design journey. Each axis represents a critical access barrier. The rise from before to after shows what changed when we stopped thinking about garment workers as an edge case and started building for their actual reality.</p>
     <div class="fn-radar-inner" style="margin-top: 44px">
-      <div class="fn-radar-canvas-wrap reveal">
-        <canvas id="platformRadar"></canvas>
-        <div class="fn-radar-legend" style="margin-bottom: 28px">
+      <div>
+        <div class="fn-radar-canvas-wrap reveal">
+          <canvas id="platformRadar"></canvas>
+        </div>
+        <div class="fn-radar-legend" style="margin-top: 20px">
           <div class="fn-radar-legend-item">
             <div class="fn-radar-dot" style="background: rgba(251,113,133,0.75)"></div>
             <div class="fn-radar-legend-label">
@@ -1108,6 +1123,8 @@
   const ctx = document.getElementById('platformRadar');
   if (!ctx) return;
 
+  const isMobile = window.innerWidth < 860;
+
   const chartConfig = {
     type: 'radar',
     data: {
@@ -1146,7 +1163,10 @@
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: isMobile ? false : true,
+      layout: {
+        padding: { top: isMobile ? 30 : 20, right: isMobile ? 60 : 40, bottom: isMobile ? 30 : 20, left: isMobile ? 60 : 40 }
+      },
       scales: {
         r: {
           beginAtZero: true,
@@ -1162,7 +1182,7 @@
           angleLines: { color: getChartColors().grid },
           pointLabels: {
             color: getChartColors().label,
-            font: { size: 12, family: "'Inter', sans-serif", weight: '500' }
+            font: { size: isMobile ? 9 : 12, family: "'Inter', sans-serif", weight: '500' }
           }
         }
       },

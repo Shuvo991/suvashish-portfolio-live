@@ -680,25 +680,43 @@
   .fn-problem-text strong { color: var(--t1); }
 
   /* ── Responsive ──────────────────────────────────────────── */
+  /* Always hide empty flow nodes (placeholder spacers) */
+  .fn-flow-node:empty { display: none !important; }
+
   @media (max-width: 860px) {
     .fn-section, .fn-section-alt { padding: 52px 0; }
     .fn-feature-row,
-    .fn-radar-inner,
     .fn-upcoming-grid { grid-template-columns: 1fr; gap: 28px; }
+    .fn-radar-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .fn-radar-inner > * { width: 100%; box-sizing: border-box; }
     .fn-ba-wrap { grid-template-columns: 1fr; }
     .fn-ba-arrow { display: block; text-align: center; transform: rotate(90deg); }
     .fn-auto-split { grid-template-columns: 1fr; }
     .fn-auto-divider-line { display: none; }
     .fn-notif-grid { grid-template-columns: 1fr; }
+    .fn-radar-canvas-wrap { height: 320px; max-width: 380px; margin-left: auto; margin-right: auto; }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
     .fn-flow-node { white-space: normal; word-break: break-word; }
-    .fn-impact { flex-wrap: wrap; }
+    /* hide flow arrows on mobile — colored nodes alone tell the story */
+    .fn-flow-arrow { display: none; }
+    .fn-flow-row { gap: 5px; }
+    .fn-impact { flex-wrap: wrap; align-items: flex-start; }
     .fn-impact-blue { flex-wrap: wrap; }
-    .fn-calc-row { flex-wrap: wrap; }
-    .fn-steps-row { flex-direction: column; }
+    /* guard all inline visual containers from child overflow */
+    .fn-flow, .fn-notif-wrap, .fn-risk-card, .fn-pipeline,
+    .fn-pwd-visual, .fn-calc, .fn-auto-visual, .fn-hunt-visual { overflow-x: hidden; }
+    .fn-calc-tabs { flex-wrap: wrap; }
+    .fn-calc-input-mock { min-width: 70px; }
   }
   @media (max-width: 480px) {
     .fn-section, .fn-section-alt { padding: 40px 0; }
+    .fn-calc-field { flex-wrap: wrap; gap: 6px; }
+    .fn-calc-input-mock { min-width: unset; width: 100%; text-align: left; }
+    .fn-calc-result { flex-wrap: wrap; gap: 6px; }
+    .fn-calc-result-val { font-size: 14px; }
+    .fn-risk-row { flex-wrap: wrap; gap: 4px; }
+    .fn-pwd-marker-label { font-size: 9px; max-width: 52px; }
   }
 
   /* ── Light mode overrides ────────────────────────────────── */
@@ -1660,6 +1678,7 @@
   }
 
   var c = getChartColors();
+  var isMobile = window.innerWidth < 860;
 
   var chart = new Chart(canvas, {
     type: 'radar',
@@ -1697,7 +1716,10 @@
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: isMobile ? false : true,
+      layout: {
+        padding: { top: isMobile ? 30 : 20, right: isMobile ? 60 : 40, bottom: isMobile ? 30 : 20, left: isMobile ? 60 : 40 }
+      },
       scales: {
         r: {
           min: 0,
@@ -1707,7 +1729,7 @@
           angleLines: { color: c.grid },
           pointLabels: {
             color: c.label,
-            font: { size: 12, family: "'Inter', sans-serif", weight: '500' }
+            font: { size: isMobile ? 9 : 12, family: "'Inter', sans-serif", weight: '500' }
           }
         }
       },

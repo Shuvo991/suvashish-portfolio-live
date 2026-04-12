@@ -242,7 +242,7 @@ em { font-style: normal; color: var(--gold); }
 /* "Product" — lighter qualifier so eye flows naturally to "Manager" as the anchor */
 .ht-qualifier {
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--t2);
   letter-spacing: -.03em;
 }
 

@@ -430,23 +430,35 @@
   .fn-problem-text strong { color: var(--t1); }
 
   /* ── Responsive ──────────────────────────────────────────── */
+  /* Always hide empty flow nodes */
+  .fn-flow-node:empty { display: none !important; }
+
   @media (max-width: 860px) {
     .fn-section, .fn-section-alt { padding: 52px 0; }
-    .fn-feature-row,
-    .fn-radar-inner { grid-template-columns: 1fr; gap: 28px; }
+    .fn-feature-row { grid-template-columns: 1fr; gap: 28px; }
+    .fn-radar-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .fn-radar-inner > * { width: 100%; box-sizing: border-box; }
     .fn-ba-wrap { grid-template-columns: 1fr; }
     .fn-ba-arrow { display: block; text-align: center; transform: rotate(90deg); }
+    .fn-radar-canvas-wrap { height: 320px; max-width: 380px; margin-left: auto; margin-right: auto; }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
     .fn-flow-node { white-space: normal; word-break: break-word; }
-    .fn-impact { flex-wrap: wrap; }
+    .fn-flow-arrow { display: none; }
+    .fn-flow-row { gap: 5px; }
+    .fn-impact { flex-wrap: wrap; align-items: flex-start; }
     .fn-impact-blue { flex-wrap: wrap; }
     .fn-voice-step-row { flex-wrap: wrap; gap: 6px; }
     .fn-timeline-step { min-width: 50px; }
+    /* guard all inline visual containers from child overflow */
+    .fn-flow, .fn-asset-grid, .fn-timeline-visual, .fn-voice-flow { overflow-x: hidden; }
   }
   @media (max-width: 480px) {
     .fn-section, .fn-section-alt { padding: 40px 0; }
     .fn-asset-status-grid { grid-template-columns: 1fr; }
     .fn-timeline-step { min-width: 44px; }
+    .fn-voice-step-label { font-size: 12px; }
+    .fn-voice-step-outcome { font-size: 10px; }
   }
 
   /* ── Light mode overrides ────────────────────────────────── */
@@ -1073,80 +1085,6 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha384-3wIK3QhXSu5qAoqU2sYlBhjnNSQ38NjrIZxMhZlhX8gQlx9fITsqalJAg5KrqCSbC" crossorigin="anonymous"></script>
-<script>
-// Initialize platform health radar chart
-function initRadarChart() {
-  const ctx = document.getElementById('platformRadar');
-  if (!ctx) return;
-
-  const isDark = !document.documentElement.getAttribute('data-theme') || document.documentElement.getAttribute('data-theme') === 'dark';
-
-  const beforeColor = 'rgba(251, 113, 133, 0.75)';
-  const afterColor = 'rgba(240, 180, 41, 0.9)';
-  const beforeBorder = 'rgba(251, 113, 133, 1)';
-  const afterBorder = 'rgba(240, 180, 41, 1)';
-
-  window.platformRadarChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['Mobile Accessibility', 'System Consolidation', 'IT Support Speed', 'Field Adoption', 'Workflow Coverage', 'Paperless Operations'],
-      datasets: [
-        {
-          label: 'Before',
-          data: [1, 2, 3, 2, 4, 2],
-          borderColor: beforeBorder,
-          backgroundColor: beforeColor,
-          fill: true,
-          tension: 0.4,
-          pointRadius: 3,
-          pointHoverRadius: 4,
-        },
-        {
-          label: 'After',
-          data: [9, 9, 8, 8, 9, 10],
-          borderColor: afterBorder,
-          backgroundColor: afterColor,
-          fill: true,
-          tension: 0.4,
-          pointRadius: 3,
-          pointHoverRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
-      scales: {
-        r: {
-          min: 0,
-          max: 10,
-          ticks: { display: false },
-          grid: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' },
-          angleLines: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' }
-        }
-      }
-    }
-  });
-}
-
-function updateRadarChartForTheme() {
-  if (window.platformRadarChart) {
-    window.platformRadarChart.destroy();
-  }
-  initRadarChart();
-}
-
-document.addEventListener('DOMContentLoaded', initRadarChart);
-document.getElementById('themeToggle').addEventListener('click', () => {
-  setTimeout(updateRadarChartForTheme, 100);
-});
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous"></script>
 <script>
 (function() {
@@ -1158,6 +1096,7 @@ document.getElementById('themeToggle').addEventListener('click', () => {
     return { grid: dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)', label: dark ? '#9898A8' : '#505060' };
   }
   var c = getColors();
+  var isMobile = window.innerWidth < 860;
   var chart = new Chart(canvas, {
     type: 'radar',
     data: {
@@ -1168,8 +1107,9 @@ document.getElementById('themeToggle').addEventListener('click', () => {
       ]
     },
     options: {
-      responsive: true, maintainAspectRatio: true,
-      scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: c.grid }, angleLines: { color: c.grid }, pointLabels: { color: c.label, font: { size: 12, family: "'Inter', sans-serif", weight: '500' } } } },
+      responsive: true, maintainAspectRatio: isMobile ? false : true,
+      layout: { padding: { top: isMobile ? 30 : 20, right: isMobile ? 60 : 40, bottom: isMobile ? 30 : 20, left: isMobile ? 60 : 40 } },
+      scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: c.grid }, angleLines: { color: c.grid }, pointLabels: { color: c.label, font: { size: isMobile ? 9 : 12, family: "'Inter', sans-serif", weight: '500' } } } },
       plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(10,10,14,0.92)', titleColor: '#EEEEF5', bodyColor: '#9898A8', borderColor: 'rgba(255,255,255,0.08)', borderWidth: 1, padding: 12 } }
     }
   });

@@ -440,28 +440,39 @@
   .fn-problem-text strong { color: var(--t1); }
 
   /* ── Responsive ──────────────────────────────────────────── */
+  /* Always hide empty flow nodes */
+  .fn-flow-node:empty { display: none !important; }
+
   @media (max-width: 860px) {
     .fn-section, .fn-section-alt { padding: 52px 0; }
-    .fn-feature-row,
-    .fn-radar-inner { grid-template-columns: 1fr; gap: 28px; }
+    .fn-feature-row { grid-template-columns: 1fr; gap: 28px; }
+    .fn-radar-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .fn-radar-inner > * { width: 100%; box-sizing: border-box; }
     .fn-ba-wrap { grid-template-columns: 1fr; }
     .fn-ba-arrow { display: block; text-align: center; transform: rotate(90deg); }
     .fn-report-cols { grid-template-columns: 1fr; }
     .fn-report-arrow { transform: rotate(90deg); }
     .fn-cycle-steps { grid-template-columns: 1fr 1fr; }
     .fn-locale-grid { grid-template-columns: repeat(3, 1fr); }
+    .fn-radar-canvas-wrap { height: 320px; max-width: 380px; margin-left: auto; margin-right: auto; }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
     .fn-content-grid { grid-template-columns: 1fr; }
     .fn-connectivity-modes { flex-direction: column; }
     .fn-flow-node { white-space: normal; word-break: break-word; }
-    .fn-impact { flex-wrap: wrap; }
+    .fn-flow-arrow { display: none; }
+    .fn-flow-row { gap: 5px; }
+    .fn-impact { flex-wrap: wrap; align-items: flex-start; }
     .fn-impact-blue { flex-wrap: wrap; }
+    /* guard all inline visual containers from child overflow */
+    .fn-flow, .fn-connectivity, .fn-cycle, .fn-reporting { overflow-x: hidden; }
   }
   @media (max-width: 480px) {
     .fn-section, .fn-section-alt { padding: 40px 0; }
     .fn-cycle-steps { grid-template-columns: 1fr; }
     .fn-locale-grid { grid-template-columns: repeat(2, 1fr); }
     .fn-radar-axes { grid-template-columns: 1fr; }
+    .fn-radar-axis-vals { flex-direction: row; justify-content: space-between; align-items: center; }
   }
 
   /* ── Light mode overrides ────────────────────────────────── */
@@ -1020,6 +1031,7 @@
   }
 
   var c = getChartColors();
+  var isMobile = window.innerWidth < 860;
 
   var chart = new Chart(canvas, {
     type: 'radar',
@@ -1057,7 +1069,10 @@
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: isMobile ? false : true,
+      layout: {
+        padding: { top: isMobile ? 30 : 20, right: isMobile ? 60 : 40, bottom: isMobile ? 30 : 20, left: isMobile ? 60 : 40 }
+      },
       scales: {
         r: {
           min: 0,
@@ -1067,7 +1082,7 @@
           angleLines: { color: c.grid },
           pointLabels: {
             color: c.label,
-            font: { size: 12, family: "'Inter', sans-serif", weight: '500' }
+            font: { size: isMobile ? 9 : 12, family: "'Inter', sans-serif", weight: '500' }
           }
         }
       },
