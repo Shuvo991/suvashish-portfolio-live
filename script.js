@@ -448,10 +448,22 @@
 
   /* ── Contact Form ──────────────────────────────────────── */
   function initContactForm() {
-    const form   = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-    const btn    = document.getElementById("submitBtn");
+    const form       = document.getElementById("contactForm");
+    const status     = document.getElementById("formStatus");
+    const btn        = document.getElementById("submitBtn");
+    const mailtoLink = document.getElementById("mailtoLink");
     if (!form) return;
+
+    if (mailtoLink) {
+      mailtoLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        const name    = form.querySelector('[name="name"]')?.value?.trim() || "";
+        const message = form.querySelector('[name="message"]')?.value?.trim() || "";
+        const subject = encodeURIComponent("Message from " + (name || "your portfolio"));
+        const body    = encodeURIComponent(message);
+        window.location.href = `mailto:suvashish991@gmail.com?subject=${subject}&body=${body}`;
+      });
+    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();

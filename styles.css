@@ -888,6 +888,9 @@ em { font-style: normal; color: var(--gold); }
 .form-status { font-size: 13px; text-align: center; min-height: 18px; }
 .form-status.success { color: var(--emerald); }
 .form-status.error { color: #F87171; }
+.form-mailto-row { font-size: 13px; text-align: center; color: var(--t3); margin: 0; }
+.form-mailto-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+.form-mailto-link:hover { border-bottom-color: var(--gold); }
 
 /* ── Footer ────────────────────────────────────────────── */
 .footer { border-top: 1px solid var(--glass-border); padding: 28px 0; background: var(--bg); }
