@@ -473,7 +473,7 @@
 
       // Web3Forms endpoint — access key tied to suvashish991@gmail.com
       const WEB3FORMS = "https://api.web3forms.com/submit";
-      const ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"; // replace with key from web3forms.com
+      const ACCESS_KEY = "7a3ae5e8-3a57-42d0-9fb6-faa8e547daa9";
 
       try {
         const res = await fetch(WEB3FORMS, {
