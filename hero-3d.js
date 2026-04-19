@@ -724,19 +724,9 @@
     ctx.drawImage(vc,0,0,VW,VH,0,0,VW*SCALE,VH*SCALE);
   }
 
-  /* Throttle canvas to 30 fps — pixel art is indistinguishable at half rate
-     and halves CPU/GPU cost, fixing jank in Chrome.                        */
-  const TARGET_FPS = 30;
-  const FRAME_MS   = 1000 / TARGET_FPS;
-  let lastFrameTime = 0;
-
-  function loop(ts) {
+  function loop() {
+    if (!paused) { update(); render(); }
     requestAnimationFrame(loop);
-    if (paused) return;
-    if (ts - lastFrameTime < FRAME_MS) return;
-    lastFrameTime = ts;
-    update();
-    render();
   }
 
   /* ═══ MOTION + VISIBILITY ════════════════════════════════════════════ */
