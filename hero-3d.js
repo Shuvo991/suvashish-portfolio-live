@@ -545,18 +545,19 @@
   function drawFCLine(x1,y1,x2,y2,prog,col) {
     if (prog <= 0) return;
     const ex = (x1+(x2-x1)*prog)|0, ey = (y1+(y2-y1)*prog)|0;
-    const ddx = ex-x1, ddy = ey-y1;
-    const steps = Math.max(Math.abs(ddx), Math.abs(ddy), 1);
-    g.fillStyle = col;
-    for (let i=0; i<=steps; i++) {
-      g.fillRect((x1+ddx*i/steps)|0, (y1+ddy*i/steps)|0, 1, 1);
-    }
+    const ddy = ey-y1, ddx = ex-x1;
+    g.strokeStyle = col;
+    g.lineWidth = 1;
+    g.beginPath();
+    g.moveTo(x1+0.5, y1+0.5);
+    g.lineTo(ex+0.5, ey+0.5);
+    g.stroke();
     if (prog > 0.88) {
-      // arrowhead nub
+      g.fillStyle = col;
       if (Math.abs(ddy) >= Math.abs(ddx)) {
-        g.fillRect(ex-1, ey, 3, 1);   // horizontal nub on vertical arrow
+        g.fillRect(ex-1, ey, 3, 1);
       } else {
-        g.fillRect(ex, ey-1, 1, 3);   // vertical nub on horizontal arrow
+        g.fillRect(ex, ey-1, 1, 3);
       }
     }
   }
@@ -723,9 +724,19 @@
     ctx.drawImage(vc,0,0,VW,VH,0,0,VW*SCALE,VH*SCALE);
   }
 
-  function loop() {
-    if (!paused) { update(); render(); }
+  /* Throttle canvas to 30 fps — pixel art is indistinguishable at half rate
+     and halves CPU/GPU cost, fixing jank in Chrome.                        */
+  const TARGET_FPS = 30;
+  const FRAME_MS   = 1000 / TARGET_FPS;
+  let lastFrameTime = 0;
+
+  function loop(ts) {
     requestAnimationFrame(loop);
+    if (paused) return;
+    if (ts - lastFrameTime < FRAME_MS) return;
+    lastFrameTime = ts;
+    update();
+    render();
   }
 
   /* ═══ MOTION + VISIBILITY ════════════════════════════════════════════ */
