@@ -325,6 +325,8 @@ em { font-style: normal; color: var(--gold); }
   image-rendering: crisp-edges;
   pointer-events: none;
   background: transparent;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* ── Canvas CTA buttons row ─────────────────────────────── */

@@ -44,12 +44,12 @@
   canvas.height = VH * SCALE;
   canvas.style.imageRendering = 'pixelated';
   canvas.style.imageRendering = 'crisp-edges';
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
   ctx.imageSmoothingEnabled = false;
 
   const vc = document.createElement('canvas');
   vc.width = VW; vc.height = VH;
-  const g  = vc.getContext('2d');
+  const g  = vc.getContext('2d', { alpha: true, willReadFrequently: false });
   g.imageSmoothingEnabled = false;
 
   /* ═══ SCENE LAYOUT ════════════════════════════════════════════════════
