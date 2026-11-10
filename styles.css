@@ -1579,3 +1579,17 @@ em { font-style: normal; color: var(--gold); }
 /* Case study page hero background */
 [data-theme="light"] .cs-hero { background: var(--bg); }
 [data-theme="light"] .cs-screenshots { background: var(--bg-2); }
+
+/* ── Education section + role card ended state ─────────── */
+.ai-logo { border-radius: 6px; }
+.arc-status-ended { color: var(--t3); }
+.edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+.edu-card { border-radius: 16px; padding: 26px; }
+.edu-logo-dark { background: #14141c; padding: 4px; border: 1px solid var(--glass-border); }
+.edu-label { font-size: 10px; font-weight: 600; color: var(--t3); text-transform: uppercase; letter-spacing: .12em; margin: 4px 0 10px; }
+.edu-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 860px) {
+  .edu-grid { grid-template-columns: 1fr; margin-top: 28px; }
+  .edu-card { padding: 22px; }
+}
+
